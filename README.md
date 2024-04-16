@@ -66,26 +66,33 @@
 
 # 상황별 해야할 일
 
-Projects / teamProject에 Todo에서 자신이 해야 할 일을 확인 후
+- Projects / teamProject에 Todo에서 자신이 해야 할 일을 확인 후
 
-Open in new tab 클릭 우측 Development 탭에 Create a branch 클릭 
+- Open in new tab 클릭 우측 Development 탭에 Create a branch 클릭 
 
-Branch 이름은 Feature-기능과 같이 설정 후 Change branch source 클릭 해서
+- Branch 이름은 Feature-기능과 같이 설정 후 Change branch source 클릭 해서
 
-해당 브랜치 소스를 develop으로 변경하여 생성
+- 해당 브랜치 소스를 develop으로 변경하여 생성
 
-git에 익숙하지 않은 팀원들을 위해 작성한 git command 및 조작 방법
+# git에 익숙하지 않은 팀원들을 위해 작성한 git command 및 조작 방법
 
-새로운 feature 개발: 최신 develop의 변경사항을 local에 반영시킨 후, 새로운 브랜치를 생성하여 작업한다.
-$ git checkout develop : develop 브랜치로 변경
-$ git pull : develop 브랜치의 최신 변경사항을 로컬로 가져온다. 
-$ git checkout -b <feature branch 명> :명령어를 통해 브랜치 생성 후 checkout한다
+- 새로운 feature 개발: 최신 develop의 변경사항을 local에 반영시킨 후, 새로운 브랜치를 생성하여 작업한다.
 
-코드작성
-$ git add <file 명>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다. 
-$ git commit -m "커밋메세지" 
-$ git push origin <feature branch>: origin(원격 저장소)의 feature branch로 로컬 변경 내역을 push
+- $ git checkout develop : develop 브랜치로 변경
+
+- $ git pull : develop 브랜치의 최신 변경사항을 로컬로 가져온다. 
+
+- $ git checkout -b <feature branch 명> :명령어를 통해 브랜치 생성 후 checkout한다
+
+# 코드작성
+- $ git add <file 명>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다. 
+
+- $ git commit -m "커밋메세지" 
+
+- $ git push origin <feature branch>: origin(원격 저장소)의 feature branch로 로컬 변경 내역을 push
+
 github에서 develop branch <- feature branch 방향으로  Pull Request 진행
+
 리뷰가 종료되고 모두 Approve 된다면 Merge한다. 
 
 
