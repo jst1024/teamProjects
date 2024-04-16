@@ -57,14 +57,31 @@
 - 커밋 메세지 작성시 첫 줄엔 제목 작성, 추가 설명이 필요할 경우 줄을 바꿔서 작성
 
 커밋 메세지 첫 시작은 
+
 - Add : 파일 추가 / 기능 및 함수 추가
+
 - Delete : 파일 삭제 / 기능 및 함수 삭제
+
 - Fix : 버그 수정, 에러 해결 등
+
 - Refactor : 기존 파일 개선 / 보안
+
 - Move : 파일 위치 or 이름 변경 등 실제 코드내용이 변경없을때
 
 
+# 개발시 유의해야 할점
+
+- css 파일은 따로 사용한다.
+
+- 개발할때 같은 페이지를 여러명이서 작업하지 않도록 조심한다.
+
+- develop 브랜치에 변동이 있을시 항상 pull 먼저 한다.
+
+- github에 projects를 활용해서 해야 할 일을 확인 또는 추가 한다.
+
+
 # 상황별 해야할 일
+
 
 - Projects / teamProject에 Todo에서 자신이 해야 할 일을 확인 후
 
@@ -74,7 +91,8 @@
 
 - 해당 브랜치 소스를 develop으로 변경하여 생성
 
-# git에 익숙하지 않은 팀원들을 위해 작성한 git command 및 조작 방법
+
+# git에 익숙하지 않은 우리들을 위해 작성한 git command 및 조작 방법
 
 - 새로운 feature 개발: 최신 develop의 변경사항을 local에 반영시킨 후, 새로운 브랜치를 생성하여 작업한다.
 
@@ -85,6 +103,7 @@
 - $ git checkout -b <feature branch 명> :명령어를 통해 브랜치 생성 후 checkout한다
 
 # 코드작성
+
 - $ git add <file 명>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다. 
 
 - $ git commit -m "커밋메세지" 
@@ -148,7 +167,6 @@ git stash drop [이름] : stash 삭제
 git stash pop : apply + drop
 
 git stash show -p | git apply -R : 실수로 잘못 stash 적용한걸 되돌리고 싶을때
-
 
 git clean -f:  작업 디렉토리에서 추적되지 않는 파일을 삭제합니다.
 
