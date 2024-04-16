@@ -108,12 +108,19 @@ git tag -a [태그명] -m "메시지": 주석을 포함한 태그를 추가합�
 
 git fetch: 원격 저장소의 변경 내용을 가져오지만 로컬에는 반영하지 않습니다.
 
-git stash: 현재 변경 내용을 임시로 보관합니다.( 작업도중에 develop 브랜치가 변경될시 작업했던 파일을 이 명령어로 임시 보관하고 pull을 사용해서 먼저 develop브랜치를 최신화 한다음 다시 작업을 이어가야합니다.)
+git stash: 현재 변경 내용을 임시로 보관합니다.
+( 작업도중에 develop 브랜치가 변경될시 작업했던 파일을 이 명령어로 임시 보관하고 pull을 사용해서 먼저 develop브랜치를 최신화 한다음 다시 작업을 이어가야합니다.)
+
 git stash list : 저장한 stash 목록
+
 git stash apply [이름]: 이름 다시 가져오기 ([이름]을 붙이지 않으면 가장 최신의 stash)
+
 git stash apply --index : staged상태까지 복원한다.
+
 git stash drop [이름] : stash 삭제
+
 git stash pop : apply + drop
+
 git stash show -p | git apply -R : 실수로 잘못 stash 적용한걸 되돌리고 싶을때
 
 
