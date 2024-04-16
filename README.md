@@ -1,28 +1,60 @@
-# 브랜치 정의
-master : 제품으로 유저들이 사용하는 브랜치
-develop : 공통으로 쓰는 개발을 위한 브랜치
-feature : 기능을 개발하는 개인 브랜치
+# 팀프로젝트 시작시
+
+- 팀장의 리포지토리에서 클론으로 자신의 로컬 디렉토리에 파일을 가져온다.
+
+- 2가지 방법이 있는데  
+
+- 특정 브랜치 하나만 가져오고 싶을때
+
+- $ git clone -b <branchname> --single-branch <remote-repo-url>
+
+- 그냥 이거 쓰자.
+
+- 모든 브랜치를 다 가져오고 싶을때
+
+- $ git clone -b <branchname> <remote-repo-url>
+
+- 리포지토리에 있는 모든 브랜치들을 패치한 후에 특정한 브랜치로 전환한다. 
+
+- 그러면 그 브랜치를 기준으로 로컬에서 git push 와 git pull를 할 수 있도록 설정이 된다. 
+
+- 하지만 이렇게 하면 각 브랜치가 갖고 있는 모든 파일들을 다 패치한 상태이다.
+
+- 예를들어
+
+- $ git clone -b feature-buttom [https://github.com/jst1024/teamProjects.git]
+
+- 이렇게 하게 되면 자동으로 feature-buttom 브랜치가 로컬 브랜치로 설정되는 동시에 다른 브랜치들도 추적할수 있다.
+
+
+ # 브랜치 정의
+
+- master : 제품으로 유저들이 사용하는 브랜치
+
+- develop : 공통으로 쓰는 개발을 위한 브랜치
+
+- feature : 기능을 개발하는 개인 브랜치
 
 
 
 
 # 브랜치 사용규칙
 
-하나의 기능은 하나의 커밋으로 합니다.
+- 하나의 기능은 하나의 커밋으로 합니다.
 
-자신의 Pull Reqyest는 스스로 merge 합니다.
+- 자신의 PullRequest는 스스로 merge 합니다.
 
-develop 브랜치에 변경사항이 생길경우 pull 합니다.
+- develop 브랜치에 변경사항이 생길경우 pull 합니다.
 
-꼭 리뷰를 받습니다.
+- 꼭 리뷰를 받습니다.
 
 
 
 # 커밋 메세지 규칙
 
-유의미한 코드 단위 / 기능 완료 시에 커밋
+- 유의미한 코드 단위 / 기능 완료 시에 커밋
 
-커밋 메세지 작성시 첫 줄엔 제목 작성, 추가 설명이 필요할 경우 줄을 바꿔서 작성
+- 커밋 메세지 작성시 첫 줄엔 제목 작성, 추가 설명이 필요할 경우 줄을 바꿔서 작성
 
 커밋 메세지 첫 시작은 
 - Add : 파일 추가 / 기능 및 함수 추가
@@ -35,8 +67,11 @@ develop 브랜치에 변경사항이 생길경우 pull 합니다.
 # 상황별 해야할 일
 
 Projects / teamProject에 Todo에서 자신이 해야 할 일을 확인 후
+
 Open in new tab 클릭 우측 Development 탭에 Create a branch 클릭 
+
 Branch 이름은 Feature-기능과 같이 설정 후 Change branch source 클릭 해서
+
 해당 브랜치 소스를 develop으로 변경하여 생성
 
 git에 익숙하지 않은 팀원들을 위해 작성한 git command 및 조작 방법
@@ -53,22 +88,6 @@ $ git push origin <feature branch>: origin(원격 저장소)의 feature branch�
 github에서 develop branch <- feature branch 방향으로  Pull Request 진행
 리뷰가 종료되고 모두 Approve 된다면 Merge한다. 
 
-# 팀프로젝트 시작시
-팀장의 리포지토리에서 클론으로 자신의 로컬 디렉토리에 파일을 가져온다.
-2가지 방법이 있는데  
-
-특정 브랜치 하나만 가져오고 싶을때
-$ git clone -b <branchname> --single-branch <remote-repo-url>
-그냥 이거 쓰자.
-
-모든 브랜치를 다 가져오고 싶을때
-$ git clone -b <branchname> <remote-repo-url>
-리포지토리에 있는 모든 브랜치들을 패치한 후에 특정한 브랜치로 전환한다. 
-그러면 그 브랜치를 기준으로 로컬에서 git push 와 git pull를 할 수 있도록 설정이 된다. 
-하지만 이렇게 하면 각 브랜치가 갖고 있는 모든 파일들을 다 패치한 상태이다.
-예를들어
-$ git clone -b feature-buttom https://github.com/jst1024/teamProjects.git
-이렇게 하게 되면 자동으로 feature-buttom 브랜치가 로컬 브랜치로 설정되는 동시에 다른 브랜치들도 추적할수 있다.
 
 # 자주 사용할만한 깃 명령어
 
