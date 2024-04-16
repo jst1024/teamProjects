@@ -22,7 +22,7 @@
 
 - 예를들어
 
-- $ git clone -b feature-buttom [https://github.com/jst1024/teamProjects.git]
+- $ git clone -b feature-buttom https://github.com/jst1024/teamProjects.git
 
 - 이렇게 하게 되면 자동으로 feature-buttom 브랜치가 로컬 브랜치로 설정되는 동시에 다른 브랜치들도 추적할수 있다.
 
