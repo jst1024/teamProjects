@@ -6,13 +6,13 @@
 
 - 특정 브랜치 하나만 가져오고 싶을때
 
-- $ git clone -b <<branchname>> --single-branch \<remote-repo-url\>
+- $ git clone -b \<branchname\> --single-branch \<remote-repo-url\>
 
 - 그냥 이거 쓰자.
 
 - 모든 브랜치를 다 가져오고 싶을때
 
-- $ git clone -b <branchname> <remote-repo-url>
+- $ git clone -b \<branchname\> \<remote-repo-url\>
 
 - 리포지토리에 있는 모든 브랜치들을 패치한 후에 특정한 브랜치로 전환한다. 
 
