@@ -6,7 +6,7 @@
 
 - 특정 브랜치 하나만 가져오고 싶을때
 
-- $ git clone -b <branchname> --single-branch <remote-repo-url>
+- $ git clone -b <<branchname>> --single-branch \<remote-repo-url\>
 
 - 그냥 이거 쓰자.
 
