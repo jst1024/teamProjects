@@ -4,15 +4,11 @@
 
 - 2가지 방법이 있는데  
 
-- 특정 브랜치 하나만 가져오고 싶을때
-
-- $ git clone -b \<branchname\> --single-branch \<remote-repo-url\>
-
-- 그냥 이거 쓰자.
-
 - 모든 브랜치를 다 가져오고 싶을때
 
 - $ git clone -b \<branchname\> \<remote-repo-url\>
+
+- 그냥 이거 쓰자
 
 - 리포지토리에 있는 모든 브랜치들을 패치한 후에 특정한 브랜치로 전환한다. 
 
@@ -25,6 +21,12 @@
 - $ git clone -b feature-buttom https://github.com/jst1024/teamProjects.git
 
 - 이렇게 하게 되면 자동으로 feature-buttom 브랜치가 로컬 브랜치로 설정되는 동시에 다른 브랜치들도 추적할수 있다.
+
+- 특정 브랜치 하나만 가져오고 싶을때
+
+- $ git clone -b \<branchname\> --single-branch \<remote-repo-url\>
+
+  
 
 
  # 브랜치 정의
@@ -169,6 +171,8 @@ git stash pop : apply + drop
 git stash show -p | git apply -R : 실수로 잘못 stash 적용한걸 되돌리고 싶을때
 
 git clean -f:  작업 디렉토리에서 추적되지 않는 파일을 삭제합니다.
+
+rm -r .git : git init 제거
 
 
 
