@@ -73,7 +73,9 @@
 
 # 개발시 유의해야 할점
 
-- css 파일은 따로 사용한다.
+- 공통적으로 사용될 common.css 파일을 변경하지 않는다.
+
+- 각 페이지에 추가로 들어가야할 css는 css파일을 만들어서 사용
 
 - 개발할때 같은 페이지를 여러명이서 작업하지 않도록 조심한다.
 
@@ -100,17 +102,31 @@
 
 - $ git checkout develop : develop 브랜치로 변경
 
-- $ git pull : develop 브랜치의 최신 변경사항을 로컬로 가져온다. 
+- $ git checkout -b \<feature branch 명\> :명령어를 통해 브랜치 생성 후 checkout한다
 
-- $ git checkout -b <feature branch 명> :명령어를 통해 브랜치 생성 후 checkout한다
+- $ git remote update : 원격 저장소의 모든 브랜치에 대한 최신 이력 정보를 확인하는 명령어입니다.
+
+- $ git fetch --all : 모든 원격 저장소 변경사항을 로컬 저장소에 FETCH_HEAD브랜치로 가져온다. 이 명령어 이후 merge 까지 해야 변경된 내용이 합쳐진다.
+
+- $ git fetch origin develop : 원격 저장소의 develop 브랜치의 변경사항을 로컬 저장소에 FETCH_HEAD브랜치로 가져온다. 꼭 이후에  merge 하자.
+
+- $ git merge origin develop : develop 브랜치에 병합한다.
+
+- $ git pull origin develop : 원격 저장소 develop 브랜치의 최신 변경사항을 로컬로 가져온다.
+
+- $ git push origin develop : 로컬 저장소 develop 브랜치의 최신 변경사항을 원격으로로 업데이트 한다.  
+
+- $ git stash : 원격 저장소에 변경사항이 있을시 현재 하고있는 작업을 임시 저장하는 명령어
+
+- $ git stash apply : 임시저장했던 작업을 불러오는 명령
 
 # 코드작성
 
-- $ git add <file 명>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다. 
+- $ git add \<file 명\>: git add . 를 통해 모든 파일을 staging area에 추가할 수 있다. 
 
 - $ git commit -m "커밋메세지" 
 
-- $ git push origin <feature branch>: origin(원격 저장소)의 feature branch로 로컬 변경 내역을 push
+- $ git push origin \<feature branch\>: origin(원격 저장소)의 feature branch로 로컬 변경 내역을 push
 
 github에서 develop branch <- feature branch 방향으로  Pull Request 진행
 
@@ -123,11 +139,15 @@ git clone [URL]:  원격 저장소의 코드를 로컬로 복제합니다.
 
 git pull: 원격 저장소에서 최신 변경 내용을 가져와 로컬 저장소를 업데이트합니다.
 
+git pull origin [브랜치명] : 그 브랜치로 원격저장소에서 로컬저장소로 변경데이터를 업데이트 합니다.
+
 git add [파일]: 변경된 파일을 스테이징 영역에 추가합니다.
 
 git commit -m "메시지":  스테이징 영역의 변경 내용을 커밋하여 로컬 저장소에 저장합니다.
 
 git push: 로컬 저장소의 변경 내용을 원격 저장소로 푸시하여 업데이트합니다.
+
+git push origin [브랜치명] : 로컬 저장소의 특정 브랜치의 변경 내용을 원격 저장소로 업데이트 합니다.
 
 git branch: 브랜치 목록을 보여줍니다.
 
