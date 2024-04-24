@@ -17,9 +17,9 @@
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
+
 <div id="footer">
 	<%@ include file="/footer.jsp" %>
 </div>
-
 </body>
 </html>
