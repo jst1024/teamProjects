@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ page import="java.util.*" %>
+<%@ page import="org.busan.dto.*" %>
 <c:set var="ipath" value="<%=request.getContextPath() %>" />    
 <script src="${ipath }/js/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="${ipath }/css/bootstrap.min.css" />
@@ -20,3 +22,4 @@
 <meta property="og:url" content="http://localhost:8091" />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR" rel="stylesheet">
 <link rel="stylesheet" href="${ipath }/css/common.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
