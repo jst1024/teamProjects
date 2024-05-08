@@ -5,17 +5,15 @@ public class Notice {
 	private String title;
 	private String content;
 	private String resdate;
-	private int visited;
 	
 	
 	public Notice() { }
-	public Notice(int no, String title, String content, String resdate, int visited) {
+	public Notice(int no, String title, String content, String resdate) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.content = content;
 		this.resdate = resdate;
-		this.visited = visited;
 	}
 	public int getNo() {
 		return no;
@@ -41,17 +39,10 @@ public class Notice {
 	public void setResdate(String resdate) {
 		this.resdate = resdate;
 	}
-	public int getVisited() {
-		return visited;
-	}
-	public void setVisited(int visited) {
-		this.visited = visited;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Notice [no=" + no + ", title=" + title + ", content=" + content + ", resdate=" + resdate + ", visited="
-				+ visited + "]";
+		return "Notice [no=" + no + ", title=" + title + ", content=" + content + ", resdate=" + resdate + "]";
 	}
 	 
 }
