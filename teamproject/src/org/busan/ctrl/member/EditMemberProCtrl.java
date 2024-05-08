@@ -35,9 +35,8 @@ public class EditMemberProCtrl extends HttpServlet {
             e.printStackTrace();
         }
 		Member mem = new Member(
-				 
-				request.getParameter("no"),
-				request.getParameter("grade"),
+				Integer.parseInt(request.getParameter("no")),
+	            Integer.parseInt(request.getParameter("grade")),
 				request.getParameter("id"),
 				enPw,
 				request.getParameter("nickname"),
