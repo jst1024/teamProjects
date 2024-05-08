@@ -11,12 +11,12 @@ public interface SqlLang {
 	String VISITED_UPD_NOTICE = "update notice set visited=visited+1 where no=?";
 	String DEL_NOTICE = "delete from notice where no=?";
 	
-//	String SELECT_ALL_MEMBER = "select * from member order by id";
-//	String SELECT_ONE_MEMBER = "select * from member where id=?";
-//	String INS_MEMBER = "insert into member values(?,?,?,?,?)";
-//	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=? where id=?";
-//	String DEL_MEMBER = "delete from member where id=?";
-//	
+	String SELECT_ALL_MEMBER = "select * from member order by id";
+	String SELECT_ONE_MEMBER = "select * from member where id=?";
+	String INS_MEMBER = "insert into member values(memseq.nextval,2,?,?,?,?,?,?,?)";
+	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=? where id=?";
+	String DEL_MEMBER = "delete from member where id=?";
+	
 //	String SELECT_ALL_QNA = "select * from qna order by parno desc, plevel asc";
 //	String SELECT_QNA_BYNO = "select * from qna where no=?";
 //	String DEL_ANSWER = "delete from qna where no=?";
@@ -39,6 +39,11 @@ public interface SqlLang {
 //	String SELECT_GUIDE_BYNO = "select * from guide where pcode=?";
 //	String UPD_GUIDE = "update guide set pname=?, ptype=?, paddr=?, ptel=?, pgps=?, pcoment=? where pcode=?";
 //	String DEL_GUIDE = "delete from guide where pcode=?";
+	
+	String SELECT_ALL_SHARETRIP = "select * from sharetrip order by regdate desc";
+	String SELECT_SHARETRIP_BYNO = "select * from sharetrip where no=?";
+	String UPD_SHARETRIP = "update sharetrip set title=? where no=?";
+	String DEL_SHARETRIP = "delete from sharetrip where no=?";
 	
 	Connection connect();
 	void close(Connection con, PreparedStatement pstmt);

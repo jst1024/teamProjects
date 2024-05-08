@@ -13,6 +13,7 @@ public class OracleDB implements SqlLang {
 	final static String USERPW = "1234";
 	final static String INS_NOTICE = "insert into notice values (nseq.nextval, ?, ?, sysdate, 0)";
 	final static String LATEST_NOTICE = "select * from (select * from notice order by no desc) where rownum<=5";
+	final static String INS_SHARETRIP = "insert into sharetrip values (stseq.nextval, ?, sysdate, 0, 0)";
 	Connection con = null;
 	
 	@Override

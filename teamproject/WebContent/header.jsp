@@ -5,7 +5,7 @@
 <c:set var="hpath" value="<%=request.getContextPath() %>" />
 <header>
 	<div class="logo_wrap">
-		<a href="/pro01"><img src="${hpath }/images/logo.png" alt="발산동 로고" /></a>
+		<a href="/teamproject"><img src="${hpath }/images/logo.png" alt="부산 로고" /></a>
 	</div>
 	<div id="tnb" style="height:100px; line-height:2rem; padding-top:1rem">
 		<c:if test="${not empty sid }">
@@ -18,7 +18,7 @@
 	<nav id="gnb">
 		<ul class="">
 			<li class="item">
-				<a href="" class="dp1">마이페이지</a>
+				<a href="${hpath }/sharetrip/stList.jsp" class="dp1">마이페이지</a>
 				<ul class="sub_menu">
 					<c:if test="${empty sid }">
 					<li><a href="${hpath }/member/login.jsp">로그인</a></li>
