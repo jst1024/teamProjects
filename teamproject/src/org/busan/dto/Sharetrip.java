@@ -5,19 +5,23 @@ public class Sharetrip {
 	private String title;
 	private String regdate;
 	private String author;
+	private String photo;
 	private int liked;
 	private int replycount;
 	
+	
 	public Sharetrip() {}
-	public Sharetrip(int no, String title, String regdate, String author, int liked, int replycount) {
+	public Sharetrip(int no, String title, String regdate, String author, String photo, int liked, int replycount) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.regdate = regdate;
 		this.author = author;
+		this.photo = photo;
 		this.liked = liked;
 		this.replycount = replycount;
 	}
+
 	public int getNo() {
 		return no;
 	}
@@ -54,11 +58,17 @@ public class Sharetrip {
 	public void setreplycount(int replycount) {
 		this.replycount = replycount;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
 	@Override
 	public String toString() {
-		return "Sharetrip [no=" + no + ", title=" + title + ", regdate=" + regdate + ", author=" + author
-				+ ", liked=" + liked + ", replycount=" + replycount + "]";
+		return "Sharetrip [no=" + no + ", title=" + title + ", regdate=" + regdate + ", author=" + author + ", photo="
+				+ photo + ", liked=" + liked + ", replycount=" + replycount + "]";
 	}
 	
 }
