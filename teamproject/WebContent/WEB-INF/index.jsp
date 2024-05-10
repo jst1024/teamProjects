@@ -32,17 +32,76 @@
 	<div id="header">
 		<%@ include file="/header.jsp" %>
 	</div>
-	<div style="width:100vw; height:300px;"></div>
-	
-	<div style="width:1280px; display:inline-block;">
-		<div class=".col-sm" style="background-color:#000; height:800px;"></div>
-		<div class=".col-md" style="background-color:#000; height:800px;"></div>
+	<div id="snb">
+		<%@ include file="/sidebar.jsp" %>
 	</div>
 	
-	<div style="width:100vw; height:300px;"></div>
+	
+		<!-- 테마여행페이지  -->
+	<div>
+	
+	</div>
+	
+	
+    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
+			<span style="text-align:center; line-height:1.1">
+				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
+				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
+				<span style="font-size:64px; font-weight:400;">32123132321</span>
+			</span>
+		</div>		
+    </div>
+        <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
+			<span style="text-align:center; line-height:1.1">
+				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
+				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
+				<span style="font-size:64px; font-weight:400;">21321312</span>
+			</span>
+		</div>		
+
+    
+    <!-- 게시판 -->
+    <!-- 화면분할 -->
+    <div style="width:100vw; height:100vh; background-color:#FFF;display:flex; justify-content:center; align-items:center;">
+    	<!-- 틀 -->
+		<div style="width: 1600px; height: 800px; border: 1px solid #333; position:relative; display:flex; justify-content:center;">
+			<table class="table table-hover" style="width:100%">
+				<thead class="container"  style="width:100%">
+					<tr class="row"  style="width:100%">
+						<th scope="col" class="col-1">글번호</th>
+						<th scope="col" class="col-6">제목</th>
+						<th scope="col" class="col-3">작성자</th>
+						<th scope="col" class="col-2">작성일</th>
+					</tr>
+				</thead>
+				<tbody class="container">
+					<!-- 반복실행문 c:foreach -->
+					<tr class="row">
+						<th scope="row" class="col-1">1</th>
+						<td class="col-6">[CSS] justify-content 속성</td>
+						<td class="col-3">김모도의 개발일지</td>
+						<td class="col-2">2024. 05. 07</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr>
+			<nav aria-label="Page navigation example" style="position:absolute; bottom:10px;">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	
 	
 	<div id="footer">
 	<%@ include file="/footer.jsp" %>
-</div>
+	</div>
 </body>
 </html>

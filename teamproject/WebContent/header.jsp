@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="hpath" value="<%=request.getContextPath() %>" />
-<header>
+<header id="hd" class="clr-fix">
 	<!-- 
 	<div id="tnb" style="height:2rem; padding-top:1rem">
 		<c:if test="${not empty sid }">
@@ -14,56 +14,73 @@
 		</c:if>
 	</div>
 	 -->
-	<nav id="gnb">
-		<ul>
-			<div class="gnb_item">
-			<li class="item">
-				<a href="" class="dp1">지역소개</a>
-				<ul class="sub_menu">
-					<li><a href="${hpath }/intro/origin.jsp">지명유래</a></li>
-					<li><a href="${hpath }/intro/facility.jsp">연혁 및 상징물</a></li>
-					<li><a href="${hpath }/intro/history.jsp">행정시설 안내</a></li>
-					<li><a href="${hpath }/intro/map.jsp">오시는 길</a></li>
-				</ul>
-			</li>
-			<li class="item">
-				<a href="" class="dp1">인프라</a>
-				<ul class="sub_menu">
-					<li><a href="${hpath }/tour/association.jsp">문화시설 및 상권</a></li>
-					<li><a href="${hpath }/GetTrafficList.do">교통편</a></li>
-					<li><a href="${hpath }/tour/building.jsp">생활지도 서비스</a></li>
-					<li><a href="${hpath }/tour/rest.jsp">맛집 안내</a></li>
-					<li><a href="${hpath }/tour/lodg.jsp">숙박 시설 안내</a></li>
-				</ul>
-			</li>
-			<li class="item">
-				<a href="" class="dp1">커뮤니티</a>
-				<ul class="sub_menu">
-					<li><a href="${hpath }/NotiList.do">공지사항</a></li>
-					<li><a href="${hpath }/GetQnaList.do">묻고답하기</a></li>
-					<li><a href="">자료실</a></li>
-				</ul>
-			</li>
-			<li class="item">
-				<a href="" class="dp1">마이페이지</a>
-				<ul class="sub_menu">
-					<c:if test="${empty sid }">
-					<li><a href="${hpath }/member/login.jsp">로그인</a></li>
-					<li><a href="${hpath }/member/term.jsp">회원가입</a></li>
-					</c:if>
-					<c:if test="${not empty sid }">
-					<li><a href="${hpath }/LogOut.do">로그아웃</a></li>
-					<li><a href="${hpath }/EditMember.do?id=${sid }">회원정보</a></li>
-					</c:if>
-					<c:if test="${sid.equals('admin') }">
-					<li><a href="${hpath }/AdminMain.do">관리자로</a></li>
-					</c:if>
-					<li><a href="${hpath }/member/terms.jsp">회원약관</a></li>
-					<li><a href="${hpath }/member/policy.jsp">개인정보처리방침</a></li>
-					<li><a href="${hpath }/member/myList.jsp">내가 쓴 글</a></li>
-				</ul>
-			</li>
-			</div>
-		</ul>
-	</nav>
+	 <div class="hd_wrap">
+            <a href=""><img src="./images/logow2.png" alt="로고" id="logo"></a>
+            <nav id="gnb" class="container">
+                <ul class="menu row justify-content-center">
+                    <li class="category clr-fix col-2">
+                        <a href="" class="dp1">부산에가면</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">명소</a></li>
+                            <li><a href="" class="dp2">음식</a></li>
+                            <li><a href="" class="dp2">숙박</a></li>
+                            <li><a href="" class="dp2">쇼핑</a></li>
+                            <li><a href="" class="dp2">축제</a></li>
+                        </ul>
+                    </li>
+                    <li class="category clr-fix col-2">
+                        <a href="" class="dp1">추천여행</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">테마여행</a></li>
+                        </ul>
+                    </li>
+                    <li class="category clr-fix col-2">
+                        <a href="" class="dp1">여행준비</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">가이드북&지도</a></li>
+                            <li><a href="" class="dp2">문화관광해설사</a></li>
+                            <li><a href="" class="dp2">여행준비정보</a></li>
+                            <li><a href="" class="dp2">관광안내소</a></li>
+                        </ul>
+                    </li>
+                    <li class="category clr-fix col-2">
+                        <a href="" class="dp1">유용한정보</a>
+                        <ul class="sub">
+                            <li><a href="" class="dp2">공지사항</a></li>
+                            <li><a href="" class="dp2">축제/행사</a></li>
+                            <li><a href="" class="dp2">여행공유</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="login">
+                <ul>
+                    <li><a href="login.html">로그인</a></li>
+                    <li><a href="signup.html">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
 </header> 
+    <script>
+    //헤더 텍스트 색상전환
+    window.addEventListener('scroll', function() {
+    var headerTexts = document.querySelectorAll('#hd a, #hd li');
+    var scrollPosition = window.scrollY;
+    var header = document.getElementById("hd");
+    var logo = document.getElementById("logo");
+
+    if (scrollPosition >= window.innerHeight * 1) {
+        headerTexts.forEach(function(text) {
+            text.style.color = '#000';
+            header.style.backgroundColor = '#fff';
+            logo.src = "./images/logog.png";
+        });
+    } else {
+        headerTexts.forEach(function(text) {
+            text.style.color = '#fff';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            logo.src = "./images/logow2.png";
+        });
+    }
+    });
+    </script>

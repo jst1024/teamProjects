@@ -50,8 +50,6 @@ request.setAttribute("tmp",tmp);
 	<%@ include file="/header.jsp" %>
 </div>
 
-
-
 	<div>
 		<h2>카드템플릿제목</h2>
 		<hr>
