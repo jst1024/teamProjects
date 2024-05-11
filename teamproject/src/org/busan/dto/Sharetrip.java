@@ -8,9 +8,9 @@ public class Sharetrip {
 	private String photo;
 	private int liked;
 	private int replycount;
-	
-	
-	public Sharetrip() {}
+  
+  
+  public Sharetrip() {}
 	public Sharetrip(int no, String title, String regdate, String author, String photo, int liked, int replycount) {
 		super();
 		this.no = no;
@@ -69,6 +69,7 @@ public class Sharetrip {
 	public String toString() {
 		return "Sharetrip [no=" + no + ", title=" + title + ", regdate=" + regdate + ", author=" + author + ", photo="
 				+ photo + ", liked=" + liked + ", replycount=" + replycount + "]";
+
 	}
 	
 }

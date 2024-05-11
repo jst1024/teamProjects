@@ -10,6 +10,7 @@
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
 <style>
+
 	.grid1 {clear:both; width:100%; margin:0 auto;}
 	[*^=col] {margin:2% 2%;}
 	.col1 {width:6.5%;}
@@ -100,6 +101,7 @@
 	
 	
 	<div id="footer">
+
 	<%@ include file="/footer.jsp" %>
 	</div>
 </body>

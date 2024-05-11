@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="hpath" value="<%=request.getContextPath() %>" />
 
+
 <header id="hd" class="clr-fix">
 	<!-- 
 	<div id="tnb" style="height:2rem; padding-top:1rem">
@@ -56,6 +57,7 @@
                 </ul>
             </div>
         </div>
+
 
 </header> 
     <script>

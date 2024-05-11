@@ -2,6 +2,7 @@ package org.busan.ctrl.sharetrip;
 
 import java.io.File;
 import java.io.IOException;
+
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -11,11 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.busan.dao.SharetripDAO;
 import org.busan.dto.Sharetrip;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 
 @WebServlet("/StIns.do")
@@ -26,11 +29,14 @@ public class StInsCtrl extends HttpServlet {
         super();
     }
 
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+
 		Sharetrip st = new Sharetrip();
 		
 		ServletContext application = request.getServletContext(); //teamproject
@@ -90,3 +96,4 @@ public class StInsCtrl extends HttpServlet {
 	}
 
 }
+
