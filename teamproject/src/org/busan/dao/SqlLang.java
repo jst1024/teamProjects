@@ -11,34 +11,52 @@ public interface SqlLang {
 	String VISITED_UPD_NOTICE = "update notice set visited=visited+1 where no=?";
 	String DEL_NOTICE = "delete from notice where no=?";
 	
-//	String SELECT_ALL_MEMBER = "select * from member order by id";
-//	String SELECT_ONE_MEMBER = "select * from member where id=?";
-//	String INS_MEMBER = "insert into member values(?,?,?,?,?)";
-//	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=? where id=?";
-//	String DEL_MEMBER = "delete from member where id=?";
-//	
-//	String SELECT_ALL_QNA = "select * from qna order by parno desc, plevel asc";
-//	String SELECT_QNA_BYNO = "select * from qna where no=?";
-//	String DEL_ANSWER = "delete from qna where no=?";
-//	String DEL_QUESTION = "delete from qna where parno=?";
-//	String UPD_QNA = "update qna set title=?, content=? where no=?";
-//	String VISITED_UPD_QNA = "update qna set visited=visited+1 where no=?";
-//	
-//	String SELECT_ALL_TRAFFIC = "select * from traffic order by ttype desc, no asc";
-//	String SELECT_TRAFFIC_BYNO = "select * from traffic where no=?";
-//	String UPD_TRAFFIC = "update traffic set ttype=?, no=?, route=?, coment=?, uri=? where no=?";
-//	String DEL_TRAFFIC = "delete from traffic where no=?";
-//	
-//	String SELECT_ALL_DATA = "select * from data order by resdate desc";
-//	String SELECT_DATA_BYNO = "select * from data where no=?";
-//	String UPD_DATA = "update data set title=?, content=?, datafile=? where no=?";
-//	String VISITED_UPD_DATA = "update data set visited=visited+1 where no=?";
-//	String DEL_DATA = "delete from data where no=?";
-//	
-//	String SELECT_ALL_GUIDE = "select * from guide order by pcode desc";
-//	String SELECT_GUIDE_BYNO = "select * from guide where pcode=?";
-//	String UPD_GUIDE = "update guide set pname=?, ptype=?, paddr=?, ptel=?, pgps=?, pcoment=? where pcode=?";
-//	String DEL_GUIDE = "delete from guide where pcode=?";
+	String SELECT_ALL_MEMBER = "select * from member order by id";
+	String SELECT_ONE_MEMBER = "select * from member where id=?";
+	String INS_MEMBER = "insert into member values(memseq.nextval,2,?,?,?,?,?,?,?)";
+	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=? where id=?";
+	String DEL_MEMBER = "delete from member where id=?";
+	
+	String SELECT_ALL_EVENT = "select * from event order by no desc";
+	String SELECT_EVENT_BYNO = "select * from event where no=?";
+	String UPD_EVENT = "update event set title=?, ondate=?, content=?, tel=?, photo=?, homepage=? where no=?";
+	String DEL_EVENT = "delete from event where no=?";
+	
+	String SELECT_ALL_GUIDEMAP = "select * from guidemap order by no desc";
+	String SELECT_GUIDEMAP_BYNO = "select * from guidemap where no=?";
+	String UPD_GUIDEMAP = "update guidemap set name=?, photo=?, link=? where no=?";
+	String DEL_GUIDEMAP = "delete from guidemap where no=?";
+
+	String SELECT_ALL_THEME = "select * from theme order by no desc";
+	String SELECT_THEME_BYNO = "select * from theme where no=?";
+	String UPD_THEME = "update theme set title=?, subtitle=?, photo=?, content=?, reltag=? where no=?";
+	String VISITED_UPD_THEME = "update theme set visited=visited+1 where no=?";
+	String DEL_THEME = "delete from theme where no=?";
+
+	String SELECT_ALL_ATTR = "select * from attr order by no desc";
+	String SELECT_ATTR_BYNO = "select * from attr where no=?";
+	String UPD_ATTR = "update attr set title=?, subtitle=?, photo=?, content=?, addr=?, tel=?, reltag=?, dayoff=?, traffic=?, fee=?, tips=? where no=?";
+	String VISITED_UPD_ATTR = "update attr set visited=visited+1 where no=?";
+	String DEL_ATTR = "delete from attr where no=?";
+
+	String SELECT_ALL_FOOD = "select * from food order by no desc";
+	String SELECT_FOOD_BYNO = "select * from food where no=?";
+	String UPD_FOOD = "update food set title=?, subtitle=?, photo=?, content=?, addr=?, tel=?, reltag=?, mainmenu=?, ontime=?, dayoff=? where no=?";
+	String VISITED_UPD_FOOD = "update food set visited=visited+1 where no=?";
+	String DEL_FOOD = "delete from food where no=?";
+
+	String SELECT_ALL_ACCOM = "select * from accom order by no desc";
+	String SELECT_ACCOM_BYNO = "select * from accom where no=?";
+	String UPD_ACCOM = "update accom set title=?, subtitle=?, photo=?, content=?, addr=?, tel=?, reltag=?, busitype=?, homepage=? where no=?";
+	String VISITED_UPD_ACCOM = "update accom set visited=visited+1 where no=?";
+	String DEL_ACCOM = "delete from accom where no=?";
+	
+
+	
+	String SELECT_ALL_SHARETRIP = "select * from sharetrip order by regdate desc";
+	String SELECT_SHARETRIP_BYNO = "select * from sharetrip where no=?";
+	String UPD_SHARETRIP = "update sharetrip set title=? where no=?";
+	String DEL_SHARETRIP = "delete from sharetrip where no=?";
 	
 	Connection connect();
 	void close(Connection con, PreparedStatement pstmt);

@@ -3,16 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="hpath" value="<%=request.getContextPath() %>" />
+
 <header id="hd" class="clr-fix">
 	<!-- 
 	<div id="tnb" style="height:2rem; padding-top:1rem">
-		<c:if test="${not empty sid }">
-		<p style="text-align:right;">${sname } 님 환영합니다.</p>
-		</c:if>
-		<c:if test="${empty sid }">
-		<p style="text-align:right; margin-right:60px; margin-bottom:0px"><a href="${hpath }/member/login.jsp" style="text-decoration:none; color:#000;">로그인</a></p>
-		</c:if>
-	</div>
+
+
 	 -->
 	 <div class="hd_wrap">
             <a href=""><img src="./images/logow2.png" alt="로고" id="logo"></a>
@@ -60,6 +56,7 @@
                 </ul>
             </div>
         </div>
+
 </header> 
     <script>
     //헤더 텍스트 색상전환

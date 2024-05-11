@@ -25,8 +25,7 @@ public class NoticeDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("resdate"),
-						rs.getInt("visited"));
+						rs.getString("resdate"));
 				notiList.add(noti);
 			}
 		} catch(Exception e){
@@ -49,8 +48,7 @@ public class NoticeDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("resdate"),
-						rs.getInt("visited"));
+						rs.getString("resdate"));
 				notiList.add(noti);
 			}
 		} catch(Exception e){
@@ -79,7 +77,6 @@ public class NoticeDAO {
 				noti.setTitle(rs.getString("title"));
 				noti.setContent(rs.getString("content"));
 				noti.setResdate(rs.getString("resdate"));
-				noti.setVisited(rs.getInt("visited"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -155,7 +152,6 @@ public class NoticeDAO {
 				noti.setTitle(rs.getString("title"));
 				noti.setContent(rs.getString("content"));
 				noti.setResdate(rs.getString("resdate"));
-				noti.setVisited(rs.getInt("visited"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

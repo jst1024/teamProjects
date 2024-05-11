@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<c:set var="path0" value="<%=request.getContextPath() %>" />
+<c:set var="path0" value="<%=request.getContextPath() %>" />    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,6 @@
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
 <style>
-
 	.grid1 {clear:both; width:100%; margin:0 auto;}
 	[*^=col] {margin:2% 2%;}
 	.col1 {width:6.5%;}

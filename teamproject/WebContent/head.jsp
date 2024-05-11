@@ -12,11 +12,8 @@
 <script src="${ipath }/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="icon" href="${ipath }/images/favicon.png" />
 <link rel="shortcut icon" href="${ipath }/images/favicon.png" />
-<meta property="og:image" content="${ipath }/images/site.png" />
-<meta property="og:url" content="http://localhost:8091" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<link rel="stylesheet" href="${ipath }/css/common.css" />
+
 
