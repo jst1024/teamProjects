@@ -10,143 +10,97 @@
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
 <style>
-.container { width:1400px; }
-.page { clear:both; height:100vh; }
-#page1 { background-color:#ececec; height:calc(100vh - 158px); }
-#page2 { background-color:#ffffff; }
-#page3 { background-color:#ececec; }
-#page4 { background-color:#ececec; }
-.page_title { font-size:36px; padding-top:2em; text-align:center; }
-th.item1 { width:8%; }
-th.item2 { width:60%; }
-th.item3 { width:20%; }
+	.grid1 {clear:both; width:100%; margin:0 auto;}
+	[*^=col] {margin:2% 2%;}
+	.col1 {width:6.5%;}
+	.col2 {width:15%;}
+	.col3 {width:23.5%;}
+	.col4 {width:32%;}
+	.col5 {width:40.5%;}
+	.col6 {width:49%;}
+	.col7 {width:57.5%;}
+	.col8 {width:66%;}
+	.col9 {width:74.5%;}
+	.col10 {width:83%;}
+	.col11 {width:91.5%;}
+	.col12 {width:100%;}
 </style>
 </head>
 <body>
-<div id="header">
-	<%@ include file="/header.jsp" %>
-</div>
-<div id="contents">
-	<section class="page" id="page1">
-		<figure id="vs">
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-			  <ol class="carousel-indicators">
-			    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-			    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			  </ol>
-			  <div class="carousel-inner">
-			    <div class="carousel-item active">
-			      <img class="d-block w-100" src="${path0 }/images/map1.jpg" alt="First slide">
-			    </div>
-			    <div class="carousel-item">
-			      <img class="d-block w-100" src="${path0 }/images/map2.jpg" alt="Second slide">
-			    </div>
-			    <div class="carousel-item">
-			      <img class="d-block w-100" src="${path0 }/images/map3.jpg" alt="Third slide">
-			    </div>
-			  </div>
-			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			</div>
-		</figure>
-		<h3 class="page_title"></h3>
-	</section>
-	<section class="page" id="page2">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title">Main places(주요 장소)</h3>
-		</div>
-		<div class="right_item" style="text-align:right;padding-bottom:12px;">
-				<a href="${hpath }/TourList.do" title="더보기" class="more">
-					<i class="fas fa-plus fa-fw"></i> 더보기
-				</a>
-			</div>
-			<table class="table" id="tb4">
-				<thead>
-				<tr>
-					<th class="item_g1">번호</th>
-					<th class="item_g2">이름</th>
-					<th class="item_g3">분류</th>
-					<th class="item_g4">주소</th>
-				</tr>
-				</thead>
-				<tbody>
-					<c:if test="${not empty latestTourList }">
-						<c:forEach var="dto" items="${latestTourList }">
-						<tr>
-							<td>${dto.pcode }</td>
-							<td>
-								<c:if test="${empty sid }">
-								<strong>${dto.pname }</strong>
-								</c:if>
-								<c:if test="${not empty sid }">
-								<a href="${path0 }/GetGuide.do?pcode=${dto.pcode }">${dto.pname }</a>
-								</c:if>
-							</td>
-							<td>${dto.ptype }</td><td>${dto.paddr }</td>
-						</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${empty latestTourList }">
-						<tr>
-							<td colspan="4"><strong>갈만한곳 데이터가 존재하지 않습니다.</strong></td>
-						</tr>
-					</c:if>
-				</tbody>
-			</table>
-	</section>
-	<section class="page" id="page3">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title">최근 공지사항</h3>
-			<div class="right_item" style="text-align:right;padding-bottom:12px;">
-				<a href="${hpath }/NotiList.do" title="더보기" class="more">
-					<i class="fas fa-plus fa-fw"></i> 더보기
-				</a>
-			</div>
-			<table class="table" id="tb3">
-				<thead>
-					<tr>
-						<th class="item1">번호</th>
-						<th class="item2">제목</th>
-						<th class="item3">작성일</th>
-						<th class="item4">조회수</th>
+
+	<div id="header">
+		<%@ include file="/header.jsp" %>
+	</div>
+	<div id="snb">
+		<%@ include file="/sidebar.jsp" %>
+	</div>
+	
+	
+		<!-- 테마여행페이지  -->
+	<div>
+	
+	</div>
+	
+	
+    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
+			<span style="text-align:center; line-height:1.1">
+				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
+				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
+				<span style="font-size:64px; font-weight:400;">32123132321</span>
+			</span>
+		</div>		
+    </div>
+        <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
+			<span style="text-align:center; line-height:1.1">
+				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
+				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
+				<span style="font-size:64px; font-weight:400;">21321312</span>
+			</span>
+		</div>		
+
+    
+    <!-- 게시판 -->
+    <!-- 화면분할 -->
+    <div style="width:100vw; height:100vh; background-color:#FFF;display:flex; justify-content:center; align-items:center;">
+    	<!-- 틀 -->
+		<div style="width: 1600px; height: 800px; border: 1px solid #333; position:relative; display:flex; justify-content:center;">
+			<table class="table table-hover" style="width:100%">
+				<thead class="container"  style="width:100%">
+					<tr class="row"  style="width:100%">
+						<th scope="col" class="col-1">글번호</th>
+						<th scope="col" class="col-6">제목</th>
+						<th scope="col" class="col-3">작성자</th>
+						<th scope="col" class="col-2">작성일</th>
 					</tr>
 				</thead>
-				<tbody>
-					<c:if test="${not empty latestNotiList }">
-						<c:forEach var="dto" items="${latestNotiList }">
-						<tr>
-							<td>${dto.no }</td>
-							<td>
-								<c:if test="${empty sid }">
-								<strong>${dto.title }</strong>
-								</c:if>
-								<c:if test="${not empty sid }">
-								<a href="${path0 }/GetNotice.do?no=${dto.no }">${dto.title }</a>
-								</c:if>
-							</td>
-							<td>${dto.resdate }</td><td>${dto.visited }</td>
-						</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${empty latestNotiList }">
-						<tr>
-							<td colspan="4"><strong>공지사항이 존재하지 않습니다.</strong></td>
-						</tr>
-					</c:if>
+				<tbody class="container">
+					<!-- 반복실행문 c:foreach -->
+					<tr class="row">
+						<th scope="row" class="col-1">1</th>
+						<td class="col-6">[CSS] justify-content 속성</td>
+						<td class="col-3">김모도의 개발일지</td>
+						<td class="col-2">2024. 05. 07</td>
+					</tr>
 				</tbody>
 			</table>
+			<hr>
+			<nav aria-label="Page navigation example" style="position:absolute; bottom:10px;">
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</nav>
 		</div>
-	</section>
-</div>
-<div id="footer">
+	</div>
+	
+	
+	<div id="footer">
 	<%@ include file="/footer.jsp" %>
-</div>
+	</div>
 </body>
 </html>
