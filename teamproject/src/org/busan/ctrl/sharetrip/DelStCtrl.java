@@ -29,9 +29,9 @@ public class DelStCtrl extends HttpServlet {
 		int cnt = dao.delSharetrip(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/pro01/DataList.do");
+			response.sendRedirect("/teampro/StList.do");
 		} else {
-			response.sendRedirect("/pro01/GetData2.do?no="+no);
+			response.sendRedirect("/teampro/GetSt.do?no="+no);
 		}
 	}
 

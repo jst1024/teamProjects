@@ -30,7 +30,7 @@ public class EditStCtrl extends HttpServlet {
 		String loginId = (String) session.getAttribute("sid");
 		
 		if(!loginId.equals("admin")) {
-			response.sendRedirect("/DataList.do");
+			response.sendRedirect("/StList.do");
 		}
 		
 		int no = Integer.parseInt(request.getParameter("no"));
@@ -39,7 +39,7 @@ public class EditStCtrl extends HttpServlet {
 		Sharetrip st = dao.getSharetrip(no);
 		
 		request.setAttribute("st", st);
-		RequestDispatcher view = request.getRequestDispatcher("/data/editSt.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/editSt.jsp");
 		view.forward(request, response);
 	}
 

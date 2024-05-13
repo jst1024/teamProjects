@@ -14,7 +14,7 @@
 		</nav>
 		<div id="loc">
 			<select name="sel" id="sel" onchange="locate()">
-				<option value="">해당 관광서</option>
+				<option value="">해당 관공서</option>
 				<option value="https://www.gangseo.seoul.kr/gs100901">발산1동 주민센터</option>
 				<option value="https://www.koreapost.go.kr/">강서우체국</option>
 			</select>

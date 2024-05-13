@@ -34,9 +34,9 @@ public class EditProStCtrl extends HttpServlet {
 		int cnt = dao.editProSharetrip(st);
 		
 		if(cnt>0) {
-			response.sendRedirect("/pro01/dataList.do");
+			response.sendRedirect("/teampro/StList.do");
 		} else {
-			response.sendRedirect("/pro01/EditData.do?no="+st.getNo());
+			response.sendRedirect("/teampro/EditSt.do?no="+st.getNo());
 		}
 	}
 }

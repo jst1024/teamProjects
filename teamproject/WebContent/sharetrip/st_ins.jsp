@@ -26,24 +26,23 @@
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">여행공유 글 등록</h3>
-			<form method="post" encType = "multipart/form-data" action="writeAction.jsp&keyValue=multipart">
+			<form method="post" encType = "multipart/form-data" action="${path0 }/StIns.do&keyValue=multipart">
 				<table class="table">
 					<tbody>
 						<tr>
 							<th><label for="title">제목</label></th>
-							<td>
-								<input type="text" name="title" id="title" class="form-control" maxlength="100" required>
-							</td>
+							<td><input type="text" name="title" id="title" class="form-control" maxlength="100" required></td>
 						</tr>
 						<tr>
-							<td><input type="file" name="fileName"></td>
+							<th><label for="photo">사진</label></th>
+							<td><input type="file" name="photo" required></td>
 						</tr>
 					</tbody>
 				</table>
 				<hr>
 				<div class="btn-group">
 				  <button type="submit" class="btn btn-secondary">글 등록</button>
-				  <a href="${path0 }/NotiList.do" class="btn btn-secondary">글 목록</a>
+				  <a href="${path0 }/StList.do" class="btn btn-secondary">글 목록</a>
 				</div>
 			</form>
 		</div>

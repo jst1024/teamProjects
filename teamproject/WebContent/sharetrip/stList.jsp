@@ -74,6 +74,7 @@
 					</div>
 
 				</c:forEach>
+				<a href="${path0 }/sharetrip/st_ins.jsp" >글 등록</a>
 			</div>
 		</div>
 		
