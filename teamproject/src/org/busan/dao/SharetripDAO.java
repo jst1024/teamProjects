@@ -28,6 +28,7 @@ public class SharetripDAO {
 						rs.getString("title"),
 						rs.getString("resdate"),
 						rs.getString("author"),
+						rs.getString("photo"),
 						rs.getInt("liked"),
 						rs.getInt("replycount"));
 				stList.add(st);
@@ -54,6 +55,7 @@ public class SharetripDAO {
 				st.setTitle(rs.getString("title"));
 				st.setRegdate(rs.getString("regdate"));
 				st.setAuthor(rs.getString("author"));
+				st.setAuthor(rs.getString("photo"));
 				st.setLiked(rs.getInt("liked"));
 				st.setreplycount(rs.getInt("replycount"));
 			}
@@ -79,43 +81,41 @@ public class SharetripDAO {
 		} finally {
 			oracle.close(con, pstmt);
 		}
-		System.out.println("검사11111111111111111111111111111111111111");
-		System.out.println(cnt);
-		System.out.println("검사11111111111111111111111111111111111111");
 		return cnt;
 	}
 	
 	
-//	public int editProSharetrip(Sharetrip st) {
-//		int cnt = 0;
-//		OracleDB oracle = new OracleDB();
-//		try {
-//			con = oracle.connect();
-//			pstmt = con.prepareStatement(SqlLang.UPD_SHARETRIP);
-//			pstmt.setString(1, st.getTitle());
-//			pstmt.setInt(2, st.getNo());
-//			cnt = pstmt.executeUpdate();
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			oracle.close(con, pstmt);
-//		}
-//		return cnt;
-//	}
-//	
-//	public int delSharetrip(int no){
-//		int cnt = 0;
-//		OracleDB oracle = new OracleDB();
-//		try {
-//			con = oracle.connect();
-//			pstmt = con.prepareStatement(SqlLang.DEL_SHARETRIP);
-//			pstmt.setInt(1, no);
-//			cnt = pstmt.executeUpdate();
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			oracle.close(con, pstmt);
-//		}
-//		return cnt;
-//	}
+
+	public int editProSharetrip(Sharetrip st) {
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.UPD_SHARETRIP);
+			pstmt.setString(1, st.getTitle());
+			pstmt.setInt(2, st.getNo());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
+	
+	public int delSharetrip(int no){
+		int cnt = 0;
+		OracleDB oracle = new OracleDB();
+		try {
+			con = oracle.connect();
+			pstmt = con.prepareStatement(SqlLang.DEL_SHARETRIP);
+			pstmt.setInt(1, no);
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			oracle.close(con, pstmt);
+		}
+		return cnt;
+	}
 }
