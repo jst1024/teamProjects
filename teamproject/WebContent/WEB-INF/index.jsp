@@ -10,6 +10,10 @@
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
 <style>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 	.grid1 {clear:both; width:100%; margin:0 auto;}
 	[*^=col] {margin:2% 2%;}
 	.col1 {width:6.5%;}
@@ -42,7 +46,11 @@
 	</div>
 	
 	
+<<<<<<< HEAD
     <div style="width: 100vw; height: 100vh; background-image:url('./images/main/bg_image1.jpg'); background-size:cover;">
+=======
+    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+>>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
 			<span style="text-align:center; line-height:1.1">
 				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
@@ -51,7 +59,11 @@
 			</span>
 		</div>		
     </div>
+<<<<<<< HEAD
         <div style="width: 100vw; height: 100vh; background-image:url('./images/main/bg_image1.jpg'); background-size:cover;">
+=======
+        <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+>>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
 			<span style="text-align:center; line-height:1.1">
 				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
@@ -59,7 +71,10 @@
 				<span style="font-size:64px; font-weight:400;">21321312</span>
 			</span>
 		</div>		
+<<<<<<< HEAD
 	</div>		
+=======
+>>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 
     
     <!-- 게시판 -->
@@ -101,6 +116,10 @@
 	
 	
 	<div id="footer">
+<<<<<<< HEAD
+=======
+
+>>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 	<%@ include file="/footer.jsp" %>
 	</div>
 </body>
