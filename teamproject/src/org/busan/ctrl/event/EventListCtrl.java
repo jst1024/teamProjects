@@ -1,21 +1,24 @@
-package org.busan.ctrl.member;
+package org.busan.ctrl.event;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.busan.dao.MemberDAO;
+import org.busan.dao.EventDAO;
+import org.busan.dto.Event;
 
-@WebServlet("/DelMember.do")
-public class DelMemberCtrl extends HttpServlet {
+@WebServlet("/EventList.do")
+public class EventListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public DelMemberCtrl() {
+       
+    public EventListCtrl() {
         super();
     }
 
@@ -24,17 +27,12 @@ public class DelMemberCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberOut(id);
-		
-		HttpSession session = request.getSession(); 
-		
-		if(cnt>0) {
-			session.invalidate();
-			response.sendRedirect("/teamproject");
-		} else {
-			response.sendRedirect("/EditMember.do?id="+id);
-		}
+		EventDAO dao = new EventDAO();
+		List<Event> eventList = new ArrayList<>();
+		eventList = dao.getEventList();
+		request.setAttribute("eventList", eventList);		
+		RequestDispatcher view = request.getRequestDispatcher("/event/eventList.jsp");
+		view.forward(request, response);
 	}
+
 }

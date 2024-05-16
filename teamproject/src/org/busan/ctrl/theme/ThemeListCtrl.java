@@ -1,21 +1,24 @@
-package org.busan.ctrl.member;
+package org.busan.ctrl.theme;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.busan.dao.MemberDAO;
+import org.busan.dao.ThemeDAO;
+import org.busan.dto.Theme;
 
-@WebServlet("/DelMember.do")
-public class DelMemberCtrl extends HttpServlet {
+@WebServlet("/ThemeList.do")
+public class ThemeListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public DelMemberCtrl() {
+       
+    public ThemeListCtrl() {
         super();
     }
 
@@ -24,17 +27,12 @@ public class DelMemberCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberOut(id);
-		
-		HttpSession session = request.getSession(); 
-		
-		if(cnt>0) {
-			session.invalidate();
-			response.sendRedirect("/teamproject");
-		} else {
-			response.sendRedirect("/EditMember.do?id="+id);
-		}
+		ThemeDAO dao = new ThemeDAO();
+		List<Theme> themeList = new ArrayList<>();
+		themeList = dao.getThemeList();
+		request.setAttribute("themeList", themeList);		
+		RequestDispatcher view = request.getRequestDispatcher("/theme/themeList.jsp");
+		view.forward(request, response);
 	}
+
 }

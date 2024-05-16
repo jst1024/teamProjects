@@ -1,4 +1,4 @@
-package org.busan.ctrl.sharetrip;
+package org.busan.ctrl.theme;
 
 import java.io.IOException;
 
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.ThemeDAO;
+import org.busan.dto.Theme;
 
-@WebServlet("/EditSt.do")
-public class EditStCtrl extends HttpServlet {
+@WebServlet("/EditTh.do")
+public class EditThCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditStCtrl() {
+    public EditThCtrl() {
         super();
     }
 
@@ -35,11 +35,11 @@ public class EditStCtrl extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		Sharetrip st = dao.getSharetrip(no);
+		ThemeDAO dao = new ThemeDAO();
+		Theme th = dao.getTheme(no);
 		
-		request.setAttribute("st", st);
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/editSt.jsp");
+		request.setAttribute("th", th);
+		RequestDispatcher view = request.getRequestDispatcher("/theme/editTh.jsp");
 		view.forward(request, response);
 	}
 

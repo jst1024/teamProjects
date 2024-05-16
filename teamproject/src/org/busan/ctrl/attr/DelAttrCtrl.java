@@ -1,4 +1,4 @@
-package org.busan.ctrl.member;
+package org.busan.ctrl.attr;
 
 import java.io.IOException;
 
@@ -7,15 +7,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.busan.dao.MemberDAO;
+import org.busan.dao.AttrDAO;
 
-@WebServlet("/DelMember.do")
-public class DelMemberCtrl extends HttpServlet {
+@WebServlet("/DelAttr.do")
+public class DelAttrCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public DelMemberCtrl() {
+       
+    public DelAttrCtrl() {
         super();
     }
 
@@ -24,17 +23,16 @@ public class DelMemberCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberOut(id);
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		HttpSession session = request.getSession(); 
+		AttrDAO dao = new AttrDAO();
+		int cnt = dao.delAttr(no);
 		
 		if(cnt>0) {
-			session.invalidate();
-			response.sendRedirect("/teamproject");
+			response.sendRedirect("/teamproject/AttrList.do");
 		} else {
-			response.sendRedirect("/EditMember.do?id="+id);
+			response.sendRedirect("/teamproject/GetAttr.do?no="+no);
 		}
 	}
+
 }

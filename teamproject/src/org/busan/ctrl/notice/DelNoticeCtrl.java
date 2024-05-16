@@ -29,9 +29,9 @@ public class DelNoticeCtrl extends HttpServlet {
 		int cnt = dao.delNotice(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/pro01/NotiList.do");
+			response.sendRedirect("/teamproject/NotiList.do");
 		} else {
-			response.sendRedirect("/pro01/GetNotice2.do?no="+no);
+			response.sendRedirect("/teamproject/GetNotice2.do?no="+no);
 		}
 	}
 

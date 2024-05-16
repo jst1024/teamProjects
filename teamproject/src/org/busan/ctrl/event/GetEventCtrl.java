@@ -1,21 +1,22 @@
-package org.busan.ctrl.member;
+package org.busan.ctrl.event;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.busan.dao.MemberDAO;
+import org.busan.dao.EventDAO;
+import org.busan.dto.Event;
 
-@WebServlet("/DelMember.do")
-public class DelMemberCtrl extends HttpServlet {
+@WebServlet("/GetEvent.do")
+public class GetEventCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public DelMemberCtrl() {
+       
+    public GetEventCtrl() {
         super();
     }
 
@@ -23,18 +24,16 @@ public class DelMemberCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		String id = request.getParameter("id");
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberOut(id);
+		EventDAO dao = new EventDAO();
+		Event event = dao.getEvent(no);
 		
-		HttpSession session = request.getSession(); 
+		request.setAttribute("event", event);
+		RequestDispatcher view = request.getRequestDispatcher("/event/getEvent.jsp");
+		view.forward(request, response);
 		
-		if(cnt>0) {
-			session.invalidate();
-			response.sendRedirect("/teamproject");
-		} else {
-			response.sendRedirect("/EditMember.do?id="+id);
-		}
 	}
+
 }

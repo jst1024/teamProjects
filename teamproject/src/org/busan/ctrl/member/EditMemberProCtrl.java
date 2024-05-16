@@ -48,7 +48,7 @@ public class EditMemberProCtrl extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.upMember(mem);
 		if(cnt>0) {
-			response.sendRedirect("/pro01");
+			response.sendRedirect("/teamproject");
 		} else {
 			response.sendRedirect("/EditMember.do?id="+id);
 		}

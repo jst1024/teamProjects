@@ -51,11 +51,9 @@ public interface SqlLang {
 	String VISITED_UPD_ACCOM = "update accom set visited=visited+1 where no=?";
 	String DEL_ACCOM = "delete from accom where no=?";
 	
-
-	
 	String SELECT_ALL_SHARETRIP = "select * from sharetrip order by regdate desc";
 	String SELECT_SHARETRIP_BYNO = "select * from sharetrip where no=?";
-	String UPD_SHARETRIP = "update sharetrip set title=? where no=?";
+	String UPD_SHARETRIP = "update sharetrip set title=?, photo=? where no=?";
 	String DEL_SHARETRIP = "delete from sharetrip where no=?";
 	
 	Connection connect();

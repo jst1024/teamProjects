@@ -52,15 +52,15 @@ ul { list-style:none; margin:0; padding:0;}
 .logo_wrap a { display:block; width:100%; }
 .logo_wrap a img { display:block; width:100%; height:100px; width:100px;}
 
-#hd { min-width:1200px; width: 100%; height: 120px; position: fixed; top: 0; background-color: rgba(255, 255, 255, 0); z-index: 2; transition:0.3s }
+#hd { min-width:1200px; width: 100%; height: 100px; background-color:rgba(255,255,255,1); position: fixed; top: 0; z-index: 2; transition:0.3s; }
 .hd_wrap { position:relative; clear:both; width: 100%; min-width:800px; margin: 0 auto; }
-#header { position: fixed; top: 0; width: 100%; background-color: #fff; z-index: 100; }
+#header { position: fixed; height:100px; top: 0; width: 100%; z-index: 100;}
 #logo { width: 129px; height: 80px; position: absolute; top: 20px; left: 20px; }
 #gnb { max-width:70%; position: absolute; top: 0px; width: 70%; height:100%; left:50%; transform:translate(-50%,0);}
 .menu { margin: 0 auto; padding: 0 auto; display: flex; }
 .menu > li { margin-top: 20px; text-align: center; color: white; margin-right: 0; }
 
-#gnb a.dp1 { display: block; font-weight: bold; font-size:20px; background-color: rgba(255, 255, 255, 0); line-height: 80px; }
+#gnb a.dp1 { display: block; font-weight: bold; font-size:20px; color:#333; line-height: 80px; }
 #gnb a.dp2 { font-weight:100; display: none; margin-top: 20px; font-size: 20px; background-color: rgba(255, 255, 255, 0); }
 #gnb li:hover a.dp1 { display: block; background-color: rgba(255, 255, 255, 0); }
 #gnb li:hover a.dp2 { display: block; background-color: rgba(255, 255, 255, 0); }

@@ -75,6 +75,7 @@ public class SharetripDAO {
 			pstmt = con.prepareStatement(OracleDB.INS_SHARETRIP);
 			pstmt.setString(1, st.getTitle());
 			pstmt.setString(2, st.getAuthor());
+			pstmt.setString(3, st.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -93,7 +94,8 @@ public class SharetripDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_SHARETRIP);
 			pstmt.setString(1, st.getTitle());
-			pstmt.setInt(2, st.getNo());
+			pstmt.setString(2, st.getPhoto());
+			pstmt.setInt(3, st.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package org.busan.ctrl.sharetrip;
+package org.busan.ctrl.event;
 
 import java.io.IOException;
 
@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.EventDAO;
+import org.busan.dto.Event;
 
-@WebServlet("/EditSt.do")
-public class EditStCtrl extends HttpServlet {
+@WebServlet("/EditEvent.do")
+public class EditEventCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditStCtrl() {
+    public EditEventCtrl() {
         super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -29,17 +29,17 @@ public class EditStCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		String loginId = (String) session.getAttribute("sid");
 		
-//		if(!loginId.equals("admin")) {
-//			response.sendRedirect("/StList.do");
-//		}
+		if(!loginId.equals("admin")) {
+			response.sendRedirect("/FoodList.do");
+		}
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		Sharetrip st = dao.getSharetrip(no);
+		EventDAO dao = new EventDAO();
+		Event event = dao.getEvent(no);
 		
-		request.setAttribute("st", st);
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/editSt.jsp");
+		request.setAttribute("event", event);
+		RequestDispatcher view = request.getRequestDispatcher("/event/editEvent.jsp");
 		view.forward(request, response);
 	}
 

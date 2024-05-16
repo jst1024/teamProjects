@@ -1,8 +1,6 @@
 package org.busan.ctrl.food;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,15 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.FoodDAO;
+import org.busan.dto.Food;
 
-@WebServlet("/StList.do")
-public class StListCtrl extends HttpServlet {
+@WebServlet("/EditFood.do")
+public class EditFoodCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public StListCtrl() {
+    public EditFoodCtrl() {
         super();
     }
 
@@ -26,12 +25,21 @@ public class StListCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
+		HttpSession session = request.getSession();
+		String loginId = (String) session.getAttribute("sid");
 		
-		SharetripDAO dao = new SharetripDAO();
-		List<Sharetrip> stList = new ArrayList<>();
-		stList = dao.getSharetripList();
-		request.setAttribute("stList", stList);		
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/stList.jsp");
+		if(!loginId.equals("admin")) {
+			response.sendRedirect("/FoodList.do");
+		}
+		
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		FoodDAO dao = new FoodDAO();
+		Food food = dao.getFood(no);
+		
+		request.setAttribute("food", food);
+		RequestDispatcher view = request.getRequestDispatcher("/food/editFood.jsp");
 		view.forward(request, response);
 	}
 

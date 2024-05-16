@@ -1,4 +1,4 @@
-package org.busan.ctrl.sharetrip;
+package org.busan.ctrl.guidemap;
 
 import java.io.IOException;
 
@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.GuidemapDAO;
+import org.busan.dto.Guidemap;
 
-@WebServlet("/EditSt.do")
-public class EditStCtrl extends HttpServlet {
+@WebServlet("/EditGuide.do")
+public class EditGuideCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditStCtrl() {
+    public EditGuideCtrl() {
         super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -29,17 +29,17 @@ public class EditStCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		String loginId = (String) session.getAttribute("sid");
 		
-//		if(!loginId.equals("admin")) {
-//			response.sendRedirect("/StList.do");
-//		}
+		if(!loginId.equals("admin")) {
+			response.sendRedirect("/GuideList.do");
+		}
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		Sharetrip st = dao.getSharetrip(no);
+		GuidemapDAO dao = new GuidemapDAO();
+		Guidemap gm = dao.getGuidemap(no);
 		
-		request.setAttribute("st", st);
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/editSt.jsp");
+		request.setAttribute("gm", gm);
+		RequestDispatcher view = request.getRequestDispatcher("/guidemap/editGuide.jsp");
 		view.forward(request, response);
 	}
 

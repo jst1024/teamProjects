@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 </head>
 <body>
-
 	<div id="header">
 		<%@ include file="/header.jsp" %>
 	</div>
@@ -62,28 +61,30 @@
 
 
 
-        <div style="width: 100vw; height: auto; display: flex; justify-content: center; align-items: flex-start;">
+        <div style="width: 100vw; height: 5000px; display: flex; justify-content: center; align-items: flex-start;">
             <div style="min-width: 1200px; max-width: 1400px;">
                 <span>총 ${fn:length(dto)}</span>
                 <hr>
                 <div class="card_small_board">
                     <div style="">
-
+                    	
+                    	<c:forEach var="dto" items="${themeList}">
+                    	
                         <!-- 복붙할영역 -->
-                        <a class="card_small_board_div" href="card_small_board_detail.jsp"> <!-- ìì¸ì£¼ìë§ ë°ê¾¸ë©´ë¨ -->
+                        <a class="card_small_board_div" href="ThemeDetailCtrl.do?no=${dto.no }"> <!-- ìì¸ì£¼ìë§ ë°ê¾¸ë©´ë¨ -->
                             <div style="">
                                 <div class="card_small_board_div_img">
                                     <!-- <img src="${path0 }경로기입" alt=""/> -->
-                                    <img src="1.jpg" alt="" />
+                                    <img src="${dto.photo }" alt="" />
                                 </div>
                                 <div class="card_small_board_div_txt">
-                                    <!-- <h3>${dto.title}</h3> -->
-                                    <h3 style="">제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목</h3>
+                                    <h3>${dto.title}</h3>
                                 </div>
                             </div>
                         </a>
                         <!-- 복붙할영역 끝 -->
                         
+                        </c:forEach>
                     </div>
                 </div>
             </div>

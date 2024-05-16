@@ -2,33 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<c:set var="path0" value="<%=request.getContextPath() %>" />    
+<c:set var="path0" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
-<style>
-<<<<<<< HEAD
-=======
-
->>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
-	.grid1 {clear:both; width:100%; margin:0 auto;}
-	[*^=col] {margin:2% 2%;}
-	.col1 {width:6.5%;}
-	.col2 {width:15%;}
-	.col3 {width:23.5%;}
-	.col4 {width:32%;}
-	.col5 {width:40.5%;}
-	.col6 {width:49%;}
-	.col7 {width:57.5%;}
-	.col8 {width:66%;}
-	.col9 {width:74.5%;}
-	.col10 {width:83%;}
-	.col11 {width:91.5%;}
-	.col12 {width:100%;}
-</style>
 </head>
 <body>
 
@@ -38,6 +18,29 @@
 	<div id="snb">
 		<%@ include file="/sidebar.jsp" %>
 	</div>
+	<script>
+    //헤더 텍스트 색상전환
+    window.addEventListener('scroll', function() {
+    var headerTexts = document.querySelectorAll('#hd a, #hd li');
+    var scrollPosition = window.scrollY;
+    var header = document.getElementById("hd");
+    var logo = document.getElementById("logo");
+
+    if (scrollPosition >= window.innerHeight * 1) {
+        headerTexts.forEach(function(text) {
+            text.style.color = '#000';
+            header.style.backgroundColor = '#fff';
+            logo.src = "./images/logog.png";
+        });
+    } else {
+        headerTexts.forEach(function(text) {
+            text.style.color = '#fff';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            logo.src = "./images/logow2.png";
+        });
+    }
+    });
+    </script>
 	
 	
 		<!-- 테마여행페이지  -->
@@ -46,11 +49,7 @@
 	</div>
 	
 	
-<<<<<<< HEAD
-    <div style="width: 100vw; height: 100vh; background-image:url('./images/main/bg_image1.jpg'); background-size:cover;">
-=======
     <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
->>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
 			<span style="text-align:center; line-height:1.1">
 				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
@@ -59,11 +58,7 @@
 			</span>
 		</div>		
     </div>
-<<<<<<< HEAD
-        <div style="width: 100vw; height: 100vh; background-image:url('./images/main/bg_image1.jpg'); background-size:cover;">
-=======
         <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
->>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
 			<span style="text-align:center; line-height:1.1">
 				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
@@ -71,10 +66,6 @@
 				<span style="font-size:64px; font-weight:400;">21321312</span>
 			</span>
 		</div>		
-<<<<<<< HEAD
-	</div>		
-=======
->>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 
     
     <!-- 게시판 -->
@@ -116,11 +107,9 @@
 	
 	
 	<div id="footer">
-<<<<<<< HEAD
-=======
-
->>>>>>> c9f7cc4f6a42930f9c699f8effab085874347db0
 	<%@ include file="/footer.jsp" %>
 	</div>
+	
+
 </body>
 </html>

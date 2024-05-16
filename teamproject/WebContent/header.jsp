@@ -21,66 +21,43 @@
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">부산에가면</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">명소</a></li>
-                            <li><a href="" class="dp2">음식</a></li>
-                            <li><a href="" class="dp2">숙박</a></li>
-                            <li><a href="" class="dp2">쇼핑</a></li>
-                            <li><a href="" class="dp2">축제</a></li>
+                            <li><a href="${hpath }/AttrList.do" class="dp2">명소</a></li>
+                            <li><a href="${hpath }/FoodList.do" class="dp2">음식</a></li>
+                            <li><a href="${hpath }/AccomList.do" class="dp2">숙박</a></li>
+                            <li><a href="${hpath }" class="dp2">쇼핑</a></li>
+                            <li><a href="${hpath }" class="dp2">축제</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">추천여행</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">테마여행</a></li>
+                            <li><a href="${hpath }/ThemeList.do" class="dp2">테마여행</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">여행준비</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">가이드북&지도</a></li>
-                            <li><a href="" class="dp2">문화관광해설사</a></li>
-                            <li><a href="" class="dp2">여행준비정보</a></li>
-                            <li><a href="" class="dp2">관광안내소</a></li>
+                            <li><a href="${hpath }/GuideList.do" class="dp2">가이드북&지도</a></li>
+                            <li><a href="${hpath }" class="dp2">문화관광해설사</a></li>
+                            <li><a href="${hpath }" class="dp2">여행준비정보</a></li>
+                            <li><a href="${hpath }" class="dp2">관광안내소</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">유용한정보</a>
                         <ul class="sub">
-                            <li><a href="" class="dp2">공지사항</a></li>
-                            <li><a href="" class="dp2">축제/행사</a></li>
-                            <li><a href="" class="dp2">여행공유</a></li>
+                            <li><a href="${hpath }/NotiList.do" class="dp2">공지사항</a></li>
+                            <li><a href="${hpath }/EventList.do" class="dp2">축제/행사</a></li>
+                            <li><a href="${hpath }/StList.do" class="dp2">여행공유</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
             <div class="login">
                 <ul>
-                    <li><a href="login.html">로그인</a></li>
-                    <li><a href="signup.html">회원가입</a></li>
+                    <li><a href="${hpath }/LogInPro.do">로그인</a></li>
+                    <li><a href="${hpath }/Join.do">회원가입</a></li>
                 </ul>
             </div>
         </div>
 </header> 
-    <script>
-    //헤더 텍스트 색상전환
-    window.addEventListener('scroll', function() {
-    var headerTexts = document.querySelectorAll('#hd a, #hd li');
-    var scrollPosition = window.scrollY;
-    var header = document.getElementById("hd");
-    var logo = document.getElementById("logo");
-
-    if (scrollPosition >= window.innerHeight * 1) {
-        headerTexts.forEach(function(text) {
-            text.style.color = '#000';
-            header.style.backgroundColor = '#fff';
-            logo.src = "./images/logog.png";
-        });
-    } else {
-        headerTexts.forEach(function(text) {
-            text.style.color = '#fff';
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-            logo.src = "./images/logow2.png";
-        });
-    }
-    });
-    </script>

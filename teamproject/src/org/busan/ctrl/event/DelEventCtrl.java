@@ -1,24 +1,20 @@
-package org.busan.ctrl.attr;
+package org.busan.ctrl.event;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.EventDAO;
 
-@WebServlet("/StList.do")
-public class StListCtrl extends HttpServlet {
+@WebServlet("/DelEvent.do")
+public class DelEventCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public StListCtrl() {
+    public DelEventCtrl() {
         super();
     }
 
@@ -27,12 +23,16 @@ public class StListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		SharetripDAO dao = new SharetripDAO();
-		List<Sharetrip> stList = new ArrayList<>();
-		stList = dao.getSharetripList();
-		request.setAttribute("stList", stList);		
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/stList.jsp");
-		view.forward(request, response);
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		EventDAO dao = new EventDAO();
+		int cnt = dao.delEvent(no);
+		
+		if(cnt>0) {
+			response.sendRedirect("/teamproject/EventList.do");
+		} else {
+			response.sendRedirect("/teamproject/GetEvent.do?no="+no);
+		}
 	}
 
 }

@@ -1,4 +1,4 @@
-package org.busan.ctrl.photo;
+package org.busan.ctrl.food;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.FoodDAO;
+import org.busan.dto.Food;
 
-@WebServlet("/StList.do")
-public class StListCtrl extends HttpServlet {
+@WebServlet("/FoodList.do")
+public class FoodListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public StListCtrl() {
+    public FoodListCtrl() {
         super();
     }
 
@@ -27,11 +27,11 @@ public class StListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		SharetripDAO dao = new SharetripDAO();
-		List<Sharetrip> stList = new ArrayList<>();
-		stList = dao.getSharetripList();
-		request.setAttribute("stList", stList);		
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/stList.jsp");
+		FoodDAO dao = new FoodDAO();
+		List<Food> foodList = new ArrayList<>();
+		foodList = dao.getFoodList();
+		request.setAttribute("foodList", foodList);		
+		RequestDispatcher view = request.getRequestDispatcher("/food/foodList.jsp");
 		view.forward(request, response);
 	}
 

@@ -1,8 +1,6 @@
-package org.busan.ctrl.event;
+package org.busan.ctrl.attr;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.AttrDAO;
+import org.busan.dto.Attr;
 
-@WebServlet("/StList.do")
-public class StListCtrl extends HttpServlet {
+@WebServlet("/GetAttr.do")
+public class GetAttrCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public StListCtrl() {
+    public GetAttrCtrl() {
         super();
     }
 
@@ -26,13 +24,16 @@ public class StListCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+
+		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		List<Sharetrip> stList = new ArrayList<>();
-		stList = dao.getSharetripList();
-		request.setAttribute("stList", stList);		
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/stList.jsp");
+		AttrDAO dao = new AttrDAO();
+		Attr attr = dao.getAttr(no);
+		
+		request.setAttribute("attr", attr);
+		RequestDispatcher view = request.getRequestDispatcher("/attr/getAttr.jsp");
 		view.forward(request, response);
+		
 	}
 
 }

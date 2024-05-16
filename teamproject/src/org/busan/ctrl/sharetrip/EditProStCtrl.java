@@ -29,14 +29,15 @@ public class EditProStCtrl extends HttpServlet {
 		Sharetrip st = new Sharetrip();
 		st.setNo(Integer.parseInt(request.getParameter("no")));
 		st.setTitle(request.getParameter("title"));
+		st.setAuthor(request.getParameter("author"));
 		
 		SharetripDAO dao = new SharetripDAO();
 		int cnt = dao.editProSharetrip(st);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teampro/StList.do");
+			response.sendRedirect("/teamproject/StList.do");
 		} else {
-			response.sendRedirect("/teampro/EditSt.do?no="+st.getNo());
+			response.sendRedirect("/teamproject/EditSt.do?no="+st.getNo());
 		}
 	}
 }

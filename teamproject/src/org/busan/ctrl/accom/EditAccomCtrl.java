@@ -1,4 +1,4 @@
-package org.busan.ctrl.sharetrip;
+package org.busan.ctrl.accom;
 
 import java.io.IOException;
 
@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.AccomDAO;
+import org.busan.dto.Accom;
 
-@WebServlet("/EditSt.do")
-public class EditStCtrl extends HttpServlet {
+@WebServlet("/EditAccom.do")
+public class EditAccomCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditStCtrl() {
+    public EditAccomCtrl() {
         super();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -29,17 +29,17 @@ public class EditStCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		String loginId = (String) session.getAttribute("sid");
 		
-//		if(!loginId.equals("admin")) {
-//			response.sendRedirect("/StList.do");
-//		}
+		if(!loginId.equals("admin")) {
+			response.sendRedirect("/AccomList.do");
+		}
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		Sharetrip st = dao.getSharetrip(no);
+		AccomDAO dao = new AccomDAO();
+		Accom accom = dao.getAccom(no);
 		
-		request.setAttribute("st", st);
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/editSt.jsp");
+		request.setAttribute("accom", accom);
+		RequestDispatcher view = request.getRequestDispatcher("/accom/editAccom.jsp");
 		view.forward(request, response);
 	}
 

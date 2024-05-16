@@ -26,7 +26,7 @@
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">여행공유 글 등록</h3>
-			<form method="post" encType = "multipart/form-data" action="${path0 }/StIns.do&keyValue=multipart">
+			<form method="post" encType = "multipart/form-data" action="${path0 }/StIns.do">
 				<table class="table">
 					<tbody>
 						<tr>
@@ -34,8 +34,10 @@
 							<td><input type="text" name="title" id="title" class="form-control" maxlength="100" required></td>
 						</tr>
 						<tr>
-							<th><label for="photo">사진</label></th>
-							<td><input type="file" name="photo" required></td>
+							<th><label for="photo">첨부파일</label></th>
+							<td>
+								<input type="file" class="form-control" name="photo" id="photo" accept=".gif, .jpg, .png" />
+							</td>
 						</tr>
 					</tbody>
 				</table>

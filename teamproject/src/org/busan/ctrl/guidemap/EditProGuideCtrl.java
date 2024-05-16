@@ -1,4 +1,4 @@
-package org.busan.ctrl.notice;
+package org.busan.ctrl.guidemap;
 
 import java.io.IOException;
 
@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.NoticeDAO;
-import org.busan.dto.Notice;
+import org.busan.dao.GuidemapDAO;
+import org.busan.dto.Guidemap;
 
-@WebServlet("/EditProNotice.do")
-public class EditProNoticeCtrl extends HttpServlet {
+@WebServlet("/EditProGuide.do")
+public class EditProGuideCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public EditProNoticeCtrl() {
+    public EditProGuideCtrl() {
         super();
     }
 
@@ -24,18 +24,17 @@ public class EditProNoticeCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		Notice noti = new Notice();
-		noti.setNo(Integer.parseInt(request.getParameter("no")));
-		noti.setTitle(request.getParameter("title"));
-		noti.setContent(request.getParameter("content"));
+		Guidemap gm = new Guidemap();
+		gm.setNo(Integer.parseInt(request.getParameter("no")));
+		gm.setName(request.getParameter("name"));
 		
-		NoticeDAO dao = new NoticeDAO();
-		int cnt = dao.editProNotice(noti);
+		GuidemapDAO dao = new GuidemapDAO();
+		int cnt = dao.editProGuidemap(gm);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/NotiList.do");
+			response.sendRedirect("/teamproject/GuideList.do");
 		} else {
-			response.sendRedirect("/teamproject/EditNotice.do?no="+noti.getNo());
+			response.sendRedirect("/teamproject/EditGuide.do?no="+gm.getNo());
 		}
 	}
 }

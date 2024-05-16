@@ -1,4 +1,4 @@
-package org.busan.ctrl.guidemap;
+package org.busan.ctrl.accom;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.SharetripDAO;
-import org.busan.dto.Sharetrip;
+import org.busan.dao.AccomDAO;
+import org.busan.dto.Accom;
 
-@WebServlet("/StList.do")
-public class StListCtrl extends HttpServlet {
+@WebServlet("/AccomList.do")
+public class AccomListCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public StListCtrl() {
+    public AccomListCtrl() {
         super();
     }
 
@@ -27,11 +27,11 @@ public class StListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		SharetripDAO dao = new SharetripDAO();
-		List<Sharetrip> stList = new ArrayList<>();
-		stList = dao.getSharetripList();
-		request.setAttribute("stList", stList);		
-		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/stList.jsp");
+		AccomDAO dao = new AccomDAO();
+		List<Accom> accList = new ArrayList<>();
+		accList = dao.getAccomList();
+		request.setAttribute("accList", accList);		
+		RequestDispatcher view = request.getRequestDispatcher("/accom/accList.jsp");
 		view.forward(request, response);
 	}
 
