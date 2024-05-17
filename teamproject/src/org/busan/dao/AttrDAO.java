@@ -26,7 +26,6 @@ public class AttrDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("subtitle"),
-						rs.getString("photo"),
 						rs.getString("content"),
 						rs.getString("addr"),
 						rs.getString("tel"),
@@ -36,7 +35,8 @@ public class AttrDAO {
 						rs.getString("dayoff"),
 						rs.getString("traffic"),
 						rs.getString("fee"),
-						rs.getString("tips"));
+						rs.getString("tips"),
+						rs.getString("photo"));
 				attrList.add(attr);
 			}
 		} catch(Exception e){
@@ -64,7 +64,6 @@ public class AttrDAO {
 				attr.setNo(rs.getInt("no"));
 				attr.setTitle(rs.getString("title"));
 				attr.setSubtitle(rs.getString("subtitle"));
-				attr.setPhoto(rs.getString("photo"));
 				attr.setContent(rs.getString("content"));
 				attr.setAddr(rs.getString("addr"));
 				attr.setTel(rs.getString("tel"));
@@ -75,6 +74,7 @@ public class AttrDAO {
 				attr.setTraffic(rs.getString("traffic"));
 				attr.setFee(rs.getString("fee"));
 				attr.setTips(rs.getString("tips"));
+				attr.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -92,17 +92,17 @@ public class AttrDAO {
 			pstmt = con.prepareStatement(OracleDB.INS_ATTR);
 			pstmt.setString(1, attr.getTitle());
 			pstmt.setString(2, attr.getSubtitle());
-			pstmt.setString(3, attr.getPhoto());
-			pstmt.setString(4, attr.getContent());
-			pstmt.setString(5, attr.getAddr());
-			pstmt.setString(6, attr.getTel());
-			pstmt.setString(7, attr.getReltag());
-			pstmt.setInt(8, attr.getVisited());
-			pstmt.setInt(9, attr.getLiked());
-			pstmt.setString(10, attr.getDayoff());
-			pstmt.setString(11, attr.getTraffic());
-			pstmt.setString(12, attr.getFee());
-			pstmt.setString(13, attr.getTips());
+			pstmt.setString(3, attr.getContent());
+			pstmt.setString(4, attr.getAddr());
+			pstmt.setString(5, attr.getTel());
+			pstmt.setString(6, attr.getReltag());
+			pstmt.setInt(7, attr.getVisited());
+			pstmt.setInt(8, attr.getLiked());
+			pstmt.setString(9, attr.getDayoff());
+			pstmt.setString(10, attr.getTraffic());
+			pstmt.setString(11, attr.getFee());
+			pstmt.setString(12, attr.getTips());
+			pstmt.setString(13, attr.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -120,17 +120,17 @@ public class AttrDAO {
 			pstmt = con.prepareStatement(SqlLang.UPD_ATTR);
 			pstmt.setString(1, attr.getTitle());
 			pstmt.setString(2, attr.getSubtitle());
-			pstmt.setString(3, attr.getPhoto());
-			pstmt.setString(4, attr.getContent());
-			pstmt.setString(5, attr.getAddr());
-			pstmt.setString(6, attr.getTel());
-			pstmt.setString(7, attr.getReltag());
-			pstmt.setInt(8, attr.getVisited());
-			pstmt.setInt(9, attr.getLiked());
-			pstmt.setString(10, attr.getDayoff());
-			pstmt.setString(11, attr.getTraffic());
-			pstmt.setString(12, attr.getFee());
-			pstmt.setString(13, attr.getTips());
+			pstmt.setString(3, attr.getContent());
+			pstmt.setString(4, attr.getAddr());
+			pstmt.setString(5, attr.getTel());
+			pstmt.setString(6, attr.getReltag());
+			pstmt.setInt(7, attr.getVisited());
+			pstmt.setInt(8, attr.getLiked());
+			pstmt.setString(9, attr.getDayoff());
+			pstmt.setString(10, attr.getTraffic());
+			pstmt.setString(11, attr.getFee());
+			pstmt.setString(12, attr.getTips());
+			pstmt.setString(13, attr.getPhoto());
 			pstmt.setInt(14, attr.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

@@ -37,6 +37,7 @@ public class ThInsCtrl extends HttpServlet {
 
 		Theme th = new Theme();
 		
+		
 		ServletContext application = request.getServletContext(); //teamproject
 		
 		try {
@@ -46,11 +47,10 @@ public class ThInsCtrl extends HttpServlet {
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
-//			th.setTitle(mr.getParameter("title"));
 			th.setTitle(mr.getParameter("title"));
+			th.setSubtitle(mr.getParameter("subtitle"));
 			th.setContent(mr.getParameter("content"));
 			th.setReltag(mr.getParameter("reltag"));
-			th.setAuthor(mr.getParameter("author"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			
@@ -59,7 +59,6 @@ public class ThInsCtrl extends HttpServlet {
 			String fileName = mr.getFilesystemName(item); //data001.zip
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
-			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
 			th.setPhoto(fileName);
 			
 			ThemeDAO dao = new ThemeDAO();

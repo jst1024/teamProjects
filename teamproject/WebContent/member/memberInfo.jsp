@@ -69,12 +69,12 @@
 							</td>
 						</tr>
 						<tr>
-							<th><label for="tel">주소</label></th>
+							<th><label for="addr">주소</label></th>
 							<td>
 								<c:set var="address" value="${fn:split(mem.addr, '$')}"/>
 								<input type="text" name="address1" id="address1" class="form-control" value="${address[0] }" readonly><br>
 								<input type="text" name="address2" id="address2" class="form-control" value="${address[1] }" readonly><br>
-								<input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" class="form-control" value="${mem.postcode }" style="width:160px" readonly><br>
+								<input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" class="form-control" value="${mem.postcode }" style="width:160px" ><br>
 							</td>
 						</tr>
 					</tbody>

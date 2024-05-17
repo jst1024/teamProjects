@@ -47,7 +47,7 @@ public class EventInsCtrl extends HttpServlet {
 			event.setOndate(mr.getParameter("ondate"));
 			event.setContent(mr.getParameter("content"));
 			event.setTel(mr.getParameter("tel"));
-			event.setPhoto(mr.getParameter("photo"));
+			event.setHomepage(mr.getParameter("homepage"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			

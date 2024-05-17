@@ -4,7 +4,6 @@ public class Attr {
 	private int no;
 	private String title;
 	private String subtitle;
-	private String photo;
 	private String content;
 	private String addr;
 	private String tel;
@@ -15,15 +14,15 @@ public class Attr {
 	private String traffic;
 	private String fee;
 	private String tips;
+	private String photo;
 	
 	public Attr() {}
-	public Attr(int no, String title, String subtitle, String photo, String content, String addr, String tel,
-			String reltag, int visited, int liked, String dayoff, String traffic, String fee, String tips) {
+	public Attr(int no, String title, String subtitle, String content, String addr, String tel, String reltag,
+			int visited, int liked, String dayoff, String traffic, String fee, String tips, String photo) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.subtitle = subtitle;
-		this.photo = photo;
 		this.content = content;
 		this.addr = addr;
 		this.tel = tel;
@@ -34,6 +33,7 @@ public class Attr {
 		this.traffic = traffic;
 		this.fee = fee;
 		this.tips = tips;
+		this.photo = photo;
 	}
 	public int getNo() {
 		return no;
@@ -52,12 +52,6 @@ public class Attr {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 	public String getContent() {
 		return content;
@@ -119,12 +113,18 @@ public class Attr {
 	public void setTips(String tips) {
 		this.tips = tips;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
 	@Override
 	public String toString() {
-		return "Attr [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", photo=" + photo + ", content="
-				+ content + ", addr=" + addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited
-				+ ", liked=" + liked + ", dayoff=" + dayoff + ", traffic=" + traffic + ", fee=" + fee + ", tips=" + tips
+		return "Attr [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", content=" + content + ", addr="
+				+ addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited + ", liked=" + liked
+				+ ", dayoff=" + dayoff + ", traffic=" + traffic + ", fee=" + fee + ", tips=" + tips + ", photo=" + photo
 				+ "]";
 	}
 	

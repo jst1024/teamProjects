@@ -44,6 +44,7 @@ public class FoodInsCtrl extends HttpServlet {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
 			food.setTitle(mr.getParameter("title"));
+			food.setSubtitle(mr.getParameter("subtitle"));
 			food.setContent(mr.getParameter("content"));
 			food.setAddr(mr.getParameter("addr"));
 			food.setTel(mr.getParameter("tel"));
@@ -59,7 +60,6 @@ public class FoodInsCtrl extends HttpServlet {
 			String fileName = mr.getFilesystemName(item); //data001.zip
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
-			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
 			food.setPhoto(fileName);
 			
 			FoodDAO dao = new FoodDAO();

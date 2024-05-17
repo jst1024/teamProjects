@@ -29,7 +29,6 @@ public class EditProStCtrl extends HttpServlet {
 		Sharetrip st = new Sharetrip();
 		st.setNo(Integer.parseInt(request.getParameter("no")));
 		st.setTitle(request.getParameter("title"));
-		st.setAuthor(request.getParameter("author"));
 		
 		SharetripDAO dao = new SharetripDAO();
 		int cnt = dao.editProSharetrip(st);

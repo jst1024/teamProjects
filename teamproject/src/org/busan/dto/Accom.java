@@ -4,7 +4,6 @@ public class Accom {
 	private int no;
 	private String title;
 	private String subtitle;
-	private String photo;
 	private String content;
 	private String addr;
 	private String tel;
@@ -13,16 +12,16 @@ public class Accom {
 	private int liked;
 	private String busitype;
 	private String homepage;
+	private String photo;
 	
 	
 	public Accom() {}
-	public Accom(int no, String title, String subtitle, String photo, String content, String addr, String tel,
-			String reltag, int visited, int liked, String busitype, String homepage) {
+	public Accom(int no, String title, String subtitle, String content, String addr, String tel, String reltag,
+			int visited, int liked, String busitype, String homepage, String photo) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.subtitle = subtitle;
-		this.photo = photo;
 		this.content = content;
 		this.addr = addr;
 		this.tel = tel;
@@ -31,6 +30,7 @@ public class Accom {
 		this.liked = liked;
 		this.busitype = busitype;
 		this.homepage = homepage;
+		this.photo = photo;
 	}
 	public int getNo() {
 		return no;
@@ -49,12 +49,6 @@ public class Accom {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 	public String getContent() {
 		return content;
@@ -104,12 +98,18 @@ public class Accom {
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
 	@Override
 	public String toString() {
-		return "Accom [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", photo=" + photo + ", content="
-				+ content + ", addr=" + addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited
-				+ ", liked=" + liked + ", busitype=" + busitype + ", homepage=" + homepage + "]";
+		return "Accom [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", content=" + content + ", addr="
+				+ addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited + ", liked=" + liked
+				+ ", busitype=" + busitype + ", homepage=" + homepage + ", photo=" + photo + "]";
 	}
 	
 }

@@ -43,6 +43,7 @@ public class AttrInsCtrl extends HttpServlet {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
 			attr.setTitle(mr.getParameter("title"));
+			attr.setSubtitle(mr.getParameter("subtitle"));
 			attr.setContent(mr.getParameter("content"));
 			attr.setAddr(mr.getParameter("addr"));
 			attr.setTel(mr.getParameter("tel"));
@@ -60,7 +61,7 @@ public class AttrInsCtrl extends HttpServlet {
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
 			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
-			attr.setPhoto(fileName);
+//			attr.setPhoto(fileName);
 			
 			AttrDAO dao = new AttrDAO();
 			int cnt = dao.insAttr(attr);

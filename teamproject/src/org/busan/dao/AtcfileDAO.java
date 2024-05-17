@@ -6,69 +6,73 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.busan.dto.Guidemap;
+import org.busan.dto.Atcfile;
+import org.busan.dto.Notice;
 
-public class GuidemapDAO {
+public class AtcfileDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	
-	public List<Guidemap> getGuidemapList(){
-		List<Guidemap> guidemapList = new ArrayList<>();
+	public List<Atcfile> getAtcfileList(){
+		List<Atcfile> atcfileList = new ArrayList<>();
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_GUIDEMAP);
+			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_ATCFILE);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Guidemap guidemap = new Guidemap(
+				Atcfile atcfile = new Atcfile(
+						rs.getInt("boardNo"),
 						rs.getInt("no"),
-						rs.getString("name"),
-						rs.getString("link"),
-						rs.getString("photo"));
-				guidemapList.add(guidemap);
+						rs.getString("oriname"),
+						rs.getString("newname"),
+						rs.getInt("fsize"));
+				atcfileList.add(atcfile);
 			}
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		return guidemapList;
+		return atcfileList;
 	}
 	
-	public Guidemap getGuidemap(int no) {
-		Guidemap guidemap = new Guidemap();
+	public Atcfile getAtcfile(int no) {
+		Atcfile atcfile = new Atcfile();
 		OracleDB oracle = new OracleDB();
 		
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.SELECT_GUIDEMAP_BYNO);
+			pstmt = null;
+			pstmt = con.prepareStatement(SqlLang.SELECT_ATCFILE_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				guidemap.setNo(rs.getInt("no"));
-				guidemap.setName(rs.getString("name"));
-				guidemap.setLink(rs.getString("link"));
-				guidemap.setPhoto(rs.getString("photo"));
+				atcfile.setBoardNo(rs.getInt("boardNo"));
+				atcfile.setNo(rs.getInt("no"));
+				atcfile.setOriname(rs.getString("oriname"));
+				atcfile.setNewname(rs.getString("newname"));
+				atcfile.setFsize(rs.getInt("fsize"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			oracle.close(con, pstmt, rs);
 		}
-		return guidemap;
+		return atcfile;
 	}
 	
-	public int insGuidemap(Guidemap guidemap) {
+	public int insAtcfile(Atcfile atcfile) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_GUIDEMAP);
-			pstmt.setString(1, guidemap.getName());
-			pstmt.setString(2, guidemap.getLink());
-			pstmt.setString(3, guidemap.getPhoto());
+			pstmt = con.prepareStatement(OracleDB.INS_ATCFILE);
+			pstmt.setInt(1, atcfile.getBoardNo());
+			pstmt.setString(2, atcfile.getOriname());
+			pstmt.setString(3, atcfile.getNewname());
+			pstmt.setInt(4, atcfile.getFsize());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -78,16 +82,16 @@ public class GuidemapDAO {
 		return cnt;
 	}
 	
-	public int editProGuidemap(Guidemap guidemap) {
+	public int editProAtcfile(Atcfile atcfile) {
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.UPD_GUIDEMAP);
-			pstmt.setString(1, guidemap.getName());
-			pstmt.setString(2, guidemap.getLink());
-			pstmt.setString(3, guidemap.getPhoto());
-			pstmt.setInt(4, guidemap.getNo());
+			pstmt = con.prepareStatement(SqlLang.UPD_ATCFILE);
+			pstmt.setString(1, atcfile.getOriname());
+			pstmt.setString(2, atcfile.getNewname());
+			pstmt.setInt(3, atcfile.getFsize());
+			pstmt.setInt(4, atcfile.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -97,12 +101,12 @@ public class GuidemapDAO {
 		return cnt;
 	}
 	
-	public int delGuidemap(int no){
+	public int delAtcfile(int no){
 		int cnt = 0;
 		OracleDB oracle = new OracleDB();
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.DEL_GUIDEMAP);
+			pstmt = con.prepareStatement(SqlLang.DEL_ATCFILE);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

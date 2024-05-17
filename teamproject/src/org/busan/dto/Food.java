@@ -4,7 +4,6 @@ public class Food {
 	private int no;
 	private String title;
 	private String subtitle;
-	private String photo;
 	private String content;
 	private String addr;
 	private String tel;
@@ -14,16 +13,16 @@ public class Food {
 	private String mainmenu;
 	private String ontime;
 	private String dayoff;
+	private String photo;
 	
 	
 	public Food() {}
-	public Food(int no, String title, String subtitle, String photo, String content, String addr, String tel,
-			String reltag, int visited, int liked, String mainmenu, String ontime, String dayoff) {
+	public Food(int no, String title, String subtitle, String content, String addr, String tel, String reltag,
+			int visited, int liked, String mainmenu, String ontime, String dayoff, String photo) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.subtitle = subtitle;
-		this.photo = photo;
 		this.content = content;
 		this.addr = addr;
 		this.tel = tel;
@@ -33,6 +32,7 @@ public class Food {
 		this.mainmenu = mainmenu;
 		this.ontime = ontime;
 		this.dayoff = dayoff;
+		this.photo = photo;
 	}
 	public int getNo() {
 		return no;
@@ -51,12 +51,6 @@ public class Food {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 	public String getContent() {
 		return content;
@@ -112,12 +106,18 @@ public class Food {
 	public void setDayoff(String dayoff) {
 		this.dayoff = dayoff;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
 	@Override
 	public String toString() {
-		return "Food [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", photo=" + photo + ", content="
-				+ content + ", addr=" + addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited
-				+ ", liked=" + liked + ", mainmenu=" + mainmenu + ", ontime=" + ontime + ", dayoff=" + dayoff + "]";
+		return "Food [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", content=" + content + ", addr="
+				+ addr + ", tel=" + tel + ", reltag=" + reltag + ", visited=" + visited + ", liked=" + liked
+				+ ", mainmenu=" + mainmenu + ", ontime=" + ontime + ", dayoff=" + dayoff + ", photo=" + photo + "]";
 	}
 	
 }

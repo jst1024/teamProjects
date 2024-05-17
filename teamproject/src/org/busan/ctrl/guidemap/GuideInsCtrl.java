@@ -43,8 +43,8 @@ public class GuideInsCtrl extends HttpServlet {
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
-			gm.setNo(Integer.parseInt(request.getParameter("no")));
 			gm.setName(request.getParameter("name"));
+			gm.setLink(request.getParameter("link"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			
@@ -53,7 +53,6 @@ public class GuideInsCtrl extends HttpServlet {
 			String fileName = mr.getFilesystemName(item); //data001.zip
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
-			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
 			gm.setPhoto(fileName);
 			
 			GuidemapDAO dao = new GuidemapDAO();

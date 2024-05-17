@@ -23,10 +23,10 @@ public class AdminMainCtrl extends HttpServlet {
 		
 		String loginId = (String) session.getAttribute("sid");
 		if(!loginId.equals("admin")){
-			response.sendRedirect("/pro01");
+			response.sendRedirect("/teamproject");
 		} else {
 			request.setAttribute("msg", "관리자 페이지입니다.");
-			RequestDispatcher view = request.getRequestDispatcher("/admin/index.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/admin/admin.jsp");
 			view.forward(request, response);
 		}
 	}

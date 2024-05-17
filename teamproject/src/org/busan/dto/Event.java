@@ -6,19 +6,19 @@ public class Event {
 	private String ondate;
 	private String content;
 	private String tel;
-	private String photo;
 	private String homepage;
+	private String photo;
 	
 	public Event() {}
-	public Event(int no, String title, String ondate, String content, String tel, String photo, String homepage) {
+	public Event(int no, String title, String ondate, String content, String tel, String homepage, String photo) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.ondate = ondate;
 		this.content = content;
 		this.tel = tel;
-		this.photo = photo;
 		this.homepage = homepage;
+		this.photo = photo;
 	}
 	public int getNo() {
 		return no;
@@ -50,23 +50,23 @@ public class Event {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 	public String getHomepage() {
 		return homepage;
 	}
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
 	@Override
 	public String toString() {
 		return "Event [no=" + no + ", title=" + title + ", ondate=" + ondate + ", content=" + content + ", tel=" + tel
-				+ ", photo=" + photo + ", homepage=" + homepage + "]";
+				+ ", homepage=" + homepage + ", photo=" + photo + "]";
 	}
 	
 }

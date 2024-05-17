@@ -30,7 +30,6 @@ public class EditProEventCtrl extends HttpServlet {
 		event.setOndate(request.getParameter("ondate"));
 		event.setContent(request.getParameter("content"));
 		event.setTel(request.getParameter("tel"));
-		event.setPhoto(request.getParameter("photo"));
 		
 		EventDAO dao = new EventDAO();
 		int cnt = dao.editProEvent(event);

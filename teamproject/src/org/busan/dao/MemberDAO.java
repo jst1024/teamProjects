@@ -22,15 +22,14 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Member mem = new Member(
-						rs.getInt("no"),
-						rs.getInt("grade"),
 						rs.getString("id"),
 						rs.getString("pw"),
-						rs.getString("nickname"),
+						rs.getString("name"),
 						rs.getString("email"),
 						rs.getString("tel"),
 						rs.getString("addr"),
-						rs.getString("postcode"));
+						rs.getString("postcode"),
+						rs.getString("regdate"));
 				memList.add(mem);
 			}
 		} catch(Exception e){
@@ -53,9 +52,12 @@ public class MemberDAO {
 			
 				mem.setId(rs.getString("id"));
 				mem.setPw(rs.getString("pw"));
-				mem.setNickname(rs.getString("nickname"));
+				mem.setName(rs.getString("name"));
 				mem.setEmail(rs.getString("email"));
 				mem.setTel(rs.getString("tel"));
+				mem.setAddr(rs.getString("addr"));
+				mem.setPostcode(rs.getString("postcode"));
+				mem.setRegdate(rs.getString("regdate"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -73,9 +75,11 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(SqlLang.INS_MEMBER);
 			pstmt.setString(1, mem.getId());
 			pstmt.setString(2, mem.getPw());
-			pstmt.setString(3, mem.getNickname());
+			pstmt.setString(3, mem.getName());
 			pstmt.setString(4, mem.getEmail());
 			pstmt.setString(5, mem.getTel());
+			pstmt.setString(6, mem.getAddr());
+			pstmt.setString(7, mem.getPostcode());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -92,10 +96,12 @@ public class MemberDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_MEMBER);
 			pstmt.setString(1, mem.getPw());
-			pstmt.setString(2, mem.getNickname());
+			pstmt.setString(2, mem.getName());
 			pstmt.setString(3, mem.getEmail());
 			pstmt.setString(4, mem.getTel());
-			pstmt.setString(5, mem.getId());
+			pstmt.setString(5, mem.getAddr());
+			pstmt.setString(6, mem.getPostcode());
+			pstmt.setString(7, mem.getId());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

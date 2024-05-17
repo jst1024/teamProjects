@@ -57,7 +57,7 @@ public class AccomInsCtrl extends HttpServlet {
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
 			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
-			accom.setPhoto(fileName);
+//			accom.setPhoto(fileName);
 			
 			AccomDAO dao = new AccomDAO();
 			int cnt = dao.insAccom(accom);

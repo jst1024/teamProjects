@@ -4,26 +4,24 @@ public class Theme {
 	private int no;
 	private String title;
 	private String subtitle;
-	private String photo;
 	private String content;
 	private String reltag;
 	private int visited;
 	private int liked;
-	private String author;
+	private String photo;
 	
 	public Theme() {}
-	public Theme(int no, String title, String subtitle, String photo, String content, String reltag, int visited,
-			int liked, String author) {
+	public Theme(int no, String title, String subtitle, String content, String reltag, int visited, int liked,
+			String photo) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.subtitle = subtitle;
-		this.photo = photo;
 		this.content = content;
 		this.reltag = reltag;
 		this.visited = visited;
 		this.liked = liked;
-		this.author = author;
+		this.photo = photo;
 	}
 	public int getNo() {
 		return no;
@@ -42,12 +40,6 @@ public class Theme {
 	}
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
-	}
-	public String getPhoto() {
-		return photo;
-	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
 	}
 	public String getContent() {
 		return content;
@@ -73,18 +65,17 @@ public class Theme {
 	public void setLiked(int liked) {
 		this.liked = liked;
 	}
-	public String getAuthor() {
-		return author;
+	public String getPhoto() {
+		return photo;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	@Override
 	public String toString() {
-		return "Theme [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", photo=" + photo + ", content="
-				+ content + ", reltag=" + reltag + ", visited=" + visited + ", liked=" + liked + ", author=" + author
-				+ "]";
+		return "Theme [no=" + no + ", title=" + title + ", subtitle=" + subtitle + ", content=" + content + ", reltag="
+				+ reltag + ", visited=" + visited + ", liked=" + liked + ", photo=" + photo + "]";
 	}
 	
 }

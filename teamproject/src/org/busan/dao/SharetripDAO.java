@@ -27,10 +27,9 @@ public class SharetripDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("regdate"),
-						rs.getString("author"),
-						rs.getString("photo"),
 						rs.getInt("liked"),
-						rs.getInt("replycount"));
+						rs.getInt("replycount"),
+						rs.getString("photo"));
 				stList.add(st);
 			}
 		} catch(Exception e){
@@ -54,10 +53,9 @@ public class SharetripDAO {
 				st.setNo(rs.getInt("no"));
 				st.setTitle(rs.getString("title"));
 				st.setRegdate(rs.getString("regdate"));
-				st.setAuthor(rs.getString("author"));
-				st.setAuthor(rs.getString("photo"));
 				st.setLiked(rs.getInt("liked"));
-				st.setreplycount(rs.getInt("replycount"));
+				st.setReplycount(rs.getInt("replycount"));
+				st.setPhoto(rs.getString("Photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -74,7 +72,6 @@ public class SharetripDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(OracleDB.INS_SHARETRIP);
 			pstmt.setString(1, st.getTitle());
-//			pstmt.setString(2, st.getAuthor());
 			pstmt.setString(2, st.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

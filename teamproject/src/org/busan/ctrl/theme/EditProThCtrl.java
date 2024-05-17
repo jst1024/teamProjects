@@ -29,7 +29,6 @@ public class EditProThCtrl extends HttpServlet {
 		th.setTitle(request.getParameter("title"));
 		th.setContent(request.getParameter("content"));
 		th.setReltag(request.getParameter("reltag"));
-		th.setAuthor(request.getParameter("author"));
 		
 		ThemeDAO dao = new ThemeDAO();
 		int cnt = dao.editProTheme(th);

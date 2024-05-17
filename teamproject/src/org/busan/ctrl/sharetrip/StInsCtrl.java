@@ -2,7 +2,6 @@ package org.busan.ctrl.sharetrip;
 
 import java.io.File;
 import java.io.IOException;
-
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -12,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import org.busan.dao.AtcfileDAO;
 import org.busan.dao.SharetripDAO;
+import org.busan.dto.Atcfile;
 import org.busan.dto.Sharetrip;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -55,20 +55,19 @@ public class StInsCtrl extends HttpServlet {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
 			st.setTitle(mr.getParameter("title"));
-//			st.setAuthor(mr.getParameter("author"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			
 			
-			String oriFile = mr.getOriginalFileName(item); //d:\teamproject/WebContent/stUpload\data001.zip
-			String fileName = mr.getFilesystemName(item); //data001.zip
+			String oriFile = mr.getOriginalFileName(item); //d:\teamproject/WebContent/stUpload\data001.사진
+			String fileName = mr.getFilesystemName(item); //data001.사진
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
-			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
 			st.setPhoto(fileName);
 			
 			SharetripDAO dao = new SharetripDAO();
 			int cnt = dao.insSharetrip(st);
+			
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

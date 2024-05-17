@@ -35,15 +35,14 @@ public class EditMemberProCtrl extends HttpServlet {
             e.printStackTrace();
         }
 		Member mem = new Member(
-				Integer.parseInt(request.getParameter("no")),
-	            Integer.parseInt(request.getParameter("grade")),
 				request.getParameter("id"),
 				enPw,
-				request.getParameter("nickname"),
+				request.getParameter("kname"),
 				request.getParameter("email"),
 				request.getParameter("tel"),
 				request.getParameter("address1")+"<br>"+request.getParameter("address2"),
-				request.getParameter("postcode"));
+				request.getParameter("postcode"),
+				request.getParameter("regdate"));
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.upMember(mem);

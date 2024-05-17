@@ -47,7 +47,7 @@ public class LogInProCtrl extends HttpServlet {
 		}
 		if(id.equals(mem.getId()) && pw.equals(mem.getPw())) { //로그인 처리 대상
 			session.setAttribute("sid", mem.getId());
-			session.setAttribute("sname", mem.getNickname());
+			session.setAttribute("sname", mem.getName());
 			response.sendRedirect("/teamproject");
 		} else if(id.equals(mem.getId())) { //비밀번호 틀림
 			//response.sendRedirect("/member/login.jsp?msg=해당 회원의 비밀번호가 일치하지 않습니다");

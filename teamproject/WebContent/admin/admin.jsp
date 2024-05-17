@@ -9,7 +9,7 @@
 <head>
 <%@ include file="/head.jsp" %>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 페이지</title>
 </head>
 <body>
 	<div id="header">
@@ -36,14 +36,14 @@
 							</tr>
 						</thead>
 						<tbody class="container">
-							<!-- c:forEach var="dto" items="${tmp}" varStatus="status" -->
+							 <c:forEach var="dto" items="${notiList }" varStatus="status">
 								<tr class="row">
 		<!-- 						<th scope="row" class="col-1"><input type="checkbox" name="board_index" value="${dto.boardno }">&nbsp;&nbsp;${dto.boardno }</th>  -->
 		<!--						<td class="col-11">${dto.title}</td>  -->
-									<th scope="row" class="col-1"><input type="checkbox" name="board_index" value="1">&nbsp;&nbsp;1</th>
-									<td class="col-11">공지사항게시판</td>
+									<th scope="row" class="col-1"><input type="checkbox" name="board_index" value="${dto.no }">&nbsp;&nbsp;${dto.no }</th>
+									<td class="col-11">${dto.title }</td>
 								</tr>
-							<!-- /c:forEach -->
+							</c:forEach> 
 						</tbody>
 					</table>
 					<div style="position:absolute; bottom:70px; width:80%; height:40px; display:flex; justify-content:center; align-items:center;">
@@ -56,12 +56,10 @@
 					<nav aria-label="Page navigation example" style="position:absolute; bottom:10px;">
 						<ul class="pagination">
 							<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-							<!-- c:forEach var="dto_list" items="${tmp_list}" varStatus="status" -->
-					<!--    <li class="page-item"><a class="page-link" href="#">${status}</a></li>	-->
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<!-- /c:forEach -->
+							<c:forEach var="dto_list" items="${tmp_list}" varStatus="status">
+					    <li class="page-item"><a class="page-link" href="#">${status}</a></li>
+							
+							</c:forEach>
 							<li class="page-item"><a class="page-link" href="#">Next</a></li>
 						</ul>
 					</nav>

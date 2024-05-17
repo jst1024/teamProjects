@@ -27,8 +27,8 @@ public class EventDAO {
 						rs.getString("ondate"),
 						rs.getString("content"),
 						rs.getString("tel"),
-						rs.getString("photo"),
-						rs.getString("homepage"));
+						rs.getString("homepage"),
+						rs.getString("photo"));
 				eventList.add(eve);
 			}
 		} catch(Exception e){
@@ -54,8 +54,8 @@ public class EventDAO {
 				eve.setOndate(rs.getString("ondate"));
 				eve.setContent(rs.getString("content"));
 				eve.setTel(rs.getString("tel"));
-				eve.setPhoto(rs.getString("photo"));
 				eve.setHomepage(rs.getString("homepage"));
+				eve.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -75,8 +75,8 @@ public class EventDAO {
 			pstmt.setString(2, eve.getOndate());
 			pstmt.setString(3, eve.getContent());
 			pstmt.setString(4, eve.getTel());
-			pstmt.setString(5, eve.getPhoto());
-			pstmt.setString(6, eve.getHomepage());
+			pstmt.setString(5, eve.getHomepage());
+			pstmt.setString(6, eve.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -96,8 +96,8 @@ public class EventDAO {
 			pstmt.setString(2, eve.getOndate());
 			pstmt.setString(3, eve.getContent());
 			pstmt.setString(4, eve.getTel());
-			pstmt.setString(5, eve.getPhoto());
-			pstmt.setString(6, eve.getHomepage());
+			pstmt.setString(5, eve.getHomepage());
+			pstmt.setString(6, eve.getPhoto());
 			pstmt.setInt(7, eve.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

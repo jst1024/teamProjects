@@ -4,16 +4,16 @@ public class Notice {
 	private int no;
 	private String title;
 	private String content;
-	private String resdate;
+	private String regdate;
 	
 	
 	public Notice() { }
-	public Notice(int no, String title, String content, String resdate) {
+	public Notice(int no, String title, String content, String regdate) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.content = content;
-		this.resdate = resdate;
+		this.regdate = regdate;
 	}
 	public int getNo() {
 		return no;
@@ -33,16 +33,16 @@ public class Notice {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getResdate() {
-		return resdate;
+	public String getRegdate() {
+		return regdate;
 	}
-	public void setResdate(String resdate) {
-		this.resdate = resdate;
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
 	}
 
 	@Override
 	public String toString() {
-		return "Notice [no=" + no + ", title=" + title + ", content=" + content + ", resdate=" + resdate + "]";
+		return "Notice [no=" + no + ", title=" + title + ", content=" + content + ", regdate=" + regdate + "]";
 	}
 	 
 }
