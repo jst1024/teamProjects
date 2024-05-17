@@ -36,7 +36,7 @@
 				<nav aria-label="breadcrumb" style="text-align:right">
 				  <ol class="breadcrumb">
 				    <li class="breadcrumb-item"><a href="#">Home</a></li>
-				    <li class="breadcrumb-item"><a href="${path0 }/stList.do">여행공유</a></li>
+				    <li class="breadcrumb-item"><a href="${path0 }/StList.do">여행공유</a></li>
 				    <li class="breadcrumb-item active" aria-current="page">여행공유 목록</li>
 				  </ol>
 				</nav>
@@ -50,25 +50,19 @@
 		<div class="card_midium_horizontal grid1">
 		<div class="col1" >
 			<div style="width: max-content">
-				<c:forEach var="dto" items="${tmp}">
+				<c:forEach var="dto" items="${stList }">
 					<div class="card_midium_horizontal_div">
 						<div style="">
 							<div class="card_midium_horizontal_div_img">
 								<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
-								<img src="${path0 }/images/.jpg" alt="" />
+								<img src="${path0 }/stUpload/${dto.photo}" alt="" />
 							</div>
 							<div class="card_midium_horizontal_div_txt">
 								<!-- <h3>${dto.title}</h3> -->
-								<h3 style="">제목</h3>
+								<h3 style="">${dto.title}</h3>
 								<hr>
-								<!-- <span>${dto.subtitle}</span> -->
-								<span>부제목</span>
 
-								<!-- <p>${dto.content} </p> -->
-								${dto.content }
-								<div>
-									<p>콘텐츠(글자글자수제한)콘텐츠(글글자수제한)콘제한)콘텐츠(글자수제한)</p>
-								</div>
+								
 							</div>
 						</div>
 					</div>

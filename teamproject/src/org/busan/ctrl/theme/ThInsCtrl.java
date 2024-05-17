@@ -68,7 +68,7 @@ public class ThInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/thList.do");
+				response.sendRedirect(home+"/ThemeList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/theme/th_ins.jsp");

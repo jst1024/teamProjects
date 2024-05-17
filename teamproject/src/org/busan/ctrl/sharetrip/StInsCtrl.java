@@ -45,11 +45,17 @@ public class StInsCtrl extends HttpServlet {
 			String saveDirectory = application.getRealPath("/stUpload"); //teamproject/WebContent/stUpload
 			int maxSize = 1024*1024*10;
 			String encoding = "UTF-8";
+			
+			File dir = new File(saveDirectory);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
 			st.setTitle(mr.getParameter("title"));
-			st.setAuthor(mr.getParameter("author"));
+//			st.setAuthor(mr.getParameter("author"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			
@@ -67,7 +73,7 @@ public class StInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/stList.do");
+				response.sendRedirect(home+"/StList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/sharetrip/st_ins.jsp");

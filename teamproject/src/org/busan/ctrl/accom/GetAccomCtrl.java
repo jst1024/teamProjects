@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.busan.dao.AccomDAO;
 import org.busan.dto.Accom;
 
-@WebServlet("/GetAttr.do")
+@WebServlet("/GetAccom.do")
 public class GetAccomCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

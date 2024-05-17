@@ -68,7 +68,7 @@ public class FoodInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/foodList.do");
+				response.sendRedirect(home+"/FoodList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/food/food_ins.jsp");

@@ -62,7 +62,7 @@ public class GuideInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/gmList.do");
+				response.sendRedirect(home+"/GuideList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/guidemap/gm_ins.jsp");

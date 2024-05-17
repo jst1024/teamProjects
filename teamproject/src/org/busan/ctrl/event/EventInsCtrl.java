@@ -65,7 +65,7 @@ public class EventInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/eventList.do");
+				response.sendRedirect(home+"/EventList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/event/event_ins.jsp");

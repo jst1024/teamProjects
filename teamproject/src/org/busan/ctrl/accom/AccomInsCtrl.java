@@ -65,7 +65,7 @@ public class AccomInsCtrl extends HttpServlet {
 			
 			if(cnt>0) {
 				System.out.println("자료 추가 성공");
-				response.sendRedirect(home+"/accomList.do");
+				response.sendRedirect(home+"/AccomList.do");
 			} else {
 				System.out.println("자료 추가 실패");
 				response.sendRedirect(home+"/accom/accom_ins.jsp");
