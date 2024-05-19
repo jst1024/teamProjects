@@ -20,6 +20,7 @@
 th.item1 { width:8%; }
 th.item2 { width:60%; }
 th.item3 { width:20%; }
+.btn-group { float:right; margin-right:5vw; }
 </style>
 </head>
 <body>
@@ -47,7 +48,6 @@ th.item3 { width:20%; }
 							<th class="item1">번호</th>
 							<th class="item2">제목</th>
 							<th class="item3">작성일</th>
-							<th class="item4">조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,17 +63,22 @@ th.item3 { width:20%; }
 									<a href="${path0 }/GetNotice.do?no=${dto.no }">${dto.title }</a>
 									</c:if>
 								</td>
-								<td>${dto.resdate }</td><td>${dto.visited }</td>
+								<td>${dto.regdate }</td>
 							</tr>
 							</c:forEach>
 						</c:if>
 						<c:if test="${empty notiList }">
 							<tr>
-								<td colspan="4"><strong>공지사항이 존재하지 않습니다.</strong></td>
+								<td colspan="3"><strong>공지사항이 존재하지 않습니다.</strong></td>
 							</tr>
 						</c:if>
 					</tbody>
 				</table>
+				<c:if test="${sid.equals('admin') }">
+				<div class="btn-group">
+				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
+				</div>
+				</c:if>
 				<script>
 				$(document).ready(function(){
 					$("#tb1").DataTable({
@@ -82,20 +87,11 @@ th.item3 { width:20%; }
 				});
 				</script>
 				<hr>
-				<c:if test="${sid.equals('admin') }">
-				<div class="btn-group">
-				  <a href="${path0 }/notice/noti_ins.jsp" class="btn btn-secondary">글 등록</a>
-				</div>
-				</c:if>
+				<br>
+				<br>
 			</div>
 		</div>
 	</section>
-	<section class="page" id="page2">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title"></h3>
-
-		</div>	
-	</section>	
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>

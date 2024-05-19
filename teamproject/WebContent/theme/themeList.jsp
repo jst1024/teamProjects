@@ -71,7 +71,7 @@
                     	<c:forEach var="dto" items="${themeList}">
                     	
                         <!-- 복붙할영역 -->
-                        <a class="card_small_board_div" href="GetTh.do?no=${theme.no }"> <!-- ìì¸ì£¼ìë§ ë°ê¾¸ë©´ë¨ -->
+                        <a class="card_small_board_div" href="GetTh.do?no=${dto.no }"> <!-- ìì¸ì£¼ìë§ ë°ê¾¸ë©´ë¨ -->
                             <div style="">
                                 <div class="card_small_board_div_img">
                                     <!-- <img src="${path0 }경로기입" alt=""/> -->

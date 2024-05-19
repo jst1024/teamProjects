@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.busan.dao.MemberDAO;
 import org.busan.dto.Member;
+import org.busan.util.AES256;
 
 @WebServlet("/JoinPro.do")
 public class JoinProCtrl extends HttpServlet {
@@ -26,10 +27,19 @@ public class JoinProCtrl extends HttpServlet {
       response.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
       
+      String pw = request.getParameter("pw");
+      String key = "%02x";
+      String enPw = "";
+      
+      try {
+      enPw = AES256.encryptAES256(pw, key);
+      } catch(Exception e) {
+    	  e.printStackTrace();
+      }
       Member mem = new Member(
             
             request.getParameter("id"),
-            request.getParameter("pw"),
+            enPw,
             request.getParameter("name"),
             request.getParameter("email"),
             request.getParameter("tel"),

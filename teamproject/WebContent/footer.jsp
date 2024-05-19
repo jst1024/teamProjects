@@ -28,9 +28,9 @@
 		}
 		</script>
 		<br><br>
-		<div id="copyright">
-			<p class="addr">우) 07658 서울특별시 강서구 화곡로 302(화곡동) 강서구 발산동 소개,<br> TEL : 02-2600-6114(120다산콜센터로 연결) 02-2600-6330(평일 주간/야간 당직실, 공휴일)</p>
-			<p class="copy">COPYRIGHT(C) SEOUL BALSAN INTRO. ALL RIGHTS RESERVED.</p>
+		<div id="copyright" style="color:#CCC;">
+			<p class="addr" style="color:#CCC;">우) 07658 서울특별시 강서구 화곡로 302(화곡동) 강서구 발산동 소개,<br> TEL : 02-2600-6114(120다산콜센터로 연결) 02-2600-6330(평일 주간/야간 당직실, 공휴일)</p>
+			<p class="copy" style="color:#CCC;">COPYRIGHT(C) SEOUL BALSAN INTRO. ALL RIGHTS RESERVED.</p>
 		</div>
 	</div> 
 </footer>

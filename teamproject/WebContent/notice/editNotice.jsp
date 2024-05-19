@@ -31,7 +31,7 @@
 						<tr>
 							<th><label for="no">글 번호</label></th>
 							<td>
-								<input type="text" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" readonly>
+								<input type="text" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" disabled>
 							</td>
 						</tr>
 						<tr>
@@ -47,15 +47,9 @@
 							</td>
 						</tr>
 						<tr>
-							<th><label for="resdate">작성일시</label></th>
+							<th><label for="regdate">작성일시</label></th>
 							<td>
-								<input type="text" name="resdate" id="resdate" class="form-control" value="${noti.resdate }" disabled>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="visited">읽은횟수</label></th>
-							<td>
-								<input type="text" name="visited" id="visited" class="form-control" value="${noti.visited }" disabled>
+								<input type="text" name="regdate" id="regdate" class="form-control" value="${noti.regdate }" disabled>
 							</td>
 						</tr>
 					</tbody>

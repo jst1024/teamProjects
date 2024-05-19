@@ -24,13 +24,14 @@
 	.card_midium_horizontal_div_txt {padding: 0 15px;}
 	.card_midium_horizontal_div_img {display:flex; justify-contents:center; align-items:center; width:295px; height:254px;}
 	.card_midium_horizontal_div_img > img { display:block; clear:both; width:100%;}
+	.ins_btn { display: flex; justify-content: center; background-color: skyblue; border-radius: 10px; margin-right: 5vw; padding: 10px; width:120px; float:right; }
 </style>
 </head>
 <body>
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
-<div id="contents">
+<div id="content">
 	<section class="page" id="page1">
 			<div style="width:1400px; margin:0 auto;">
 				<nav aria-label="breadcrumb" style="text-align:right">
@@ -51,7 +52,7 @@
 		<div class="col1" >
 			<div style="width: max-content">
 				<c:forEach var="dto" items="${stList }">
-					<div class="card_midium_horizontal_div">
+					<div class="card_midium_horizontal_div" onclick="location.href='${path0}/GetSt.do?no=${dto.no}'">
 						<div style="">
 							<div class="card_midium_horizontal_div_img">
 								<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
@@ -61,21 +62,19 @@
 								<!-- <h3>${dto.title}</h3> -->
 								<h3 style="">${dto.title}</h3>
 								<hr>
-
-								
 							</div>
 						</div>
 					</div>
-
 				</c:forEach>
-				<a href="${path0 }/sharetrip/st_ins.jsp" >글 등록</a>
+				</div>
 			</div>
 		</div>
-		
 	</div>
-
-			</div>
-		</div>
+</div>
+<hr>
+<div class="ins_btn">
+	<a href="${path0 }/sharetrip/st_ins.jsp" >글 등록</a>
+</div>
 	</section>
 	<section class="page" id="page2">
 		<div style="width:1400px; margin:0 auto;">	

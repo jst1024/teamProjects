@@ -45,11 +45,7 @@ th.item3 { width:20%; }
 						</tr>
 						<tr>
 							<th>작성일시</th>		
-							<td>${noti.resdate }</td>
-						</tr>
-						<tr>
-							<th>조회수</th>
-							<td>${noti.visited }</td>
+							<td>${noti.regdate }</td>
 						</tr>
 					</tbody>
 				</table>

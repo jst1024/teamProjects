@@ -10,10 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.busan.dao.AtcfileDAO;
 import org.busan.dao.SharetripDAO;
-import org.busan.dto.Atcfile;
 import org.busan.dto.Sharetrip;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -36,6 +35,9 @@ public class StInsCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		//댓글 등록 시 sid(세션아이디) 쓰기 위해 세션 연결
+		HttpSession session = request.getSession();
+        String sid = (String) session.getAttribute("sid");
 
 		Sharetrip st = new Sharetrip();
 		
@@ -54,6 +56,7 @@ public class StInsCtrl extends HttpServlet {
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
+			st.setId(sid);
 			st.setTitle(mr.getParameter("title"));
 			
 			Enumeration files = mr.getFileNames();
@@ -67,7 +70,7 @@ public class StInsCtrl extends HttpServlet {
 			
 			SharetripDAO dao = new SharetripDAO();
 			int cnt = dao.insSharetrip(st);
-			
+
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

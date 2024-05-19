@@ -12,6 +12,20 @@
 </head>
 <body>
 
+<%
+//테스트용 더미 Food객체 List
+List<Link> tmp = new ArrayList<>();
+Link link_card1 = new Link(1,"명소", "subTitle", "/attr/","/img/main/1.jpg");
+Link link_card2 = new Link(2,"음식", "subTitle", "/attr/","/img/main/2.jpg");
+Link link_card3 = new Link(3,"숙박", "subTitle", "/attr/","/img/main/3.jpg");
+Link link_card4 = new Link(4,"쇼핑", "subTitle", "/attr/","/img/main/4.jpg");
+Link link_card5 = new Link(5,"축제", "subTitle", "/attr/","/img/main/5.jpg");
+tmp.add(link_card1);tmp.add(link_card2);tmp.add(link_card3);tmp.add(link_card4);tmp.add(link_card5);
+// Link(Integer no, String title, String subTitle, String url, String photo)
+
+request.setAttribute("tmp",tmp);
+%>
+
 	<div id="header">
 		<%@ include file="/header.jsp" %>
 	</div>
@@ -43,68 +57,91 @@
     </script>
 	
 	
-		<!-- 테마여행페이지  -->
-	<div>
-	
-	</div>
-	
-	
-    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
-		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
-			<span style="text-align:center; line-height:1.1">
-				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
-				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
-				<span style="font-size:64px; font-weight:400;">32123132321</span>
-			</span>
-		</div>		
+	<!-- 메인 -->
+	<div id="index_1">
+	    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+			<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
+				<span style="text-align:center; line-height:1.1">
+					<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
+					<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
+					<span style="font-size:64px; font-weight:400;">32123132321</span>
+				</span>
+			</div>		
+	    </div>
     </div>
-        <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
-		<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
-			<span style="text-align:center; line-height:1.1">
-				<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
-				<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
-				<span style="font-size:64px; font-weight:400;">21321312</span>
-			</span>
-		</div>		
-
     
-    <!-- 게시판 -->
-    <!-- 화면분할 -->
-    <div style="width:100vw; height:100vh; background-color:#FFF;display:flex; justify-content:center; align-items:center;">
-    	<!-- 틀 -->
-		<div style="width: 1600px; height: 800px; border: 1px solid #333; position:relative; display:flex; justify-content:center;">
-			<table class="table table-hover" style="width:100%">
-				<thead class="container"  style="width:100%">
-					<tr class="row"  style="width:100%">
-						<th scope="col" class="col-1">글번호</th>
-						<th scope="col" class="col-6">제목</th>
-						<th scope="col" class="col-3">작성자</th>
-						<th scope="col" class="col-2">작성일</th>
-					</tr>
-				</thead>
-				<tbody class="container">
-					<!-- 반복실행문 c:foreach -->
-					<tr class="row">
-						<th scope="row" class="col-1">1</th>
-						<td class="col-6">[CSS] justify-content 속성</td>
-						<td class="col-3">김모도의 개발일지</td>
-						<td class="col-2">2024. 05. 07</td>
-					</tr>
-				</tbody>
-			</table>
-			<hr>
-			<nav aria-label="Page navigation example" style="position:absolute; bottom:10px;">
-				<ul class="pagination">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
-			</nav>
+    <!-- 카드형식 소개 - 명소, 음식, 숙박, 쇼핑, 축제 -->
+	<div id="index_2" style="width:100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
+	   	<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:end;">
+	   		<div style="width:80%; background-color:#FFF; height:100%; display:flex; align-items:center; justify-content:end;">
+				<div style="width:100%; float:right; padding-left:150px;">
+					<h2 style="color:#333;">카드템플릿제목</h2>
+					<hr>
+					<div class="card_midium_horizontal">
+					<div class="" >
+						<div style="width: max-content">
+							<c:forEach var="dto" items="${tmp}">
+								<div class="card_midium_horizontal_div">
+									<div style="background-color:#FFF; height:420px;">
+										<div class="card_midium_horizontal_div_img">
+											<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
+											<img src="${path0}/${dto.photo}" alt="" />
+										</div>
+										<div class="card_midium_horizontal_div_txt">
+											<h3>${dto.title}</h3>
+											<hr>
+											<span>${dto.subTitle}</span>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
+	<!-- 추천여행 -->
+    <div id="index_3" style="width: 100vw; height: 100vh; min-width:1400px; background-image:url('./img/main/bg_image1.jpg'); background-size:cover; position:relative;">
+	   	<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:end;">
+	   		<div style="width:80%; height:100%; display:flex; align-items:center; justify-content:start;">
+				<div style="background-color:rgba(255,255,255,0.7); width:650px; height:600px; margin-left:350px; ">
+					<div style="width:33.3%; height:50%; background-color:#FFF; float:left;">
+						<div style="padding:30px 0 0 20px;">
+							<span style="color:#AAA">Place</span>
+							<h1 style="color:#333">문화관광</h1>
+							<br>
+							<span style="color:#888">1234</span>
+						</div>
+					</div>
+					<div style="width:66.6%; height:50%; background-color:#CCC; float:right;">
+						<img src="https://www.visitbusan.net/uploadImgs/files/ctcommentator/20240220175222430_thumbL" alt="" style="width:100%; height:100%; object-fit:cover;"></img>
+					</div>
+					<div style="width:33.3%; height:50%; background-color:#FFF; float:left;">
+						<div style="padding:30px 0 0 20px;">
+							<span style="color:#AAA">Ready</span>
+							<h1 style="font-size:22pt; color:#333;">여행준비정보</h1>
+							<br>
+							<span style="color:#888">1234</span>
+						</div>
+					</div>
+					<div style="width:66.6%; height:50%; background-color:#CCC; float:right;">
+						<img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/1jPF/image/zxtPfO-cmpvhf9sptrRMDSriqxI.jpg" alt="" style="width:100%; height:100%; object-fit:cover;"></img>
+					</div>
+				</div>
+				<div style="background-color:rgba(255,255,255,0.7); width:300px; height:600px; margin-left:10px; position:relative;">
+					<div style="width:100%; height:25%; background-color:#FFF; float:left; text-align:right; ">
+						<h3 style="margin:40px 30px 0 0; font-size:28pt; font-weight:500;">관광안내소</h3>
+						<span style="margin:0 30px 0 0; font-size:20pt; font-weight:100;">환전/로밍/짐캐리</span>
+					</div>
+					<div style="position:absolute; width:280px; height:200px; background-color:#FFF; top:180px; left:70px; background-size:150% 150%; z-index:3; background-position:center center; background-image:url('https://visitbusan.net/uploadImgs/files/infofc/20210405130245227_thumbL')"></div>
+					<div style="position:absolute; width:300px; height:200px; background-color:#FFF; top:390px; left:-20px; background-size:150% 150%; z-index:2; background-position:center center; background-image:url('https://www.visitbusan.net/uploadImgs/files/infofc/20201113102621490_thumbL')"></div>
+				</div>
+			</div>
+		</div>	
+    </div>
 	
 	<div id="footer">
 	<%@ include file="/footer.jsp" %>

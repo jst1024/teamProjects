@@ -1,6 +1,7 @@
 package org.busan.ctrl.sharetrip;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.busan.dao.ReplyDAO;
 import org.busan.dao.SharetripDAO;
+import org.busan.dto.Reply;
 import org.busan.dto.Sharetrip;
 
 @WebServlet("/GetSt.do")
@@ -27,13 +30,25 @@ public class GetStCtrl extends HttpServlet {
 
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		SharetripDAO dao = new SharetripDAO();
-		Sharetrip st = dao.getSharetrip(no);
+		SharetripDAO sharetripdao = new SharetripDAO();
+		ReplyDAO replyDao = new ReplyDAO();
+		
+		Sharetrip st = sharetripdao.getSharetrip(no);
+		
+		if (st == null) {
+	        response.sendError(HttpServletResponse.SC_NOT_FOUND, "입력된 여행 정보가 없습니다.");
+	        return;
+	    }
+		
+        //리스트 가져오기
+		List<Reply> replyList = replyDao.getReplies(no);
 		
 		request.setAttribute("st", st);
+		request.setAttribute("replyList", replyList);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/getSt.jsp");
 		view.forward(request, response);
-		
 	}
+	
 
 }

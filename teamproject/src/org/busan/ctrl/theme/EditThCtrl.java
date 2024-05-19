@@ -36,9 +36,9 @@ public class EditThCtrl extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		ThemeDAO dao = new ThemeDAO();
-		Theme th = dao.getTheme(no);
+		Theme theme = dao.getTheme(no);
 		
-		request.setAttribute("th", th);
+		request.setAttribute("theme", theme);
 		RequestDispatcher view = request.getRequestDispatcher("/theme/editTh.jsp");
 		view.forward(request, response);
 	}

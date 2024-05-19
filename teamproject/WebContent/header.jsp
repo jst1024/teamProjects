@@ -24,23 +24,23 @@
                             <li><a href="${hpath }/AttrList.do" class="dp2">명소</a></li>
                             <li><a href="${hpath }/FoodList.do" class="dp2">음식</a></li>
                             <li><a href="${hpath }/AccomList.do" class="dp2">숙박</a></li>
-                            <li><a href="${hpath }" class="dp2">쇼핑</a></li>
-                            <li><a href="${hpath }" class="dp2">축제</a></li>
+                            <li><a href="${hpath }/" class="dp2">쇼핑</a></li>
+                            <li><a href="${hpath }/" class="dp2">축제</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">추천여행</a>
                         <ul class="sub">
-                            <li><a href="${hpath }/ThemeList.do" class="dp2">테마여행</a></li>
+                            <li><a href="${hpath }/ThemeCtrl.do" class="dp2">테마여행</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">여행준비</a>
                         <ul class="sub">
                             <li><a href="${hpath }/GuideList.do" class="dp2">가이드북&지도</a></li>
-                            <li><a href="${hpath }" class="dp2">문화관광해설사</a></li>
-                            <li><a href="${hpath }" class="dp2">여행준비정보</a></li>
-                            <li><a href="${hpath }" class="dp2">관광안내소</a></li>
+                            <li><a href="${hpath }/readytour/curator.jsp" class="dp2">문화관광</a></li>
+                            <li><a href="${hpath }/readytour/readyinfo.jsp" class="dp2">여행준비정보</a></li>
+                            <li><a href="${hpath }/readytour/tourinfo.jsp" class="dp2">관광안내소</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
@@ -55,19 +55,20 @@
             </nav>
             <div class="login">
                 <ul>
-                <c:choose>
-					<c:when test="${sid.equals('admin') }">
-					<li><a href="${hpath }/AdminMain.do">관리자게시판</a></li>
-					</c:when>
-                	<c:when test="${empty sid }">
-                	<li><a href="${hpath }/member/login.jsp">로그인</a></li>
-                    <li><a href="${hpath }/Join.do">회원가입</a></li>
-					</c:when>
-					<c:when test="${not empty sid }">
-					<li><a href="${hpath }/LogOut.do">로그아웃</a></li>
-					<li><a href="${hpath }/EditMember.do?id=${sid }">회원정보</a></li>
-					</c:when>
-                </c:choose>
+                   <c:choose>
+		               <c:when test="${sid.equals('admin') }">
+			               <li><a href="${hpath }/LogOut.do">로그아웃</a></li>
+			               <li><a href="${hpath }/AdminMain.do">관리자게시판</a></li>
+		               </c:when>
+	                   <c:when test="${empty sid }">
+		                   <li><a href="${hpath }/member/login.jsp">로그인</a></li>
+		                   <li><a href="${hpath }/Join.do">회원가입</a></li>
+		               </c:when>
+		               <c:when test="${not empty sid }">
+			               <li><a href="${hpath }/LogOut.do">로그아웃</a></li>
+		    	           <li><a href="${hpath }/EditMember.do?id=${sid }">회원정보</a></li>
+		               </c:when>
+                	</c:choose>
                 </ul>
             </div>
         </div>

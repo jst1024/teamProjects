@@ -25,6 +25,7 @@ public class SharetripDAO {
 			while(rs.next()) {
 				Sharetrip st = new Sharetrip(
 						rs.getInt("no"),
+						rs.getString("id"),
 						rs.getString("title"),
 						rs.getString("regdate"),
 						rs.getInt("liked"),
@@ -51,11 +52,12 @@ public class SharetripDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				st.setNo(rs.getInt("no"));
+				st.setId(rs.getString("id"));
 				st.setTitle(rs.getString("title"));
 				st.setRegdate(rs.getString("regdate"));
 				st.setLiked(rs.getInt("liked"));
 				st.setReplycount(rs.getInt("replycount"));
-				st.setPhoto(rs.getString("Photo"));
+				st.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -71,9 +73,11 @@ public class SharetripDAO {
 		try {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(OracleDB.INS_SHARETRIP);
-			pstmt.setString(1, st.getTitle());
-			pstmt.setString(2, st.getPhoto());
+			pstmt.setString(1, st.getId());
+			pstmt.setString(2, st.getTitle());
+			pstmt.setString(3, st.getPhoto());
 			cnt = pstmt.executeUpdate();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {

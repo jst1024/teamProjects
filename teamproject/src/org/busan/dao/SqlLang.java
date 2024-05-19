@@ -17,8 +17,8 @@ public interface SqlLang {
 	
 	String SELECT_ALL_MEMBER = "select * from member order by regdate";
 	String SELECT_ONE_MEMBER = "select * from member where id=?";
-	String INS_MEMBER = "insert into member values(?,?,?,?,?,?,?,sysdate)";
-	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=?, addr=?, postcode=? where id=?";
+	String INS_MEMBER = "insert into member values(?,?,?,?,?,?,?,?)";
+	String UPD_MEMBER = "update member set pw=?,name=?,email=?,tel=? where id=?";
 	String DEL_MEMBER = "delete from member where id=?";
 	
 	String SELECT_ALL_EVENT = "select * from event order by no desc";
@@ -59,6 +59,11 @@ public interface SqlLang {
 	String SELECT_SHARETRIP_BYNO = "select * from sharetrip where no=?";
 	String UPD_SHARETRIP = "update sharetrip set title=?, photo=? where no=?";
 	String DEL_SHARETRIP = "delete from sharetrip where no=?";
+	
+	String SELECT_ALL_REPLY = "select * from reply order by regdate desc";
+	String SELECT_REPLY_BYNO = "select * from reply where no=?";
+	String UPD_REPLY = "update reply set content=? where boardNo=? and no=?";
+	String DEL_REPLY = "delete from reply where boardNo=? and no=?";
 	
 	Connection connect();
 	void close(Connection con, PreparedStatement pstmt);

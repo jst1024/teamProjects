@@ -1,22 +1,20 @@
-package org.busan.ctrl.theme;
+package org.busan.ctrl.reply;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.ThemeDAO;
-import org.busan.dto.Theme;
+import org.busan.dao.ReplyDAO;
 
-@WebServlet("/GetTh.do")
-public class GetThCtrl extends HttpServlet {
+@WebServlet("/DelReply.do")
+public class DelReplyCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public GetThCtrl() {
+    public DelReplyCtrl() {
         super();
     }
 
@@ -24,16 +22,18 @@ public class GetThCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
+		
 		int no = Integer.parseInt(request.getParameter("no"));
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
-		ThemeDAO dao = new ThemeDAO();
-		Theme theme = dao.getTheme(no);
+		ReplyDAO dao = new ReplyDAO();
+		int cnt = dao.delReply(boardNo, no);
 		
-		request.setAttribute("theme", theme);
-		RequestDispatcher view = request.getRequestDispatcher("/theme/getTh.jsp");
-		view.forward(request, response);
-		
+		if(cnt>0) {
+			response.sendRedirect("/teamproject/GetSt.do?no="+boardNo);
+		} else {
+			response.sendRedirect("/teamproject/ReplyList.do");
+		}
 	}
 
 }
