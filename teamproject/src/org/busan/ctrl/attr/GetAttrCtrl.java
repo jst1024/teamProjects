@@ -1,4 +1,4 @@
-package org.busan.ctrl.notice;
+package org.busan.ctrl.attr;
 
 import java.io.IOException;
 
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.busan.dao.NoticeDAO;
-import org.busan.dto.Notice;
+import org.busan.dao.AttrDAO;
+import org.busan.dto.Attr;
 
-@WebServlet("/GetNotice2.do")
-public class GetNoticeCtrl2 extends HttpServlet {
+@WebServlet("/GetAttr.do")
+public class GetAttrCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public GetNoticeCtrl2() {
+    public GetAttrCtrl() {
         super();
     }
 
@@ -27,11 +27,11 @@ public class GetNoticeCtrl2 extends HttpServlet {
 
 		int no = Integer.parseInt(request.getParameter("no"));
 		
-		NoticeDAO dao = new NoticeDAO();
-		Notice noti = dao.getNotice2(no);
+		AttrDAO dao = new AttrDAO();
+		Attr attr = dao.getAttr(no);
 		
-		request.setAttribute("noti", noti);
-		RequestDispatcher view = request.getRequestDispatcher("/notice/getNotice.jsp");
+		request.setAttribute("attr", attr);
+		RequestDispatcher view = request.getRequestDispatcher("/attr/getAttr.jsp");
 		view.forward(request, response);
 		
 	}

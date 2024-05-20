@@ -45,19 +45,15 @@ public class LogInProCtrl extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if(id.equals(mem.getId()) && pw.equals(mem.getPw())) { //로그인 처리 대상
+		if(id.equals(mem.getId()) && pw.equals(mem.getPw())) { 
 			session.setAttribute("sid", mem.getId());
-			session.setAttribute("sname", mem.getNickname());
-			response.sendRedirect("/pro01");
-		} else if(id.equals(mem.getId())) { //비밀번호 틀림
-			//response.sendRedirect("/member/login.jsp?msg=해당 회원의 비밀번호가 일치하지 않습니다");
-			//out.println("<script>history.go(-1);</script>");
-			request.setAttribute("msg", "해당 회원의 비밀번호가 일치하지 않습니다");
+			session.setAttribute("sname", mem.getName());
+			response.sendRedirect("/teamproject");
+		} else if(id.equals(mem.getId())) { 
+			request.setAttribute("msg", "비밀번호가 일치하지 않습니다");
 			view = request.getRequestDispatcher("/member/login.jsp");
 			view.forward(request, response);
 		} else {
-			//response.sendRedirect("/member/login.jsp?msg=해당 회원이 존재하지 않습니다");
-			//out.println("<script>history.go(-1);</script>");
 			request.setAttribute("msg", "해당 회원이 존재하지 않습니다");
 			view = request.getRequestDispatcher("/member/login.jsp");
 			view.forward(request, response);

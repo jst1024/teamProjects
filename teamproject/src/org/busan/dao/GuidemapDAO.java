@@ -25,8 +25,8 @@ public class GuidemapDAO {
 				Guidemap guidemap = new Guidemap(
 						rs.getInt("no"),
 						rs.getString("name"),
-						rs.getString("photo"),
-						rs.getString("link"));
+						rs.getString("link"),
+						rs.getString("photo"));
 				guidemapList.add(guidemap);
 			}
 		} catch(Exception e){
@@ -49,8 +49,8 @@ public class GuidemapDAO {
 			if(rs.next()) {
 				guidemap.setNo(rs.getInt("no"));
 				guidemap.setName(rs.getString("name"));
-				guidemap.setPhoto(rs.getString("photo"));
 				guidemap.setLink(rs.getString("link"));
+				guidemap.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -67,8 +67,8 @@ public class GuidemapDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(OracleDB.INS_GUIDEMAP);
 			pstmt.setString(1, guidemap.getName());
-			pstmt.setString(2, guidemap.getPhoto());
-			pstmt.setString(3, guidemap.getLink());
+			pstmt.setString(2, guidemap.getLink());
+			pstmt.setString(3, guidemap.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -85,8 +85,8 @@ public class GuidemapDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_GUIDEMAP);
 			pstmt.setString(1, guidemap.getName());
-			pstmt.setString(2, guidemap.getPhoto());
-			pstmt.setString(3, guidemap.getLink());
+			pstmt.setString(2, guidemap.getLink());
+			pstmt.setString(3, guidemap.getPhoto());
 			pstmt.setInt(4, guidemap.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {

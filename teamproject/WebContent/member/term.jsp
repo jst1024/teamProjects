@@ -9,6 +9,11 @@
 <meta charset="UTF-8">
 <title>${title }</title>
 <%@ include file="/head.jsp" %>
+<script>
+	$(document).ready(function(){
+		$(document).foundation();
+	});
+</script>
 <style>
 .container { width:1400px; }
 .page { clear:both; height:100vh; }
@@ -210,13 +215,22 @@
 			  <button type="button" onclick="all_check()" class="btn btn-secondary">전체 약관에 동의</button>
 			</div>
 			<div class="btn-group">  
-			  <button type="button" onclick="term_check()" class="btn btn-secondary">다음 단계</button>
+			  <button type="button" id="next_btn" class="btn btn-secondary">다음 단계</button>
 			</div>
 		</div>
 		<script>
-		var ck_item1 = document.getElementById("ck_item1");
-		var ck_item2 = document.getElementById("ck_item2");
+		var ck_item1 = document.queryselector("#ck_item1");
+		var ck_item2 = document.queryselector("#ck_item2");
+		var next_btn = document.queryselector("#next_btn");
 		var sw = 1;
+		next_btn.addEventListener("click", function(){
+			if(ck_item1.checked && ck_item2.checked){
+				location.href = "${path0 }/Join.do";
+			} else {
+				alert("회원 약관 및 개인정보처리 방침에 동의하지 않으셨습니다.");
+				return;
+			}
+		});
 		function all_check(){
 			if(sw==1){
 				ck_item1.checked = true;
@@ -226,14 +240,6 @@
 				ck_item1.checked = false;
 				ck_item2.checked = false;
 				sw = 1;
-			}
-		}
-		function term_check(){
-			if(ck_item1.checked && ck_item2.checked){
-				location.href = "${path0 }/Join.do";
-			} else {
-				alert("회원 약관 및 개인정보처리 방침에 동의하지 않으셨습니다.");
-				return;
 			}
 		}
 		</script>

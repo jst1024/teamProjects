@@ -3,6 +3,7 @@ package org.busan.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +26,12 @@ public class SharetripDAO {
 			while(rs.next()) {
 				Sharetrip st = new Sharetrip(
 						rs.getInt("no"),
+						rs.getString("id"),
 						rs.getString("title"),
-						rs.getString("resdate"),
-						rs.getString("author"),
-						rs.getString("photo"),
+						rs.getString("regdate"),
 						rs.getInt("liked"),
-						rs.getInt("replycount"));
+						rs.getInt("replycount"),
+						rs.getString("photo"));
 				stList.add(st);
 			}
 		} catch(Exception e){
@@ -52,12 +53,12 @@ public class SharetripDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				st.setNo(rs.getInt("no"));
+				st.setId(rs.getString("id"));
 				st.setTitle(rs.getString("title"));
 				st.setRegdate(rs.getString("regdate"));
-				st.setAuthor(rs.getString("author"));
-				st.setAuthor(rs.getString("photo"));
 				st.setLiked(rs.getInt("liked"));
-				st.setreplycount(rs.getInt("replycount"));
+				st.setReplycount(rs.getInt("replycount"));
+				st.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -73,9 +74,11 @@ public class SharetripDAO {
 		try {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(OracleDB.INS_SHARETRIP);
-			pstmt.setString(1, st.getTitle());
-			pstmt.setString(2, st.getAuthor());
+			pstmt.setString(1, st.getId());
+			pstmt.setString(2, st.getTitle());
+			pstmt.setString(3, st.getPhoto());
 			cnt = pstmt.executeUpdate();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -93,7 +96,8 @@ public class SharetripDAO {
 			con = oracle.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_SHARETRIP);
 			pstmt.setString(1, st.getTitle());
-			pstmt.setInt(2, st.getNo());
+			pstmt.setString(2, st.getPhoto());
+			pstmt.setInt(3, st.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -117,5 +121,24 @@ public class SharetripDAO {
 			oracle.close(con, pstmt);
 		}
 		return cnt;
+	}
+	
+	public int getReplyCount(int no) {
+	    int replyCount = 0;
+	    OracleDB oracle = new OracleDB();
+	    try {
+	        con = oracle.connect();
+	        pstmt = con.prepareStatement(SqlLang.SELECT_REPLYCOUNT);
+	        pstmt.setInt(1, no);
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            replyCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        oracle.close(con, pstmt, rs);
+	    }
+	    return replyCount;
 	}
 }

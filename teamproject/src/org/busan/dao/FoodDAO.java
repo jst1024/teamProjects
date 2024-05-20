@@ -26,7 +26,6 @@ public class FoodDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("subtitle"),
-						rs.getString("photo"),
 						rs.getString("content"),
 						rs.getString("addr"),
 						rs.getString("tel"),
@@ -35,7 +34,8 @@ public class FoodDAO {
 						rs.getInt("liked"),
 						rs.getString("mainmenu"),
 						rs.getString("ontime"),
-						rs.getString("dayoff"));
+						rs.getString("dayoff"),
+						rs.getString("photo"));
 				foodList.add(food);
 			}
 		} catch(Exception e){
@@ -63,7 +63,6 @@ public class FoodDAO {
 				food.setNo(rs.getInt("no"));
 				food.setTitle(rs.getString("title"));
 				food.setSubtitle(rs.getString("subtitle"));
-				food.setPhoto(rs.getString("photo"));
 				food.setContent(rs.getString("content"));
 				food.setAddr(rs.getString("addr"));
 				food.setTel(rs.getString("tel"));
@@ -73,6 +72,7 @@ public class FoodDAO {
 				food.setMainmenu(rs.getString("mainmenu"));
 				food.setOntime(rs.getString("ontime"));
 				food.setDayoff(rs.getString("dayoff"));
+				food.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -90,16 +90,14 @@ public class FoodDAO {
 			pstmt = con.prepareStatement(OracleDB.INS_FOOD);
 			pstmt.setString(1, food.getTitle());
 			pstmt.setString(2, food.getSubtitle());
-			pstmt.setString(3, food.getPhoto());
-			pstmt.setString(4, food.getContent());
-			pstmt.setString(5, food.getAddr());
-			pstmt.setString(6, food.getTel());
-			pstmt.setString(7, food.getReltag());
-			pstmt.setInt(8, food.getVisited());
-			pstmt.setInt(9, food.getLiked());
-			pstmt.setString(10, food.getMainmenu());
-			pstmt.setString(11, food.getOntime());
-			pstmt.setString(12, food.getDayoff());
+			pstmt.setString(3, food.getContent());
+			pstmt.setString(4, food.getAddr());
+			pstmt.setString(5, food.getTel());
+			pstmt.setString(6, food.getReltag());
+			pstmt.setString(7, food.getMainmenu());
+			pstmt.setString(8, food.getOntime());
+			pstmt.setString(9, food.getDayoff());
+			pstmt.setString(10, food.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -117,17 +115,15 @@ public class FoodDAO {
 			pstmt = con.prepareStatement(SqlLang.UPD_FOOD);
 			pstmt.setString(1, food.getTitle());
 			pstmt.setString(2, food.getSubtitle());
-			pstmt.setString(3, food.getPhoto());
-			pstmt.setString(4, food.getContent());
-			pstmt.setString(5, food.getAddr());
-			pstmt.setString(6, food.getTel());
-			pstmt.setString(7, food.getReltag());
-			pstmt.setInt(8, food.getVisited());
-			pstmt.setInt(9, food.getLiked());
-			pstmt.setString(10, food.getMainmenu());
-			pstmt.setString(11, food.getOntime());
-			pstmt.setString(12, food.getDayoff());
-			pstmt.setInt(13, food.getNo());
+			pstmt.setString(3, food.getContent());
+			pstmt.setString(4, food.getAddr());
+			pstmt.setString(5, food.getTel());
+			pstmt.setString(6, food.getReltag());
+			pstmt.setString(7, food.getMainmenu());
+			pstmt.setString(8, food.getOntime());
+			pstmt.setString(9, food.getDayoff());
+			pstmt.setString(10, food.getPhoto());
+			pstmt.setInt(11, food.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

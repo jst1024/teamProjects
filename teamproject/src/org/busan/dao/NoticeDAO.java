@@ -25,7 +25,7 @@ public class NoticeDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("resdate"));
+						rs.getString("regdate"));
 				notiList.add(noti);
 			}
 		} catch(Exception e){
@@ -48,7 +48,7 @@ public class NoticeDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("content"),
-						rs.getString("resdate"));
+						rs.getString("regdate"));
 				notiList.add(noti);
 			}
 		} catch(Exception e){
@@ -65,9 +65,6 @@ public class NoticeDAO {
 		
 		try {
 			con = oracle.connect();
-			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_NOTICE);
-			pstmt.setInt(1, no);
-			pstmt.executeUpdate();
 			pstmt = null;
 			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
 			pstmt.setInt(1, no);
@@ -76,7 +73,7 @@ public class NoticeDAO {
 				noti.setNo(rs.getInt("no"));
 				noti.setTitle(rs.getString("title"));
 				noti.setContent(rs.getString("content"));
-				noti.setResdate(rs.getString("resdate"));
+				noti.setRegdate(rs.getString("regdate"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -137,27 +134,4 @@ public class NoticeDAO {
 		return cnt;
 	}
 
-	public Notice getNotice2(int no) {
-		Notice noti = new Notice();
-		OracleDB oracle = new OracleDB();
-		
-		try {
-			con = oracle.connect();
-			pstmt = null;
-			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
-			pstmt.setInt(1, no);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				noti.setNo(rs.getInt("no"));
-				noti.setTitle(rs.getString("title"));
-				noti.setContent(rs.getString("content"));
-				noti.setResdate(rs.getString("resdate"));
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			oracle.close(con, pstmt, rs);
-		}
-		return noti;
-	}
 }

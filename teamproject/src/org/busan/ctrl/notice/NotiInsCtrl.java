@@ -37,9 +37,9 @@ public class NotiInsCtrl extends HttpServlet {
 		int cnt = dao.insNotice(noti);
 		
 		if(cnt>0) {
-			System.out.println("�������� �߰� ����~!");
+			System.out.println("파일 추가 성공");
 		} else {
-			System.out.println("�������� �߰� ����~!");
+			System.out.println("파일 추가 실패");
 		}
 		/*
 		List<Notice> notiList = new ArrayList<>();

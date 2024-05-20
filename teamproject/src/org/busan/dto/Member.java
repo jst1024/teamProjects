@@ -1,40 +1,27 @@
 package org.busan.dto;
 
 public class Member {
-	private int no;
-	private int grade;
 	private String id;
 	private String pw;
-	private String nickname;
+	private String name;
 	private String email;
 	private String tel;
 	private String addr;
 	private String postcode;
-	public Member() { }
-	public Member(int no, int grade, String id, String pw, String nickname, String email, String tel, String addr,
-			String postcode) {
+	private String regdate;
+	
+	public Member() {}
+	public Member(String id, String pw, String name, String email, String tel, String addr, String postcode,
+			String regdate) {
 		super();
-		this.no = no;
-		this.grade = grade;
 		this.id = id;
 		this.pw = pw;
-		this.nickname = nickname;
+		this.name = name;
 		this.email = email;
 		this.tel = tel;
 		this.addr = addr;
 		this.postcode = postcode;
-	}
-	public int getNo() {
-		return no;
-	}
-	public void setNo(int no) {
-		this.no = no;
-	}
-	public int getGrade() {
-		return grade;
-	}
-	public void setGrade(int grade) {
-		this.grade = grade;
+		this.regdate = regdate;
 	}
 	public String getId() {
 		return id;
@@ -48,11 +35,11 @@ public class Member {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getName() {
+		return name;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;
@@ -78,10 +65,17 @@ public class Member {
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
+	public String getRegdate() {
+		return regdate;
+	}
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+	
 	@Override
 	public String toString() {
-		return "Member [no=" + no + ", grade=" + grade + ", id=" + id + ", pw=" + pw + ", nickname=" + nickname + ", email="
-				+ email + ", tel=" + tel + ", addr=" + addr + ", postcode=" + postcode + "]";
+		return "Member [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", tel=" + tel + ", addr="
+				+ addr + ", postcode=" + postcode + ", regdate=" + regdate + "]";
 	}
 	
 	

@@ -21,6 +21,14 @@
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
+<div style="width: 100vw; height: 100px; background-color:#333;"></div>
+        <nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item" style="margin-left:12vw;"><a href="${path0 }"><i class="fas fa-home"></i></a></li>
+		    <li class="breadcrumb-item"><a href="${path0 }/NotiList.do">공지사항 목록</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">${noti.title }</li>
+		  </ol>
+		</nav>
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
@@ -31,7 +39,7 @@
 						<tr>
 							<th><label for="no">글 번호</label></th>
 							<td>
-								<input type="text" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" readonly>
+								<input type="text" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" disabled>
 							</td>
 						</tr>
 						<tr>
@@ -47,15 +55,9 @@
 							</td>
 						</tr>
 						<tr>
-							<th><label for="resdate">작성일시</label></th>
+							<th><label for="regdate">작성일시</label></th>
 							<td>
-								<input type="text" name="resdate" id="resdate" class="form-control" value="${noti.resdate }" disabled>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="visited">읽은횟수</label></th>
-							<td>
-								<input type="text" name="visited" id="visited" class="form-control" value="${noti.visited }" disabled>
+								<input type="text" name="regdate" id="regdate" class="form-control" value="${noti.regdate }" disabled>
 							</td>
 						</tr>
 					</tbody>

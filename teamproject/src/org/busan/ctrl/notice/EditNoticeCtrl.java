@@ -36,7 +36,7 @@ public class EditNoticeCtrl extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		NoticeDAO dao = new NoticeDAO();
-		Notice noti = dao.getNotice2(no);
+		Notice noti = dao.getNotice(no);
 		
 		request.setAttribute("noti", noti);
 		RequestDispatcher view = request.getRequestDispatcher("/notice/editNotice.jsp");

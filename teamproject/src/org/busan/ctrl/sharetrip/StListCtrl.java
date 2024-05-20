@@ -27,6 +27,8 @@ public class StListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "여행공유");
+		
 		SharetripDAO dao = new SharetripDAO();
 		List<Sharetrip> stList = new ArrayList<>();
 		stList = dao.getSharetripList();

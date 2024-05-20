@@ -27,12 +27,11 @@ public class ThemeDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("subtitle"),
-						rs.getString("photo"),
 						rs.getString("content"),
 						rs.getString("reltag"),
 						rs.getInt("visited"),
 						rs.getInt("liked"),
-						rs.getString("author"));
+						rs.getString("photo"));
 				themeList.add(theme);
 			}
 		} catch(Exception e){
@@ -60,12 +59,11 @@ public class ThemeDAO {
 				theme.setNo(rs.getInt("no"));
 				theme.setTitle(rs.getString("title"));
 				theme.setSubtitle(rs.getString("subtitle"));
-				theme.setPhoto(rs.getString("photo"));
 				theme.setContent(rs.getString("content"));
 				theme.setReltag(rs.getString("reltag"));
 				theme.setVisited(rs.getInt("visited"));
 				theme.setLiked(rs.getInt("liked"));
-				theme.setAuthor(rs.getString("author"));
+				theme.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -83,12 +81,9 @@ public class ThemeDAO {
 			pstmt = con.prepareStatement(OracleDB.INS_THEME);
 			pstmt.setString(1, theme.getTitle());
 			pstmt.setString(2, theme.getSubtitle());
-			pstmt.setString(3, theme.getPhoto());
-			pstmt.setString(4, theme.getContent());
-			pstmt.setString(5, theme.getReltag());
-			pstmt.setInt(6, theme.getVisited());
-			pstmt.setInt(7, theme.getLiked());
-			pstmt.setString(8, theme.getAuthor());
+			pstmt.setString(3, theme.getContent());
+			pstmt.setString(4, theme.getReltag());
+			pstmt.setString(5, theme.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -106,13 +101,10 @@ public class ThemeDAO {
 			pstmt = con.prepareStatement(SqlLang.UPD_THEME);
 			pstmt.setString(1, theme.getTitle());
 			pstmt.setString(2, theme.getSubtitle());
-			pstmt.setString(3, theme.getPhoto());
-			pstmt.setString(4, theme.getContent());
-			pstmt.setString(5, theme.getReltag());
-			pstmt.setInt(6, theme.getVisited());
-			pstmt.setInt(7, theme.getLiked());
-			pstmt.setString(8, theme.getAuthor());
-			pstmt.setInt(9, theme.getNo());
+			pstmt.setString(3, theme.getContent());
+			pstmt.setString(4, theme.getReltag());
+			pstmt.setString(5, theme.getPhoto());
+			pstmt.setInt(6, theme.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

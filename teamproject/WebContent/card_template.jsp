@@ -54,32 +54,32 @@ request.setAttribute("tmp",tmp);
 		<h2>카드템플릿제목</h2>
 		<hr>
 		<div class="card_midium_horizontal grid1">
-		<div class="col1" >
-			<div style="width: max-content">
-				<c:forEach var="dto" items="${tmp}">
-					<div class="card_midium_horizontal_div">
-						<div style="">
-							<div class="card_midium_horizontal_div_img">
-								<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
-								<img src="1.jpg" alt="" />
-							</div>
-							<div class="card_midium_horizontal_div_txt">
-								<!-- <h3>${dto.title}</h3> -->
-								<h3 style="">제목</h3>
-								<hr>
-								<!-- <span>${dto.subtitle}</span> -->
-								<span>부제목</span>
-
-								<!-- <p>${dto.content} </p> -->
-								<div>
-									<p>콘텐츠(글자글자수제한)콘텐츠(글글자수제한)콘제한)콘텐츠(글자수제한)</p>
+			<div class="col1" >
+				<div style="width: max-content">
+					<c:forEach var="dto" items="${tmp}">
+						<div class="card_midium_horizontal_div">
+							<div style="">
+								<div class="card_midium_horizontal_div_img">
+									<!-- <img src="${path0}/${dto.photo}" style="height:100%; object-fit:cover" alt="" /> -->
+									<img src="1.jpg" style="height:100%; object-fit:cover" alt="" />
+								</div>
+								<div class="card_midium_horizontal_div_txt">
+									<!-- <h3>${dto.title}</h3> -->
+									<h3 style="">제목</h3>
+									<hr>
+									<!-- <span>${dto.subtitle}</span> -->
+									<span>부제목</span>
+	
+									<!-- <p>${dto.content} </p> -->
+									<div>
+										<p>콘텐츠(글자글자수제한)콘텐츠(글글자수제한)콘제한)콘텐츠(글자수제한)</p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 

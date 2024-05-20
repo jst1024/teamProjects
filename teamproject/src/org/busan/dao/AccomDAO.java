@@ -27,7 +27,6 @@ public class AccomDAO {
 						rs.getInt("no"),
 						rs.getString("title"),
 						rs.getString("subtitle"),
-						rs.getString("photo"),
 						rs.getString("content"),
 						rs.getString("addr"),
 						rs.getString("tel"),
@@ -35,7 +34,8 @@ public class AccomDAO {
 						rs.getInt("visited"),
 						rs.getInt("liked"),
 						rs.getString("busitype"),
-						rs.getString("homepage"));
+						rs.getString("homepage"),
+						rs.getString("photo"));
 				accList.add(acc);
 			}
 		} catch(Exception e){
@@ -63,7 +63,6 @@ public class AccomDAO {
 				acc.setNo(rs.getInt("no"));
 				acc.setTitle(rs.getString("title"));
 				acc.setSubtitle(rs.getString("subtitle"));
-				acc.setPhoto(rs.getString("photo"));
 				acc.setContent(rs.getString("content"));
 				acc.setAddr(rs.getString("addr"));
 				acc.setTel(rs.getString("tel"));
@@ -72,6 +71,7 @@ public class AccomDAO {
 				acc.setLiked(rs.getInt("liked"));
 				acc.setBusitype(rs.getString("busitype"));
 				acc.setHomepage(rs.getString("homepage"));
+				acc.setPhoto(rs.getString("photo"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -89,15 +89,13 @@ public class AccomDAO {
 			pstmt = con.prepareStatement(OracleDB.INS_ACCOM);
 			pstmt.setString(1, acc.getTitle());
 			pstmt.setString(2, acc.getSubtitle());
-			pstmt.setString(3, acc.getPhoto());
-			pstmt.setString(4, acc.getContent());
-			pstmt.setString(5, acc.getAddr());
-			pstmt.setString(6, acc.getTel());
-			pstmt.setString(7, acc.getReltag());
-			pstmt.setInt(8, acc.getVisited());
-			pstmt.setInt(9, acc.getLiked());
-			pstmt.setString(10, acc.getBusitype());
-			pstmt.setString(11, acc.getHomepage());
+			pstmt.setString(3, acc.getContent());
+			pstmt.setString(4, acc.getAddr());
+			pstmt.setString(5, acc.getTel());
+			pstmt.setString(6, acc.getReltag());
+			pstmt.setString(7, acc.getBusitype());
+			pstmt.setString(8, acc.getHomepage());
+			pstmt.setString(9, acc.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -115,16 +113,14 @@ public class AccomDAO {
 			pstmt = con.prepareStatement(SqlLang.UPD_ACCOM);
 			pstmt.setString(1, acc.getTitle());
 			pstmt.setString(2, acc.getSubtitle());
-			pstmt.setString(3, acc.getPhoto());
-			pstmt.setString(4, acc.getContent());
-			pstmt.setString(5, acc.getAddr());
-			pstmt.setString(6, acc.getTel());
-			pstmt.setString(7, acc.getReltag());
-			pstmt.setInt(8, acc.getVisited());
-			pstmt.setInt(9, acc.getLiked());
-			pstmt.setString(10, acc.getBusitype());
-			pstmt.setString(11, acc.getHomepage());
-			pstmt.setInt(12, acc.getNo());
+			pstmt.setString(3, acc.getContent());
+			pstmt.setString(4, acc.getAddr());
+			pstmt.setString(5, acc.getTel());
+			pstmt.setString(6, acc.getReltag());
+			pstmt.setString(7, acc.getBusitype());
+			pstmt.setString(8, acc.getHomepage());
+			pstmt.setString(9, acc.getPhoto());
+			pstmt.setInt(10, acc.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
