@@ -12,11 +12,18 @@
 				<li><a href="${hpath }/member/policy.jsp">개인정보처리방침</a></li>
 			</ul>
 		</nav>
-		<div id="loc">
-			<select name="sel" id="sel" onchange="locate()">
-				<option value="">해당 관공서</option>
-				<option value="https://www.gangseo.seoul.kr/gs100901">발산1동 주민센터</option>
-				<option value="https://www.koreapost.go.kr/">강서우체국</option>
+		<div id="loc" style="margin-right:20px;" >
+			<select name="sel" id="sel" onchange="locate()" style=" float:right; margin-right:20px;">
+				<option value="">유관기관</option>
+				<option value="https://www.busan.go.kr/index">부산광역시</option>
+				<option value="https://bto.or.kr/kor/Main.do">부산관광공사</option>
+				<option value="https://korean.visitkorea.or.kr/main/main.do">대한민국 구-석구석</option>
+				<option value="https://www.bsmeditour.go.kr/">메디투어 부산</option>
+				<option value="https://citytourbusan.com/ko/00main/main.php">부산시티투어</option>
+				<option value="https://busandabom.net/index.nm">부산문화포털 다봄</option>
+				<option value="https://www.busaness.com/">부산 워케이션</option>
+				<option value="https://bto.or.kr/cvb/Main.do">부산컨벤션뷰로</option>
+				<option value="https://bof.or.kr/cms/main.do">BOF 부산 원 아시아 페스티벌</option>
 			</select>
 		</div>
 		<script>
@@ -29,8 +36,10 @@
 		</script>
 		<br><br>
 		<div id="copyright" style="color:#CCC;">
-			<p class="addr" style="color:#CCC;">우) 07658 서울특별시 강서구 화곡로 302(화곡동) 강서구 발산동 소개,<br> TEL : 02-2600-6114(120다산콜센터로 연결) 02-2600-6330(평일 주간/야간 당직실, 공휴일)</p>
-			<p class="copy" style="color:#CCC;">COPYRIGHT(C) SEOUL BALSAN INTRO. ALL RIGHTS RESERVED.</p>
+			<p class="tel-tour" style="color:#CCC;">관광 문의 <strong>1330</strong></p>
+			<p class="tel-col" style="color:#CCC;">민원대표 전화 <strong>051-120</strong></p>
+			<p class="onday" style="color:#CCC;">평일 08:30 - 18:30 (야간/공휴일 등 근무시간외는 당직실로 전환)</p>
+			<p class="copy" style="color:#CCC;">Copyright Busan Metropolitan City. ALL RIGHTS RESERVED.</p>
 		</div>
 	</div> 
 </footer>

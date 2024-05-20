@@ -19,13 +19,13 @@ public class OracleDB implements SqlLang {
 	final static String INS_THEME = "insert into theme values (themeseq.nextval, ?, ?, ?, ?, 0, 0, ?)";
 	final static String INS_ATTR = "insert into attr values (attrseq.nextval, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?, ?, ?, ?)";
 	final static String INS_FOOD = "insert into food values (foodseq.nextval, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?, ?, ?)";
-	final static String INS_ACCOM = "insert into accom values (accinseq.nextval, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?, ?)";
+	final static String INS_ACCOM = "insert into accom values (accomseq.nextval, ?, ?, ?, ?, ?, ?, 0, 0, ?, ?, ?)";
 	final static String INS_ATCFILE = "insert into atcfile values (?, atcfileseq.nextval, ?, ?, ?)";
 	
 	//reply
 	final static String INS_REPLY = "insert into reply values (?,replyseq.nextval,?,sysdate,?)";
 	final static String LATEST_REPLY = "select * from (select * from reply order by no desc) where rownum<=5";
-	final static String LATEST_ST_REPLY = "select * from (select * from reply order by no desc) where boardNo=? and rownum<=5";
+	final static String LATEST_ST_REPLY = "select * from (select * from reply order by no desc) where boardNo=?";
 	
 	Connection con = null;
 	

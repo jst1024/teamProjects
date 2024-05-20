@@ -34,6 +34,7 @@ public class GetStCtrl extends HttpServlet {
 		ReplyDAO replyDao = new ReplyDAO();
 		
 		Sharetrip st = sharetripdao.getSharetrip(no);
+		int replyCount = sharetripdao.getReplyCount(no);
 		
 		if (st == null) {
 	        response.sendError(HttpServletResponse.SC_NOT_FOUND, "입력된 여행 정보가 없습니다.");
@@ -45,6 +46,7 @@ public class GetStCtrl extends HttpServlet {
 		
 		request.setAttribute("st", st);
 		request.setAttribute("replyList", replyList);
+		request.setAttribute("replyCount", replyCount);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/sharetrip/getSt.jsp");
 		view.forward(request, response);

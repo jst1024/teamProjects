@@ -27,6 +27,8 @@ public class AttrListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "명소");
+		
 		AttrDAO dao = new AttrDAO();
 		List<Attr> attrList = new ArrayList<>();
 		attrList = dao.getAttrList();

@@ -2,7 +2,6 @@ package org.busan.ctrl.theme;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,13 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.busan.dao.ThemeDAO;
-import org.busan.dto.Theme;
 
-@WebServlet("/GetTh.do")
-public class GetThCtrl extends HttpServlet {
+@WebServlet("/DelTheme.do")
+public class DelThemeCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public GetThCtrl() {
+    public DelThemeCtrl() {
         super();
     }
 
@@ -24,16 +22,17 @@ public class GetThCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
+		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		ThemeDAO dao = new ThemeDAO();
-		Theme theme = dao.getTheme(no);
+		int cnt = dao.delTheme(no);
 		
-		request.setAttribute("theme", theme);
-		RequestDispatcher view = request.getRequestDispatcher("/theme/getTh.jsp");
-		view.forward(request, response);
-		
+		if(cnt>0) {
+			response.sendRedirect("/teamproject/ThList.do");
+		} else {
+			response.sendRedirect("/teamproject/GetTheme.do?no="+no);
+		}
 	}
 
 }

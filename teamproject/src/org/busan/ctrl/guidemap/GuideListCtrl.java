@@ -27,6 +27,8 @@ public class GuideListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "가이드북&지도");
+		
 		GuidemapDAO dao = new GuidemapDAO();
 		List<Guidemap> gmList = new ArrayList<>();
 		gmList = dao.getGuidemapList();

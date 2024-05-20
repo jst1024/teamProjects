@@ -59,10 +59,12 @@ public interface SqlLang {
 	String SELECT_SHARETRIP_BYNO = "select * from sharetrip where no=?";
 	String UPD_SHARETRIP = "update sharetrip set title=?, photo=? where no=?";
 	String DEL_SHARETRIP = "delete from sharetrip where no=?";
+	String SELECT_REPLYCOUNT = "SELECT COUNT(*) AS replyCount FROM reply WHERE boardNo = ?";
 	
 	String SELECT_ALL_REPLY = "select * from reply order by regdate desc";
 	String SELECT_REPLY_BYNO = "select * from reply where no=?";
 	String UPD_REPLY = "update reply set content=? where boardNo=? and no=?";
+	String UPD_REPLYCOUNT = "SELECT COUNT(*) AS replyCount FROM reply WHERE boardNo = ?";
 	String DEL_REPLY = "delete from reply where boardNo=? and no=?";
 	
 	Connection connect();

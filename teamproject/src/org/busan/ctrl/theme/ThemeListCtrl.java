@@ -27,6 +27,8 @@ public class ThemeListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "테마여행");
+		
 		ThemeDAO dao = new ThemeDAO();
 		List<Theme> themeList = new ArrayList<>();
 		themeList = dao.getThemeList();

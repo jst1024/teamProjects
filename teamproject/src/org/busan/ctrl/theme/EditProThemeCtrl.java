@@ -17,27 +17,21 @@ import org.busan.dto.Theme;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
-
-@WebServlet("/ThIns.do")
-public class ThInsCtrl extends HttpServlet {
+@WebServlet("/EditProTheme.do")
+public class EditProThemeCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public ThInsCtrl() {
+    public EditProThemeCtrl() {
         super();
     }
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-
 		Theme th = new Theme();
-		
-		
+
 		ServletContext application = request.getServletContext(); //teamproject
 		
 		try {
@@ -60,17 +54,18 @@ public class ThInsCtrl extends HttpServlet {
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
 			th.setPhoto(fileName);
+			th.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			ThemeDAO dao = new ThemeDAO();
 			int cnt = dao.insTheme(th);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {
-				System.out.println("자료 추가 성공");
+				System.out.println("자료 수정 성공");
 				response.sendRedirect(home+"/ThemeList.do");
 			} else {
-				System.out.println("자료 추가 실패");
-				response.sendRedirect(home+"/theme/th_ins.jsp");
+				System.out.println("자료 수정 실패");
+				response.sendRedirect(home+"/EditTheme.do?no="+th.getNo());
 			}
 
 			
@@ -80,4 +75,3 @@ public class ThInsCtrl extends HttpServlet {
 	}
 
 }
-

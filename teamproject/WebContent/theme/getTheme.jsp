@@ -11,6 +11,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+        <style>
+        	.ins_btn { display: flex; justify-content: center; background-color: skyblue; border-radius: 10px; margin-right: 5vw; padding: 10px; width:120px; float:right; }
+        </style>
 	</head>
 <body>
 
@@ -18,11 +21,15 @@
 		<%@ include file="/header.jsp" %>
 	</div>
     <article style="">
-        <div style="width: 100vw; height: 100px;"></div>
-        <div class="bread_crumb">
-            <div class="bread_crumb_icon"><i class="fas fa-home"></i></div>
-            <span>추천여행 > 테마여행</span>
-        </div>
+        <div style="width:1400px; margin:0 auto;"></div>
+			<nav aria-label="breadcrumb" style="text-align:right">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item" style="margin-left:12vw;"><a href="${path0 }"><i class="fas fa-home"></i></a></li>
+			    <li class="breadcrumb-item active" aria-current="page">${title }</li>
+			  </ol>
+			</nav>
+			<hr>
+		
         <div class="board_gallary_detail">
             <div style="text-align: center;">
                 <h1>${theme.title }</h1>

@@ -7,17 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<link rel="stylesheet" href="resources/css/normalize.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
-<link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.js"></script>
 <title>${title }</title>
+<link rel="stylesheet" href="${path0}/css/loginform.css" />
 <%@ include file="/head.jsp" %>
 <style>
 .container { width:1400px; }
@@ -36,72 +27,62 @@
 		<c:if test="${not empty msg}">
 		<div style="width:1400px; margin:0 auto;">${msg }</div>
 		</c:if>
-		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title"><i class="fas fa-walking fa-fw"></i>로그인</h3>
-			<form action="${path0 }/LogInPro.do" method="post">
-				<table class="table">
-					<tbody>
-						<tr>
-							<th><label for="id">아이디</label></th>
-							<td>
-								<input type="text" name="id" id="id" class="form-control" required>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="pw">비밀번호</label></th>
-							<td>
-								<input type="password" name="pw" id="pw" class="form-control" required>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<hr>
-				<div class="btn-group">
-				  <button type="submit" class="btn btn-secondary">로그인</button>
-				  <button type="reset" class="btn btn-secondary">취소</button>
-				</div>
-			</form>
-		</div>
-	</section>	
-</div>
-<!--  <div class="content" id="con">
-    <div class="row column text-center">
-        <h2 class="h1">로그인</h2>
-        <hr>
-        <div class="container">
-            <form action="${path0 }/loginPro.do" method="post" name="loginForm">
-                <div class="table_form_wrap">
-                    <table class="table_form">
-                        <tbody>
-                        <tr>
-                            <th><label for="id">아이디</label></th>
-                            <td><input type="text" name="id" id="id" size="100" class="single100" placeholder="아이디 입력" pattern="^[a-z0-9]+$" required>
-                               
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><label for="pw">비밀번호</label></th>
-                            <td><input type="password" name="pw" id="pw"  class="single100" placeholder="비밀번호 입력" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" class="button" value="로그인">
-                                <input type="reset" class="button" value="취소">
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div> 
-            </form>--> 
-            <script>
-                function loginFaiure() {
-                    alert("로그인 실패");
-                }
-            </script>
+		
+  <img class="wave" src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/wave.png">
+  <div class="container_login">
+    <div class="img">
+      <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/bg.svg">
+    </div>
+    <div class="login-content">
+      <form action="${path0 }/LogInPro.do" method="post">
+        <img src="https://raw.githubusercontent.com/sefyudem/Responsive-Login-Form/master/img/avatar.svg">
+        <h2 class="title">Welcome</h2>
+              <div class="input-div one">
+                 <div class="i">
+                    <i class="fas fa-user"></i>
+                 </div>
+                 <div class="div">
+                    <h5>아이디</h5>
+                    <input type="text" class="input" name="id" required>
+                 </div>
+              </div>
+              <div class="input-div pass">
+                 <div class="i"> 
+                    <i class="fas fa-lock"></i>
+                 </div>
+                 <div class="div">
+                    <h5>비밀번호</h5>
+                    <input type="password" class="input" name="pw" required>
+                 </div>
+              </div>
+              <a class="loginhref" href="${path0}/Join.do">회원가입</a>
+              <input type="submit" class="btn" value="Login">
+            </form>
         </div>
     </div>
+    <script>
+    const inputs = document.querySelectorAll(".input");
+
+
+    function addcl(){
+      let parent = this.parentNode.parentNode;
+      parent.classList.add("focus");
+    }
+
+    function remcl(){
+      let parent = this.parentNode.parentNode;
+      if(this.value == ""){
+        parent.classList.remove("focus");
+      }
+    }
+
+
+    inputs.forEach(input => {
+      input.addEventListener("focus", addcl);
+      input.addEventListener("blur", remcl);
+    });
+    </script>
+	</section>	
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>

@@ -31,16 +31,15 @@
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">추천여행</a>
                         <ul class="sub">
-                            <li><a href="${hpath }/ThemeCtrl.do" class="dp2">테마여행</a></li>
+                            <li><a href="${hpath }/ThemeList.do" class="dp2">테마여행</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">
                         <a href="" class="dp1">여행준비</a>
                         <ul class="sub">
-                            <li><a href="${hpath }/GuideList.do" class="dp2">가이드북&지도</a></li>
-                            <li><a href="${hpath }/readytour/curator.jsp" class="dp2">문화관광</a></li>
+                            <li><a href="${hpath }/Curator.do" class="dp2">문화관광</a></li>
                             <li><a href="${hpath }/readytour/readyinfo.jsp" class="dp2">여행준비정보</a></li>
-                            <li><a href="${hpath }/readytour/tourinfo.jsp" class="dp2">관광안내소</a></li>
+                            <li><a href="${hpath }/Tourinfo.do" class="dp2">관광안내소</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">

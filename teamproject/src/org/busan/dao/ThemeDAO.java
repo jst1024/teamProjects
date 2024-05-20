@@ -83,9 +83,7 @@ public class ThemeDAO {
 			pstmt.setString(2, theme.getSubtitle());
 			pstmt.setString(3, theme.getContent());
 			pstmt.setString(4, theme.getReltag());
-			pstmt.setInt(5, theme.getVisited());
-			pstmt.setInt(6, theme.getLiked());
-			pstmt.setString(7, theme.getPhoto());
+			pstmt.setString(5, theme.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -105,10 +103,8 @@ public class ThemeDAO {
 			pstmt.setString(2, theme.getSubtitle());
 			pstmt.setString(3, theme.getContent());
 			pstmt.setString(4, theme.getReltag());
-			pstmt.setInt(5, theme.getVisited());
-			pstmt.setInt(6, theme.getLiked());
-			pstmt.setString(7, theme.getPhoto());
-			pstmt.setInt(8, theme.getNo());
+			pstmt.setString(5, theme.getPhoto());
+			pstmt.setInt(6, theme.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

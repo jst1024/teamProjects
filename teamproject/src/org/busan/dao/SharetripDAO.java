@@ -3,6 +3,7 @@ package org.busan.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,5 +121,24 @@ public class SharetripDAO {
 			oracle.close(con, pstmt);
 		}
 		return cnt;
+	}
+	
+	public int getReplyCount(int no) {
+	    int replyCount = 0;
+	    OracleDB oracle = new OracleDB();
+	    try {
+	        con = oracle.connect();
+	        pstmt = con.prepareStatement(SqlLang.SELECT_REPLYCOUNT);
+	        pstmt.setInt(1, no);
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            replyCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        oracle.close(con, pstmt, rs);
+	    }
+	    return replyCount;
 	}
 }

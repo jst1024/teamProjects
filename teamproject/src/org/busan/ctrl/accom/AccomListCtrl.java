@@ -27,10 +27,13 @@ public class AccomListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "숙박");
+		
 		AccomDAO dao = new AccomDAO();
-		List<Accom> accList = new ArrayList<>();
-		accList = dao.getAccomList();
-		request.setAttribute("accList", accList);		
+		List<Accom> accomList = new ArrayList<>();
+		accomList = dao.getAccomList();
+		request.setAttribute("accomList", accomList);
+		
 		RequestDispatcher view = request.getRequestDispatcher("/accom/accList.jsp");
 		view.forward(request, response);
 	}

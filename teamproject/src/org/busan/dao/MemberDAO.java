@@ -1,8 +1,10 @@
 package org.busan.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +82,9 @@ public class MemberDAO {
 			pstmt.setString(5, mem.getTel());
 			pstmt.setString(6, mem.getAddr());
 			pstmt.setString(7, mem.getPostcode());
+			LocalDate localDate = LocalDate.parse(mem.getRegdate());
+            Date sqlDate = Date.valueOf(localDate);
+            pstmt.setDate(8, sqlDate);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -3,6 +3,7 @@ package org.busan.ctrl.member;
 
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,10 +33,13 @@ public class JoinProCtrl extends HttpServlet {
       String enPw = "";
       
       try {
-      enPw = AES256.encryptAES256(pw, key);
+    	  enPw = AES256.encryptAES256(pw, key);
       } catch(Exception e) {
     	  e.printStackTrace();
       }
+      
+      String regdate = LocalDate.now().toString();
+      
       Member mem = new Member(
             
             request.getParameter("id"),
@@ -45,15 +49,17 @@ public class JoinProCtrl extends HttpServlet {
             request.getParameter("tel"),
             request.getParameter("address1")+"$"+request.getParameter("address2"),
             request.getParameter("postcode"),
-            request.getParameter("regdate"));
+            regdate);
       
       MemberDAO dao = new MemberDAO();
       int cnt = dao.join(mem);
       
       if(cnt>0) {
+    	 System.out.println("회원 가입 성공");
          response.sendRedirect(request.getContextPath());
       } else {
-         response.sendRedirect("/Join.do");
+    	 System.out.println("회원 가입 실패");
+         response.sendRedirect("/member/join.jsp");
       }
    }
 

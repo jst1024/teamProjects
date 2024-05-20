@@ -36,8 +36,10 @@ public class EditProReplyCtrl extends HttpServlet {
 		int cnt = dao.editProReply(reply);
 		
 		if(cnt>0) {
+			System.out.println("댓글 수정 성공");
 			response.sendRedirect("/teamproject/GetSt.do?no=" + boardNo);
 		} else {
+			System.out.println("댓글 수정 실패");
 			response.sendRedirect("/teamproject/ReplyList.do");
 		}
 	}

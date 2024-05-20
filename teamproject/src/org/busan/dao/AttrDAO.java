@@ -96,13 +96,11 @@ public class AttrDAO {
 			pstmt.setString(4, attr.getAddr());
 			pstmt.setString(5, attr.getTel());
 			pstmt.setString(6, attr.getReltag());
-			pstmt.setInt(7, attr.getVisited());
-			pstmt.setInt(8, attr.getLiked());
-			pstmt.setString(9, attr.getDayoff());
-			pstmt.setString(10, attr.getTraffic());
-			pstmt.setString(11, attr.getFee());
-			pstmt.setString(12, attr.getTips());
-			pstmt.setString(13, attr.getPhoto());
+			pstmt.setString(7, attr.getDayoff());
+			pstmt.setString(8, attr.getTraffic());
+			pstmt.setString(9, attr.getFee());
+			pstmt.setString(10, attr.getTips());
+			pstmt.setString(11, attr.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -124,14 +122,12 @@ public class AttrDAO {
 			pstmt.setString(4, attr.getAddr());
 			pstmt.setString(5, attr.getTel());
 			pstmt.setString(6, attr.getReltag());
-			pstmt.setInt(7, attr.getVisited());
-			pstmt.setInt(8, attr.getLiked());
-			pstmt.setString(9, attr.getDayoff());
-			pstmt.setString(10, attr.getTraffic());
-			pstmt.setString(11, attr.getFee());
-			pstmt.setString(12, attr.getTips());
-			pstmt.setString(13, attr.getPhoto());
-			pstmt.setInt(14, attr.getNo());
+			pstmt.setString(7, attr.getDayoff());
+			pstmt.setString(8, attr.getTraffic());
+			pstmt.setString(9, attr.getFee());
+			pstmt.setString(10, attr.getTips());
+			pstmt.setString(11, attr.getPhoto());
+			pstmt.setInt(12, attr.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

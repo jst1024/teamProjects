@@ -33,8 +33,10 @@ public class EditProNoticeCtrl extends HttpServlet {
 		int cnt = dao.editProNotice(noti);
 		
 		if(cnt>0) {
+			System.out.println("자료 수정 성공");
 			response.sendRedirect("/teamproject/NotiList.do");
 		} else {
+			System.out.println("자료 수정 실패");
 			response.sendRedirect("/teamproject/EditNotice.do?no="+noti.getNo());
 		}
 	}

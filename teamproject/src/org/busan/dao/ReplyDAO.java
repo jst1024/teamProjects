@@ -3,6 +3,7 @@ package org.busan.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class ReplyDAO {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	// 특정 sharetripNo에 해당하는 댓글 리스트를 가져오는 메서드 추가
+	// �듅�젙 sharetripNo�뿉 �빐�떦�븯�뒗 �뙎湲� 由ъ뒪�듃瑜� 媛��졇�삤�뒗 硫붿꽌�뱶 異붽�
     public List<Reply> getReplies(int sharetripNo) {
         List<Reply> replyList = new ArrayList<>();
         OracleDB oracle = new OracleDB();
@@ -99,6 +100,7 @@ public class ReplyDAO {
 			pstmt.setString(3, reply.getContent());
 			cnt = pstmt.executeUpdate();
 			
+			updateReplyCount(reply.getBoardNo());
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -134,6 +136,8 @@ public class ReplyDAO {
 			pstmt.setInt(1, boardNo);
 			pstmt.setInt(2, no);
 			cnt = pstmt.executeUpdate();
+			
+			updateReplyCount(boardNo);
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -165,4 +169,29 @@ public class ReplyDAO {
 		}
 		return reply;
 	}
+	
+    // 게시글의 댓글 수를 업데이트하는 메서드
+    public void updateReplyCount(int boardNo) {
+        OracleDB oracle = new OracleDB();
+        try {
+            con = oracle.connect();
+            pstmt = con.prepareStatement(SqlLang.UPD_REPLYCOUNT);
+            pstmt.setInt(1, boardNo);
+            rs = pstmt.executeQuery();
+            int replyCount = 0;
+            if (rs.next()) {
+                // 댓글 수 가져오기
+                replyCount = rs.getInt("replyCount");
+            }
+            // 게시글의 댓글 수 업데이트
+            pstmt = con.prepareStatement("UPDATE sharetrip SET replycount = ? WHERE no = ?");
+            pstmt.setInt(1, replyCount);
+            pstmt.setInt(2, boardNo);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            oracle.close(con, pstmt, rs);
+        }
+    }
 }

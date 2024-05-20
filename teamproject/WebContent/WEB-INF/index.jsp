@@ -11,21 +11,6 @@
 <%@ include file="/head.jsp" %>
 </head>
 <body>
-
-<%
-//테스트용 더미 Food객체 List
-List<Link> tmp = new ArrayList<>();
-Link link_card1 = new Link(1,"명소", "subTitle", "/attr/","/img/main/1.jpg");
-Link link_card2 = new Link(2,"음식", "subTitle", "/attr/","/img/main/2.jpg");
-Link link_card3 = new Link(3,"숙박", "subTitle", "/attr/","/img/main/3.jpg");
-Link link_card4 = new Link(4,"쇼핑", "subTitle", "/attr/","/img/main/4.jpg");
-Link link_card5 = new Link(5,"축제", "subTitle", "/attr/","/img/main/5.jpg");
-tmp.add(link_card1);tmp.add(link_card2);tmp.add(link_card3);tmp.add(link_card4);tmp.add(link_card5);
-// Link(Integer no, String title, String subTitle, String url, String photo)
-
-request.setAttribute("tmp",tmp);
-%>
-
 	<div id="header">
 		<%@ include file="/header.jsp" %>
 	</div>
@@ -55,6 +40,22 @@ request.setAttribute("tmp",tmp);
     }
     });
     </script>
+    <script>
+    //헤더 텍스트 색상전환
+    $(document).ready(function() {
+    var headerTexts = document.querySelectorAll('#hd a, #hd li');
+    var scrollPosition = window.scrollY;
+    var header = document.getElementById("hd");
+    var logo = document.getElementById("logo");
+        headerTexts.forEach(function(text) {
+            text.style.color = '#fff';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            logo.src = "./images/logow2.png";
+        });
+
+    });
+    </script>
+    
 	
 	
 	<!-- 메인 -->
@@ -81,7 +82,7 @@ request.setAttribute("tmp",tmp);
 					<div class="" >
 						<div style="width: max-content">
 							<c:forEach var="dto" items="${tmp}">
-								<div class="card_midium_horizontal_div">
+								<div class="card_midium_horizontal_div" onclick="location.href='${dto.url}'" >
 									<div style="background-color:#FFF; height:420px;">
 										<div class="card_midium_horizontal_div_img">
 											<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->

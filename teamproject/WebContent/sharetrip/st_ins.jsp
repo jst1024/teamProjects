@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <c:set var="path0" value="<%=request.getContextPath() %>" />    
 <%@ page import="java.io.PrintWriter"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,8 +13,8 @@
 <style>
 .container { width:1400px; }
 .page { clear:both; height:100vh; }
-#page1 { background-color:#ececec; }
-#page2 { background-color:#42bcf5; }
+#page1 { background-color:#FFF; }
+#page2 { background-color:#FFF; }
 .page_title { font-size:36px; padding-top:2em; text-align:center; }
 </style>
 </head>
@@ -22,6 +22,14 @@
 <div id="header">
 	<%@ include file="/header.jsp" %>
 </div>
+<div style="width: 100vw; height: 100px; background-color:#333;"></div>
+        <nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item" style="margin-left:12vw;"><a href="${path0 }"><i class="fas fa-home"></i></a></li>
+		    <li class="breadcrumb-item"><a href="${path0 }/StList.do">여행공유</a></li>
+		    <li class="breadcrumb-item active" aria-current="page">${st.title }</li>
+		  </ol>
+		</nav>
 <div id="contents">
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
@@ -49,12 +57,6 @@
 			</form>
 		</div>
 	</section>
-	<section class="page" id="page2">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title"></h3>
-
-		</div>	
-	</section>	
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>

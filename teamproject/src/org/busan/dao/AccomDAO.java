@@ -93,11 +93,9 @@ public class AccomDAO {
 			pstmt.setString(4, acc.getAddr());
 			pstmt.setString(5, acc.getTel());
 			pstmt.setString(6, acc.getReltag());
-			pstmt.setInt(7, acc.getVisited());
-			pstmt.setInt(8, acc.getLiked());
-			pstmt.setString(9, acc.getBusitype());
-			pstmt.setString(10, acc.getHomepage());
-			pstmt.setString(11, acc.getPhoto());
+			pstmt.setString(7, acc.getBusitype());
+			pstmt.setString(8, acc.getHomepage());
+			pstmt.setString(9, acc.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -119,12 +117,10 @@ public class AccomDAO {
 			pstmt.setString(4, acc.getAddr());
 			pstmt.setString(5, acc.getTel());
 			pstmt.setString(6, acc.getReltag());
-			pstmt.setInt(7, acc.getVisited());
-			pstmt.setInt(8, acc.getLiked());
-			pstmt.setString(9, acc.getBusitype());
-			pstmt.setString(10, acc.getHomepage());
-			pstmt.setString(11, acc.getPhoto());
-			pstmt.setInt(12, acc.getNo());
+			pstmt.setString(7, acc.getBusitype());
+			pstmt.setString(8, acc.getHomepage());
+			pstmt.setString(9, acc.getPhoto());
+			pstmt.setInt(10, acc.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

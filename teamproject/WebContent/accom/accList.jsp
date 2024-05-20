@@ -2,96 +2,117 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<c:set var="path0" value="<%=request.getContextPath() %>" />    
+<c:set var="path0" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>${title }</title>
 <%@ include file="/head.jsp" %>
-<script src="${path0 }/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" href="${path0 }/css/jquery.dataTables.css" >
-<style>
-	.card_midium_horizontal { width: 100%; height: auto; overflow-x: scroll; overflow-y: hidden; white-space: nowrap; }
-	.card_midium_horizontal > div {width: max-content;}
-	.card_midium_horizontal::-webkit-scrollbar {height:10px; width: 20%;}
-	.card_midium_horizontal::-webkit-scrollbar-thumb {background: rgba(0,0,0,0.25); border-radius: 5px;}
-	.card_midium_horizontal_div {display: block; float: left; }
-	.card_midium_horizontal_div h3 {padding-top:1rem; font-weight:900;}
-	.card_midium_horizontal_div span {font-weight:900;}
-	.card_midium_horizontal_div p {width:100%; height:96px; overflow:hidden; white-space:normal; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; text-align:left;}
-	.card_midium_horizontal_div > div {width: 297px;  margin:10px; padding:0; border:1px solid rgba(0,0,0,0.3); border-radius:10px; overflow:hidden; box-shadow:0px 4px 4px 4px rgba(0,0,0,0.1);}
-	.card_midium_horizontal_div_txt {padding: 0 15px;}
-	.card_midium_horizontal_div_img {display:flex; justify-contents:center; align-items:center; width:295px; height:254px;}
-	.card_midium_horizontal_div_img > img { display:block; clear:both; width:100%;}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title }</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 </head>
 <body>
-<div id="header">
-	<%@ include file="/header.jsp" %>
-</div>
-<div id="contents">
-	<section class="page" id="page1">
-			<div style="width:1400px; margin:0 auto;">
-				<nav aria-label="breadcrumb" style="text-align:right">
-				  <ol class="breadcrumb">
-				    <li class="breadcrumb-item"><a href="#">Home</a></li>
-				    <li class="breadcrumb-item"><a href="${path0 }/accList.do">숙박</a></li>
-				    <li class="breadcrumb-item active" aria-current="page">숙박 목록</li>
-				  </ol>
-				</nav>
-				<hr>
-			</div>
-		<div style="width:1400px; margin:0 auto;">
-			<h3 class="page_title">숙박 목록</h3>
-					<div>
-		<h2>카드템플릿제목</h2>
-		<hr>
-		<div class="card_midium_horizontal grid1">
-		<div class="col1" >
-			<div style="width: max-content">
-				<c:forEach var="dto" items="${tmp}">
-					<div class="card_midium_horizontal_div">
-						<div style="">
-							<div class="card_midium_horizontal_div_img">
-								<!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
-								<img src="${path0 }/images/.jpg" alt="" />
-							</div>
-							<div class="card_midium_horizontal_div_txt">
-								<!-- <h3>${dto.title}</h3> -->
-								<h3 style="">제목</h3>
-								<hr>
-								<!-- <span>${dto.subtitle}</span> -->
-								<span>부제목</span>
-
-								<!-- <p>${dto.content} </p> -->
-								${dto.content }
-								<div>
-									<p>콘텐츠(글자글자수제한)콘텐츠(글글자수제한)콘제한)콘텐츠(글자수제한)</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</c:forEach>
-				<a href="${path0 }/accom/accom_ins.jsp" >글 등록</a>
-			</div>
-		</div>
-		
+	<div id="header">
+		<%@ include file="/header.jsp" %>
 	</div>
+    <article style="">
+        <div style="width: 100vw; height: 100px; background-color:#333;"></div>
+        <nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item" style="margin-left:12vw;"><a href="${path0 }"><i class="fas fa-home"></i></a></li>
+		    <li class="breadcrumb-item active" aria-current="page">${title }</li>
+		  </ol>
+		</nav>
+        <div class="board_gallary_list" style="">
+            <h1>${title }</h1>
+        </div>
 
-			</div>
-		</div>
-	</section>
-	<section class="page" id="page2">
-		<div style="width:1400px; margin:0 auto;">	
-			<h3 class="page_title"></h3>
 
-		</div>	
-	</section>	
-</div>
-<div id="footer">
-	<%@ include file="/footer.jsp" %>
-</div>
+        <div style="width: 100vw; display: flex; justify-content: center; align-items: flex-start;">
+            <div style="min-width: 1200px; max-width: 1400px;">
+                <span>총 ${fn:length(tmp)}</span>
+                <hr>
+                <div class="card_small_board" >
+                    <div>
+                    	
+                    	<c:forEach var="dto" items="${accomList }">
+                    	
+                        <!-- 복붙할영역 -->
+                        <div class="card_small_board_div" onclick="location.href='${path0}/GetAccom.do?no=${dto.no}'"> 
+                            <div style="height:360px;">
+                            
+                                <div class="card_small_board_div_img">
+                                    <img src="${path0 }/accomUpload/${dto.photo}" alt="" />
+                                </div>
+                                <div class="card_small_board_div_txt">
+                                    <h3>${dto.title}</h3>
+                                    <p>${dto.visited }</p>&nbsp;<p>${dto.liked }</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 복붙할영역 끝 -->
+                        
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="ins_btn">
+	 	<c:if test="${sid.equals('admin') }">
+		<a href="${path0 }/accom/accom_ins.jsp" >글 등록</a>
+		</c:if>
+	</div>
+      <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <c:choose>
+                    <c:when test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="${path0}/AccomList.do?page=${currentPage - 1}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:forEach begin="1" end="${totalPages}" var="i">
+                    <li class="page-item ${i == currentPage ? 'active' : ''}">
+                        <a class="page-link" href="${path0}/AccomList.do?page=${i}">${i}</a>
+                    </li>
+                </c:forEach>
+
+                <c:choose>
+                    <c:when test="${currentPage < totalPages}">
+                        <li class="page-item">
+                            <a class="page-link" href="${path0}/AccomList.do?page=${currentPage + 1}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
+    </article>
+    <br>
+    <br>
+    <div id="footer">
+        <%@ include file="/footer.jsp" %>
+    </div>
 </body>
 </html>

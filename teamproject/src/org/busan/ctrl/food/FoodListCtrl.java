@@ -27,6 +27,8 @@ public class FoodListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "음식");
+		
 		FoodDAO dao = new FoodDAO();
 		List<Food> foodList = new ArrayList<>();
 		foodList = dao.getFoodList();

@@ -5,6 +5,18 @@ public class Curator {
 	private String tel;
 	private String ontime;
 	private String photo;
+	private String url;
+	
+	
+	public Curator() {}
+	public Curator(String title, String tel, String ontime, String photo, String url) {
+		super();
+		this.title = title;
+		this.tel = tel;
+		this.ontime = ontime;
+		this.photo = photo;
+		this.url = url;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -29,16 +41,17 @@ public class Curator {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	@Override
 	public String toString() {
-		return "Curator [title=" + title + ", tel=" + tel + ", ontime=" + ontime + ", photo=" + photo + "]";
+		return "Curator [title=" + title + ", tel=" + tel + ", ontime=" + ontime + ", photo=" + photo + ", url=" + url
+				+ "]";
 	}
-	public Curator(String title, String ontime, String tel, String photo) {
-		super();
-		this.title = title;
-		this.tel = tel;
-		this.ontime = ontime;
-		this.photo = photo;
-	}
-	public Curator() {}
+	
 }

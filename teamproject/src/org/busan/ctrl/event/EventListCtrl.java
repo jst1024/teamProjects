@@ -27,6 +27,8 @@ public class EventListCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "축제");
+		
 		EventDAO dao = new EventDAO();
 		List<Event> eventList = new ArrayList<>();
 		eventList = dao.getEventList();

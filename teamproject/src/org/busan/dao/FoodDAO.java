@@ -94,12 +94,10 @@ public class FoodDAO {
 			pstmt.setString(4, food.getAddr());
 			pstmt.setString(5, food.getTel());
 			pstmt.setString(6, food.getReltag());
-			pstmt.setInt(7, food.getVisited());
-			pstmt.setInt(8, food.getLiked());
-			pstmt.setString(9, food.getMainmenu());
-			pstmt.setString(10, food.getOntime());
-			pstmt.setString(11, food.getDayoff());
-			pstmt.setString(12, food.getPhoto());
+			pstmt.setString(7, food.getMainmenu());
+			pstmt.setString(8, food.getOntime());
+			pstmt.setString(9, food.getDayoff());
+			pstmt.setString(10, food.getPhoto());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -121,13 +119,11 @@ public class FoodDAO {
 			pstmt.setString(4, food.getAddr());
 			pstmt.setString(5, food.getTel());
 			pstmt.setString(6, food.getReltag());
-			pstmt.setInt(7, food.getVisited());
-			pstmt.setInt(8, food.getLiked());
-			pstmt.setString(9, food.getMainmenu());
-			pstmt.setString(10, food.getOntime());
-			pstmt.setString(11, food.getDayoff());
-			pstmt.setString(12, food.getPhoto());
-			pstmt.setInt(13, food.getNo());
+			pstmt.setString(7, food.getMainmenu());
+			pstmt.setString(8, food.getOntime());
+			pstmt.setString(9, food.getDayoff());
+			pstmt.setString(10, food.getPhoto());
+			pstmt.setInt(11, food.getNo());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

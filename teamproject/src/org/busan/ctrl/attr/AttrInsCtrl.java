@@ -61,7 +61,7 @@ public class AttrInsCtrl extends HttpServlet {
 
 			File upfile = mr.getFile(item);	//실제 파일 업로드 
 			//data.setDatafile(upfile.getName());	//파일이름만 가져와서 datafile 필드에 값 대입
-//			attr.setPhoto(fileName);
+			attr.setPhoto(fileName);
 			
 			AttrDAO dao = new AttrDAO();
 			int cnt = dao.insAttr(attr);
