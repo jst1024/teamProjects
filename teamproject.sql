@@ -11,13 +11,27 @@ CREATE TABLE member (
     regdate TIMESTAMP default sysdate   -- 가입일자
 );
 
-create table reply (    -- 댓글(reply)
-    boardNo NUMBER NOT NULL,            -- 게시글 번호(sharetrip의 no에 외래키 지정. cascade)
-    no NUMBER PRIMARY KEY NOT NULL,     -- 파일 번호
-    regdate TIMESTAMP default sysdate,  -- 등록일자
-    content VARCHAR2(2000) NOT NULL     -- 댓글 내용
+create table sharetrip (    -- 여행 공유 게시판
+    no NUMBER primary key,
+    id VARCHAR(20) NOT NULL,
+    title VARCHAR2(200) not null,
+    regdate TIMESTAMP default sysdate,
+    liked NUMBER,
+    replycount NUMBER,
+    photo VARCHAR(1000)
 );
-    
+select * from (select * from reply order by no desc) where boardNo=2 and rownum<=5;
+select * from reply;
+SELECT * FROM reply WHERE boardNo = 1;
+CREATE TABLE reply (
+    boardNo NUMBER NOT NULL,            -- 게시글 번호(sharetrip의 no에 외래키 지정. cascade)
+    no NUMBER NOT NULL,                 -- 댓글 번호
+    id VARCHAR(20) NOT NULL,            -- 작성자 아이디(member(id)에 fk, cascade)
+    regdate TIMESTAMP DEFAULT SYSDATE,  -- 등록일자
+    content VARCHAR2(2000) NOT NULL,    -- 댓글 내용
+    CONSTRAINT pk_reply PRIMARY KEY (no, id)    -- 복합 기본 키 지정
+);
+
 -- 부산에가면(wibusan)
 create table attr(     -- 명소(attr)
     no NUMBER primary key,
@@ -49,10 +63,9 @@ create table food (     -- 음식(food)
     liked number,
     mainmenu varchar2(500) not null,
     ontime varchar2(1000) not null,
-    dayoff varchar2(500) not null,
+    dayoff varchar2(500),
     photo VARCHAR(1000)
 );
-
 
 create table accom (    -- 숙박(accom)
     no NUMBER primary key,
@@ -107,14 +120,20 @@ create table event (        -- 축제/행사(event)
     photo VARCHAR(1000)
 );
 
-create table sharetrip (    -- 여행 공유 게시판
-    no NUMBER primary key,
-    title VARCHAR2(200) not null,
-    regdate TIMESTAMP default sysdate,
-    liked NUMBER,
-    replycount NUMBER,
-    photo VARCHAR(1000)
-);
+---------------------------------- 외래키 생성 -----------------------------------
+-- boardNo 컬럼에 외래 키 제약 조건 추가
+ALTER TABLE reply
+ADD CONSTRAINT fk_reply_boardNo
+FOREIGN KEY (boardNo)
+REFERENCES sharetrip (no)
+ON DELETE CASCADE;
+
+-- id 컬럼에 외래 키 제약 조건 추가
+ALTER TABLE reply
+ADD CONSTRAINT fk_reply_id
+FOREIGN KEY (id)
+REFERENCES member(id)
+ON DELETE CASCADE;
 ---------------------------------- 시퀀스 생성 -----------------------------------
 -- reply 테이블 시퀀스
 CREATE SEQUENCE replyseq START WITH 1 INCREMENT BY 1;
@@ -135,21 +154,12 @@ CREATE SEQUENCE eventseq START WITH 1 INCREMENT BY 1;
 -- sharetrip 테이블 시퀀스
 CREATE SEQUENCE sharetripseq START WITH 1 INCREMENT BY 1;
 
----------------------------- 외래키 설정 -----------------------------------------
--- reply 테이블의 boardNo를 sharetrip 테이블의 no에 외래키로 지정
-ALTER TABLE reply
-ADD CONSTRAINT fk_reply_boardNo
-FOREIGN KEY (boardNo)
-REFERENCES sharetrip (no)
-ON DELETE CASCADE;
-
 COMMIT;
 
 ----------------------------- SELECT * FROM ------------------------------------
 -- 회원관리 (암호화 필요)
 select * from member;
 select * from reply;
-select * from atcfile;
 -- 부산에가면(wibusan)
 select * from attr;         -- 명소(attr)
 select * from food;         -- 음식(food)
@@ -179,6 +189,9 @@ drop table notice;       -- 공지(notice)
 drop table event;        -- 축제/행사(event)
 drop table sharetrip;    -- 여행공유(이용자게시판)(sharetrip)
 
+drop sequence replyseq;
+drop sequence sharetripseq;
+
 ------------------------------- DELETE FROM ------------------------------------
 -- 회원관리 (암호화 필요)
 delete from member;
@@ -202,10 +215,17 @@ INSERT INTO member VALUES ('user1', 'password1', '홍길동', 'user1@example.com
 INSERT INTO member VALUES ('user2', 'password2', '김철수', 'user2@example.com', '010-2345-6789', '부산시 해운대구', '23456', SYSDATE);
 INSERT INTO member VALUES ('user3', 'password3', '이영희', 'user3@example.com', '010-3456-7890', '대전시 서구', '34567', SYSDATE);
 
+-- 여행 공유 게시판(sharetrip)
+INSERT INTO sharetrip VALUES (sharetripseq.nextval,'user1','여행 공유1', SYSDATE, 10, 5,'사진1');
+INSERT INTO sharetrip VALUES (sharetripseq.nextval,'user2','여행 공유2', SYSDATE, 20, 15,'사진2');
+INSERT INTO sharetrip VALUES (sharetripseq.nextval,'user3','여행 공유3', SYSDATE, 30, 25,'사진3');
+
 -- 댓글(reply)(sharetrip 먼저 삽입)
-INSERT INTO reply VALUES (1, replyseq.nextval, SYSDATE, '첫 번째 댓글입니다.');
-INSERT INTO reply VALUES (1, replyseq.nextval, SYSDATE, '두 번째 댓글입니다.');
-INSERT INTO reply VALUES (2, replyseq.nextval, SYSDATE, '세 번째 댓글입니다.');
+INSERT INTO reply VALUES (30, replyseq.nextval, 'user1', SYSDATE, '첫 번째 댓글입니다.');
+INSERT INTO reply VALUES (30, replyseq.nextval, 'user2', SYSDATE, '두 번째 댓글입니다.');
+INSERT INTO reply VALUES (31, replyseq.nextval, 'user3', SYSDATE, '세 번째 댓글입니다.');
+INSERT INTO reply VALUES (32, replyseq.nextval, 'user1', SYSDATE, '네 번째 댓글입니다.');
+INSERT INTO reply VALUES (32, replyseq.nextval, 'user2', SYSDATE, '다섯 번째 댓글입니다.');
 
 -- 명소(attr)
 INSERT INTO attr VALUES (attrseq.nextval, '명소1', '부제1', '명소1에 대한 설명', '서울시', '010-1234-5678', '태그1', 10, 5, '매주 월요일', '교통 정보1', '5000원', '팁1','사진1');
@@ -242,7 +262,4 @@ INSERT INTO event VALUES (eventseq.nextval, '행사1', '2024-06-01', '행사1 �
 INSERT INTO event VALUES (eventseq.nextval, '행사2', '2024-07-01', '행사2 내용', '010-2345-6789', 'http://homepage2.com','사진2');
 INSERT INTO event VALUES (eventseq.nextval, '행사3', '2024-08-01', '행사3 내용', '010-3456-7890', 'http://homepage3.com','사진3');
 
--- 여행 공유 게시판(sharetrip)
-INSERT INTO sharetrip VALUES (sharetripseq.nextval, '여행 공유1', SYSDATE, 10, 5,'사진1');
-INSERT INTO sharetrip VALUES (sharetripseq.nextval, '여행 공유2', SYSDATE, 20, 15,'사진2');
-INSERT INTO sharetrip VALUES (sharetripseq.nextval, '여행 공유3', SYSDATE, 30, 25,'사진3');
+commit;
