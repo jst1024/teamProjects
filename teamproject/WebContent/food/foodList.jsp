@@ -31,7 +31,7 @@
 
         <div style="width: 100vw; display: flex; justify-content: center; align-items: flex-start;">
             <div style="min-width: 1200px; max-width: 1400px;">
-                <span>총 ${fn:length(tmp)}</span>
+                <span>총 ${fn:length(foodList)}</span>
                 <hr>
                 <div class="card_small_board" >
                     <div>
@@ -42,10 +42,12 @@
                         <div class="card_small_board_div" onclick="location.href='${path0}/GetFood.do?no=${dto.no}'"> 
                             <div style="height:360px;">
                                 <div class="card_small_board_div_img">
-                            		<img src="${path0 }/thUpload/${dto.photo}" alt="" />
+                            		<img src="${path0 }/foodUpload/${dto.photo}" alt="" />
                                 </div>
                                 <div class="card_small_board_div_txt">
-                                    <h3>${dto.title}</h3>
+                                    <div style="margin-bottom:10px;">
+                                    	<h3>${dto.title}</h3>
+                                    </div>
                                     <p>${dto.visited }</p>&nbsp;<p>${dto.liked }</p>
                                     
                                 </div>
@@ -56,9 +58,15 @@
                         </c:forEach>
                     </div>
                 </div>
+                <div class="ins_btn">
+				 	<c:if test="${sid.equals('admin') }">
+					<a class="btn btn-primary" href="${path0 }/food/food_ins.jsp" >글 등록</a>
+					</c:if>
+				</div>
             </div>
         </div>
         <br>
+
       <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <c:choose>

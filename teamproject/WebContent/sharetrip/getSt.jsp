@@ -37,23 +37,8 @@ th.item3 { width:20%; }
 .reply textarea {
     resize: none;
 }
-.reply button,
-.btn-group a,
-.delete-btn {
-    align-self: flex-end;
-    padding: 5px 10px;
-    background-color: #b187b2;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-.reply button:hover,
-.btn-group a:hover,
-.delete-btn:hover {
-    background-color: #996699; /* 보다 진한 보라색 */
-}
+
+
 .btn-group a {
     margin-right: 10px; /* 여백 추가 */
 }
@@ -75,9 +60,11 @@ th.item3 { width:20%; }
     align-items: center;
 }
 .reply-info {
-    flex-grow: 1;
+    float:left;
+    width:100%;
 }
 .reply-buttons {
+	float:right;
     margin-right: 10px;
 }
 .editbox {
@@ -187,7 +174,29 @@ body {
     align-items: center; /* 내부 요소들을 세로 중앙 정렬 */
 }
 .only-image {
-   height:78%;
+   height:75%;
+}
+.rly-btn {
+	font-weight:100;
+	cursor:pointer;
+	color:#AAA;
+	margin-left:10px;
+}
+.rly-btn:hover {
+	cursor:pointer;
+	color:#888;
+}
+.btn-back {
+	font-size:22pt;
+	color:#999;
+	text-align:end;
+	float:right;
+	line-height:20px;
+	transition:0.2s;
+}
+.btn-back:hover {
+	color:#888;
+	transition:0.2s;
 }
 </style>
 <script>
@@ -221,13 +230,13 @@ function editTrans(replyNo) {    //여기서 설정까지 =${reply.no}
 <div class="wholeBox">
     <!-- 사진,제목,등록일,좋아요수 -->
     <div class="photoBox leftPanel">
-    <div class="only-image">
-        <div class="card_midium_horizontal_div_img">
-            <!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
-            <img src="${path0}/stUpload/${st.photo}" alt="사진여기있잖아왜안뜨는데" />
-        </div>
-    </div>
-         <hr>
+	    <div class="only-image">
+	        <div class="card_midium_horizontal_div_img">
+	            <!-- <img src="${path0 }/이미지소스주소" alt=""/> -->
+	            <img src="${path0}/stUpload/${st.photo}" alt="사진여기있잖아왜안뜨는데" />
+	        </div>
+	    </div>
+        <hr>
         <div class="card_midium_horizontal_div_txt">
             <div class="flex-item">
                 <h3>${st.title}</h3>
@@ -236,35 +245,38 @@ function editTrans(replyNo) {    //여기서 설정까지 =${reply.no}
                 <p>작성자 : ${st.id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;등록일 : ${st.regdate}</p>
             </div>
         </div>
-        <div class="btn-group" style="float: right;">
+        <div class="" style="float: right;">
           <c:if test="${!empty sid && sid == st.id}">
               <a href="${path0 }/sharetrip/st_ins.jsp" class="btn btn-secondary">여행 등록</a>
               <a href="${path0 }/EditSt.do?no=${st.no }" class="btn btn-secondary">글 수정</a>
           </c:if>
           <c:if test="${sid == st.id || sid == 'admin'}">
-                <a href="${path0 }/DelSt.do?no=${st.no }" class="btn btn-secondary">글 삭제</a>
+                <a href="${path0 }/DelSt.do?no=${st.no }" class="btn btn-secondary" style="margin-right:20px;">글 삭제</a>
           </c:if>
-          <a href="${path0 }/StList.do" class="btn btn-secondary">여행공유 목록</a>
         </div>
+        <br>
     </div>
     
     
     <div class="reply rightPanel">
     <!-- 댓글 입력 폼 -->
+    
     <c:if test="${empty sid }">
     <div class="reply-main">
-        <h4>댓글&nbsp;<c:set var="replyCount" value="${st.replycount}" />개</h4>
-        <span style="padding-top:30px;">로그인 후에 댓글을 남길 수 있습니다.</span>
+    	<a href="${path0 }/StList.do" class="btn-back" style=" z-index:999; position:relative;">뒤로가기 ></a>
+        <h4>댓글&nbsp;<c:set var="replyCount" value="${st.replycount}" />개</h4>        
+        <span style="padding-top:30px; clear:both;">로그인 후에 댓글을 남길 수 있습니다.</span>
         <hr>
     </div>
     </c:if>
     <c:if test="${!empty sid }">
     <div class="reply-main">
-        <h4>댓글&nbsp;${st.replycount }개</h4><br>
-        <form action="ReplyIns.do" method="post">
+    	<a href="${path0 }/StList.do" class="btn-back" style=" z-index:999; position:relative;">뒤로가기 ></a>
+        <h4>댓글&nbsp;${st.replycount }개</h4>
+        <form action="ReplyIns.do" method="post" style="clear:both; margin-top:20px;">
             <input type="hidden" name="boardNo" value="${st.no}">
             <textarea class="inputtext textarea-auto-resize" id="content" name="content" rows="1" cols="50" placeholder="댓글 달기..." required></textarea><br>
-            <button type="submit">등록</button>
+            <button type="submit" class="btn btn-primary" style="font-weight:500; font-size:18px;">등록</button>
         </form>
     </div>
     <hr>
@@ -276,16 +288,17 @@ function editTrans(replyNo) {    //여기서 설정까지 =${reply.no}
                 <div class="reply-info">
                     <div class="user-info">
                         <span>${reply.id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${reply.regdate}</span>
+	                    <div class="reply-buttons">
+	                    <!-- 댓글 수정&삭제 버튼 -->
+	                        <c:if test="${sid == reply.id}">
+	                            <span class="rly-btn" onclick="javascript:editTrans('${reply.no}')" style="cursor:pointer">수정</span>
+	                        </c:if>
+	                        <c:if test="${sid == reply.id || sid == 'admin'}">
+	                            <a class="rly-btn" href="${path0 }/DelReply.do?no=${reply.no }&boardNo=${reply.boardNo}">삭제</a>
+	                        </c:if>
+	                    </div>
                     </div>
-                    <!-- 댓글 수정&삭제 버튼 -->
-                    <div class="reply-buttons">
-                        <c:if test="${sid == reply.id}">
-                            <button class="reply-editbtn" onclick="javascript:editTrans('${reply.no}')">수정</button>
-                        </c:if>
-                        <c:if test="${sid == reply.id || sid == 'admin'}">
-                            <a href="${path0 }/DelReply.do?no=${reply.no }&boardNo=${reply.boardNo}" class="btn btn-secondary delete-btn">삭제</a>
-                        </c:if>
-                    </div>
+
                     <!-- 텍스트 -->
                     <div class="reply-texts">
                         <div class="reply-no" style="display:none">${reply.no}</div>
@@ -302,13 +315,13 @@ function editTrans(replyNo) {    //여기서 설정까지 =${reply.no}
                             </form>
                         </div>
                         <script>
-                  $(document).ready(function() {
-                      $('.textarea-auto-resize').on('input', function () {
-                          this.style.height = 'auto';
-                          this.style.height = (this.scrollHeight) + 'px';
-                      });
-                  });
-                  </script>
+		                  $(document).ready(function() {
+		                      $('.textarea-auto-resize').on('input', function () {
+		                          this.style.height = 'auto';
+		                          this.style.height = (this.scrollHeight) + 'px';
+		                      });
+		                  });
+	                	</script>
                     </c:if>
                 </div>
             </li>

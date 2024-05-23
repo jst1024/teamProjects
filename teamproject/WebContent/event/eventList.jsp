@@ -24,7 +24,6 @@
 	.card_midium_horizontal_div_txt {padding: 0 15px;}
 	.card_midium_horizontal_div_img {display:flex; justify-contents:center; align-items:center; width:295px; height:254px;}
 	.card_midium_horizontal_div_img > img { display:block; clear:both; width:100%;}
-	.ins_btn { display: flex; justify-content: center; background-color: skyblue; border-radius: 10px; margin-right: 5vw; padding: 10px; width:120px; float:right; }
 </style>
 </head>
 <body>
@@ -72,6 +71,11 @@
                         </c:forEach>
                     </div>
                 </div>
+			    <c:if test="${sid.equals('admin') }">
+				    <div class="ins_btn">
+				        <a href="${path0 }/event/event_ins.jsp" class="btn btn-primary">글 등록</a>
+				    </div>
+			    </c:if>
             </div>
         </div>
         <br>
@@ -120,11 +124,7 @@
         </nav>
     </article>
     <br>
-    <c:if test="${sid.equals('admin') }">
-                <div class="btn-group">
-                    <a href="${path0 }/event/event_ins.jsp" class="btn btn-secondary">글 등록</a>
-                </div>
-                </c:if>
+
     <div id="footer">
         <%@ include file="/footer.jsp" %>
     </div>

@@ -3,7 +3,7 @@ package org.busan.ctrl.member;
 
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +38,7 @@ public class JoinProCtrl extends HttpServlet {
     	  e.printStackTrace();
       }
       
-      String regdate = LocalDate.now().toString();
+      LocalDateTime regdate = LocalDateTime.now();
       
       Member mem = new Member(
             
@@ -47,9 +47,10 @@ public class JoinProCtrl extends HttpServlet {
             request.getParameter("name"),
             request.getParameter("email"),
             request.getParameter("tel"),
-            request.getParameter("address1")+"$"+request.getParameter("address2"),
+            request.getParameter("addr1")+"$"+request.getParameter("addr2"),
             request.getParameter("postcode"),
-            regdate);
+            regdate
+            );
       
       MemberDAO dao = new MemberDAO();
       int cnt = dao.join(mem);

@@ -18,6 +18,7 @@ public class JoinCtrl extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		getServletContext().setAttribute("title", "회원가입");
 		request.setAttribute("msg", "<strong>회원정보를 입력하고, 아이디 중복검사를 진행해주시기 바랍니다.</strong>");
 		RequestDispatcher view = request.getRequestDispatcher("/member/join.jsp");
 		view.forward(request, response);

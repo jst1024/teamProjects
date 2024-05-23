@@ -42,6 +42,7 @@ public class AccomInsCtrl extends HttpServlet {
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
 			accom.setTitle(request.getParameter("title"));
+			accom.setSubtitle(request.getParameter("subtitle"));
 			accom.setContent(request.getParameter("content"));
 			accom.setAddr(request.getParameter("addr"));
 			accom.setTel(request.getParameter("tel"));

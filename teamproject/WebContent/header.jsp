@@ -15,7 +15,7 @@
 	</div>
 	 -->
 	 <div class="hd_wrap">
-            <a href=""><img src="./images/logow2.png" alt="로고" id="logo"></a>
+            <a href="${hpath }"><img src="${hpath }/img/icon.webp" alt="로고" id="logo"></a>
             <nav id="gnb" class="container">
                 <ul class="menu row justify-content-center">
                     <li class="category clr-fix col-2">
@@ -24,8 +24,8 @@
                             <li><a href="${hpath }/AttrList.do" class="dp2">명소</a></li>
                             <li><a href="${hpath }/FoodList.do" class="dp2">음식</a></li>
                             <li><a href="${hpath }/AccomList.do" class="dp2">숙박</a></li>
-                            <li><a href="${hpath }/" class="dp2">쇼핑</a></li>
-                            <li><a href="${hpath }/" class="dp2">축제</a></li>
+                            <li><a href="${hpath }/Shop.do" class="dp2">쇼핑</a></li>
+                            <li><a href="${hpath }/Festival.do" class="dp2">축제</a></li>
                         </ul>
                     </li>
                     <li class="category clr-fix col-2">

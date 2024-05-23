@@ -1,5 +1,7 @@
 package org.busan.dto;
 
+import java.time.LocalDateTime;
+
 public class Member {
 	private String id;
 	private String pw;
@@ -8,11 +10,11 @@ public class Member {
 	private String tel;
 	private String addr;
 	private String postcode;
-	private String regdate;
+	private LocalDateTime regdate;
 	
 	public Member() {}
 	public Member(String id, String pw, String name, String email, String tel, String addr, String postcode,
-			String regdate) {
+			LocalDateTime regdate) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -65,10 +67,10 @@ public class Member {
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
-	public String getRegdate() {
+	public LocalDateTime getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(String regdate) {
+	public void setRegdate(LocalDateTime regdate) {
 		this.regdate = regdate;
 	}
 	

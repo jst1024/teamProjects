@@ -1,10 +1,10 @@
 package org.busan.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class MemberDAO {
 						rs.getString("tel"),
 						rs.getString("addr"),
 						rs.getString("postcode"),
-						rs.getString("regdate"));
+						rs.getTimestamp("regdate").toLocalDateTime());
 				memList.add(mem);
 			}
 		} catch(Exception e){
@@ -59,7 +59,7 @@ public class MemberDAO {
 				mem.setTel(rs.getString("tel"));
 				mem.setAddr(rs.getString("addr"));
 				mem.setPostcode(rs.getString("postcode"));
-				mem.setRegdate(rs.getString("regdate"));
+				mem.setRegdate(rs.getTimestamp("regdate").toLocalDateTime());
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -82,9 +82,9 @@ public class MemberDAO {
 			pstmt.setString(5, mem.getTel());
 			pstmt.setString(6, mem.getAddr());
 			pstmt.setString(7, mem.getPostcode());
-			LocalDate localDate = LocalDate.parse(mem.getRegdate());
-            Date sqlDate = Date.valueOf(localDate);
-            pstmt.setDate(8, sqlDate);
+			LocalDateTime localDateTime = mem.getRegdate();
+	        Timestamp sqlTimestamp = Timestamp.valueOf(localDateTime);
+	        pstmt.setTimestamp(8, sqlTimestamp);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();

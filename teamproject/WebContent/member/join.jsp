@@ -49,7 +49,7 @@ table li {margin:10px;}
         </div>
         <hr>
         <div class="container_default" style="display:flex; justify-content:center; width:100%;">
-            <form name="frm1" id="frm1" action="${path0 }/joinPro.do" method="post" onsubmit="return joinCheck(this)">
+            <form name="frm1" id="frm1" action="${path0 }/JoinPro.do" method="post" onsubmit="return joinCheck(this)">
                 <table id="table1" class="joinform">
                     <ul>
                         <li class="joinform_label">아이디</li>

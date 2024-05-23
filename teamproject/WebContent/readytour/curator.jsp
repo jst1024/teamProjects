@@ -35,27 +35,27 @@
         <div id="hash_box">
             <div class="hash" >
                 <a href="">
-                    #전체
+                    #문화관광
                 </a>
             </div>
             <div class="hash" >
                 <a href="">
-                    #가나다라
+                    #역사관
                 </a>
             </div>
             <div class="hash" >
                 <a href="">
-                    #테마여행
+                    #김천문화마을
                 </a>
             </div>
             <div class="hash" >
                 <a href="">
-                    #교갸교갸샤샤샤
+                    #감성여행
                 </a>
             </div>
             <div class="hash" >
                 <a href="">
-                    #쑊쑊쑊쑊쑊쑊쑊쑊쑊쑊
+                    #인생8컷
                 </a>
             </div>
         </div>

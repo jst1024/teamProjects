@@ -70,7 +70,7 @@
 
         <div style="width: 100vw; height: auto; display: flex; justify-content: center; align-items: flex-start;">
             <div style="min-width: 1200px; max-width: 1400px;">
-                <span>총 ${fn:length(dto)}</span>
+                <span>총 ${fn:length(themeList)}</span>
                 <hr>
                 <div class="card_small_board">
                     <div style="">

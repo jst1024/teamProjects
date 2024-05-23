@@ -1,6 +1,7 @@
 package org.busan.ctrl.member;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,6 +29,7 @@ public class EditMemberProCtrl extends HttpServlet {
 		String pw = request.getParameter("pw");
 		String key = "%02x";
 		String enPw = "";
+		LocalDateTime regdate = LocalDateTime.now();
         try {
             enPw = AES256.encryptAES256(pw, key);
             System.out.println("비밀번호 암호화 : "+enPw);
@@ -42,7 +44,8 @@ public class EditMemberProCtrl extends HttpServlet {
 				request.getParameter("tel"),
 				request.getParameter("address1")+"<br>"+request.getParameter("address2"),
 				request.getParameter("postcode"),
-				request.getParameter("regdate"));
+				regdate
+				);
 		
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.upMember(mem);

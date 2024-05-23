@@ -31,8 +31,8 @@ public class Main extends HttpServlet {
         tmp.add(new Link(1, "명소", "subTitle", home + "/AttrList.do", "/img/main/1.jpg"));
         tmp.add(new Link(2, "음식", "subTitle", home + "/FoodList.do", "/img/main/2.jpg"));
         tmp.add(new Link(3, "숙박", "subTitle", home + "/AccomList.do","/img/main/3.jpg"));
-        tmp.add(new Link(4, "쇼핑", "subTitle", home,  "/img/main/4.jpg"));
-        tmp.add(new Link(5, "축제", "subTitle", home,  "/img/main/5.jpg"));
+        tmp.add(new Link(4, "쇼핑", "subTitle", home + "/Shop.do",  "/img/main/4.jpg"));
+        tmp.add(new Link(5, "축제", "subTitle", home + "/Festival.do",  "/img/main/5.jpg"));
         
         request.setAttribute("tmp", tmp);
 		

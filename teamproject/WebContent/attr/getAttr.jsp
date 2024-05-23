@@ -36,7 +36,6 @@ th.item3 { width:20%; }
 		margin-top:30px;
 	}
 	.photo-area {
-		display: block;
 		width: 100%; max-width: 100%;
 		height: 600px; margin: 0 auto;
 		overflow: hidden; text-align: center;
@@ -130,7 +129,6 @@ th.item3 { width:20%; }
 	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
 	<div class="btn-group" style="float: right;">
 	  <c:if test="${sid == 'admin'}">
-		  <a href="${path0 }/attr/attr_ins.jsp" class="btn btn-secondary">글 등록</a>
 		  <a href="${path0 }/EditAttr.do?no=${attr.no }" class="btn btn-secondary">글 수정</a>
 	  	  <a href="${path0 }/DelAttr.do?no=${attr.no }" class="btn btn-secondary">글 삭제</a>
 	  </c:if>

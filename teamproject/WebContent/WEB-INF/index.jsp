@@ -29,13 +29,11 @@
         headerTexts.forEach(function(text) {
             text.style.color = '#000';
             header.style.backgroundColor = '#fff';
-            logo.src = "./images/logog.png";
         });
     } else {
         headerTexts.forEach(function(text) {
             text.style.color = '#fff';
             header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-            logo.src = "./images/logow2.png";
         });
     }
     });
@@ -50,7 +48,6 @@
         headerTexts.forEach(function(text) {
             text.style.color = '#fff';
             header.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-            logo.src = "./images/logow2.png";
         });
 
     });
@@ -63,9 +60,9 @@
 	    <div style="width: 100vw; height: 100vh; background-image:url('./img/main/bg_image1.jpg'); background-size:cover;">
 			<div style="width:100%; height:100%; background-color:rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; color:#FFF;">
 				<span style="text-align:center; line-height:1.1">
-					<span style="font-size:40px; font-weight:100;">부산의여행어쩌고저쩌고</span><br>
-					<span style="font-size:105px; font-weight:900;">부산관광부산관광</span><br>
-					<span style="font-size:64px; font-weight:400;">32123132321</span>
+					<span style="font-size:40px; font-weight:100;">TRIP ADVICE ㆍ AESTHETIC</span><br>
+					<span style="font-size:105px; font-weight:900;">부산을관광하라부산광</span><br>
+					<span style="font-size:64px; font-weight:400;">모던과 전통을 간직한</span>
 				</span>
 			</div>		
 	    </div>
@@ -114,7 +111,7 @@
 							<span style="color:#AAA">Place</span>
 							<h1 style="color:#333">문화관광</h1>
 							<br>
-							<span style="color:#888">1234</span>
+							<span style="color:#888">다양한 볼거리와<br>문화를 만나보세요</span>
 						</div>
 					</div>
 					<div style="width:66.6%; height:50%; background-color:#CCC; float:right;">
@@ -125,7 +122,7 @@
 							<span style="color:#AAA">Ready</span>
 							<h1 style="font-size:22pt; color:#333;">여행준비정보</h1>
 							<br>
-							<span style="color:#888">1234</span>
+							<span style="color:#888">도와드리려고<br>준비했어요.</span>
 						</div>
 					</div>
 					<div style="width:66.6%; height:50%; background-color:#CCC; float:right;">
@@ -137,8 +134,8 @@
 						<h3 style="margin:40px 30px 0 0; font-size:28pt; font-weight:500;">관광안내소</h3>
 						<span style="margin:0 30px 0 0; font-size:20pt; font-weight:100;">환전/로밍/짐캐리</span>
 					</div>
-					<div style="position:absolute; width:280px; height:200px; background-color:#FFF; top:180px; left:70px; background-size:150% 150%; z-index:3; background-position:center center; background-image:url('https://visitbusan.net/uploadImgs/files/infofc/20210405130245227_thumbL')"></div>
-					<div style="position:absolute; width:300px; height:200px; background-color:#FFF; top:390px; left:-20px; background-size:150% 150%; z-index:2; background-position:center center; background-image:url('https://www.visitbusan.net/uploadImgs/files/infofc/20201113102621490_thumbL')"></div>
+					<div style="position:absolute; width:280px; height:200px; background-color:#FFF; top:160px; left:70px; background-size:150% 150%; z-index:3; background-position:center center; background-image:url('https://visitbusan.net/uploadImgs/files/infofc/20210405130245227_thumbL')"></div>
+					<div style="position:absolute; width:300px; height:200px; background-color:#FFF; top:380px; left:-20px; background-size:150% 150%; z-index:2; background-position:center center; background-image:url('https://www.visitbusan.net/uploadImgs/files/infofc/20201113102621490_thumbL')"></div>
 				</div>
 			</div>
 		</div>	

@@ -2,35 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<c:set var="path0" value="<%=request.getContextPath() %>" />    
+<c:set var="path0" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>${title }</title>
 <%@ include file="/head.jsp" %>
-<script src="${path0 }/js/jquery.dataTables.js"></script>
-<link rel="stylesheet" href="${path0 }/css/jquery.dataTables.css" >
-<style>
-	.card_midium_horizontal { width: 100%; height: auto; overflow-x: scroll; overflow-y: hidden; white-space: nowrap; }
-	.card_midium_horizontal > div {width: max-content;}
-	.card_midium_horizontal::-webkit-scrollbar {height:10px; width: 20%;}
-	.card_midium_horizontal::-webkit-scrollbar-thumb {background: rgba(0,0,0,0.25); border-radius: 5px;}
-	.card_midium_horizontal_div {display: block; float: left; }
-	.card_midium_horizontal_div h3 {padding-top:1rem; font-weight:900;}
-	.card_midium_horizontal_div span {font-weight:900;}
-	.card_midium_horizontal_div p {width:100%; height:96px; overflow:hidden; white-space:normal; text-overflow:ellipsis; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; text-align:left;}
-	.card_midium_horizontal_div > div {width: 297px;  margin:10px; padding:0; border:1px solid rgba(0,0,0,0.3); border-radius:10px; overflow:hidden; box-shadow:0px 4px 4px 4px rgba(0,0,0,0.1);}
-	.card_midium_horizontal_div_txt {padding: 0 15px;}
-	.card_midium_horizontal_div_img {display:flex; justify-contents:center; align-items:center; width:295px; height:254px;}
-	.card_midium_horizontal_div_img > img { display:block; clear:both; width:100%;}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${title }</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 </head>
 <body>
-<div id="header">
-	<%@ include file="/header.jsp" %>
-</div>
-	<article style="">
+	<div id="header">
+		<%@ include file="/header.jsp" %>
+	</div>
+    <article style="">
         <div style="width: 100vw; height: 100px; background-color:#333;"></div>
         <nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
@@ -45,36 +31,34 @@
 
         <div style="width: 100vw; display: flex; justify-content: center; align-items: flex-start;">
             <div style="min-width: 1200px; max-width: 1400px;">
-                <span>총 ${fn:length(stList)}</span>
+                <span>총 ${fn:length(festival)}</span>
                 <hr>
                 <div class="card_small_board" >
                     <div>
                     	
-                    	<c:forEach var="dto" items="${stList }">
+                    	<c:forEach var="dto" items="${festival}">
                     	
                         <!-- 복붙할영역 -->
-                        <div class="card_small_board_div" onclick="location.href='${path0}/GetSt.do?no=${dto.no}'"> 
+                        <a href="${dto.url}" target="_blank" class="card_small_board_div"> <!-- ìì¸ì£¼ìë§ ë°ê¾¸ë©´ë¨ -->
                             <div style="height:360px;">
-                            
                                 <div class="card_small_board_div_img">
-                                    <img src="${path0 }/stUpload/${dto.photo}" alt="" />
+                                    <!-- <img src="${path0 }경로기입" alt=""/> -->
+                                    <img src="${dto.photo }" alt="" />
                                 </div>
                                 <div class="card_small_board_div_txt">
-                                    <h3>${dto.title}</h3>
-                                    
+                                    <div style="margin-bottom:10px;">
+                                    	<h3>${dto.title}</h3>
+                                    </div>
+                                    <p>${dto.ontime }</p>
+                                    <p>${dto.tel }</p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <!-- 복붙할영역 끝 -->
                         
                         </c:forEach>
                     </div>
                 </div>
-		    <c:if test="${sid.equals('admin') }">
-			    <div class="ins_btn">
-			        <a href="${path0 }/sharetrip/st_ins.jsp" class="btn btn-primary">글 등록</a>
-			    </div>
-		    </c:if>
             </div>
         </div>
         <br>
@@ -83,7 +67,7 @@
                 <c:choose>
                     <c:when test="${currentPage > 1}">
                         <li class="page-item">
-                            <a class="page-link" href="${path0}/StList.do?page=${currentPage - 1}" aria-label="Previous">
+                            <a class="page-link" href="${path0}/AttrList.do?page=${currentPage - 1}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -99,14 +83,14 @@
 
                 <c:forEach begin="1" end="${totalPages}" var="i">
                     <li class="page-item ${i == currentPage ? 'active' : ''}">
-                        <a class="page-link" href="${path0}/StList.do?page=${i}">${i}</a>
+                        <a class="page-link" href="${path0}/AttrList.do?page=${i}">${i}</a>
                     </li>
                 </c:forEach>
 
                 <c:choose>
                     <c:when test="${currentPage < totalPages}">
                         <li class="page-item">
-                            <a class="page-link" href="${path0}/StList.do?page=${currentPage + 1}" aria-label="Next">
+                            <a class="page-link" href="${path0}/AttrList.do?page=${currentPage + 1}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -123,7 +107,7 @@
         </nav>
     </article>
     <br>
-
+    <br>
     <div id="footer">
         <%@ include file="/footer.jsp" %>
     </div>
