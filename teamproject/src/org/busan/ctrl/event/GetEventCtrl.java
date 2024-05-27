@@ -26,6 +26,7 @@ public class GetEventCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "축제ㆍ행사");
 		
 		EventDAO dao = new EventDAO();
 		Event event = dao.getEvent(no);

@@ -17,10 +17,10 @@ public class ReplyDAO {
 	// �듅�젙 sharetripNo�뿉 �빐�떦�븯�뒗 �뙎湲� 由ъ뒪�듃瑜� 媛��졇�삤�뒗 硫붿꽌�뱶 異붽�
     public List<Reply> getReplies(int sharetripNo) {
         List<Reply> replyList = new ArrayList<>();
-        OracleDB oracle = new OracleDB();
+        MariaDB maria = new MariaDB();
         try {
-            con = oracle.connect();
-            pstmt = con.prepareStatement(OracleDB.LATEST_ST_REPLY);
+            con = maria.connect();
+            pstmt = con.prepareStatement(MariaDB.LATEST_ST_REPLY);
             pstmt.setInt(1, sharetripNo);
             rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -36,17 +36,17 @@ public class ReplyDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            oracle.close(con, pstmt, rs);
+            maria.close(con, pstmt, rs);
         }
         return replyList;
     }
     
 	public List<Reply> getLatestReplyList(){
 		List<Reply> replyList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.LATEST_REPLY);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.LATEST_REPLY);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Reply reply = new Reply(
@@ -60,16 +60,16 @@ public class ReplyDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return replyList;
 	}
 	
 	public List<Reply> getReplyList(){
 		List<Reply> replyList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_REPLY);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -84,17 +84,17 @@ public class ReplyDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return replyList;
 	}
 	
 	public int insReply(Reply reply) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_REPLY);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_REPLY);
 			pstmt.setInt(1, reply.getBoardNo());
 			pstmt.setString(2, reply.getId());
 			pstmt.setString(3, reply.getContent());
@@ -104,16 +104,16 @@ public class ReplyDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProReply(Reply reply) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_REPLY);
 			pstmt.setString(1, reply.getContent());
 			pstmt.setInt(2, reply.getBoardNo());
@@ -122,16 +122,16 @@ public class ReplyDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delReply(int boardNo, int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_REPLY);
 			pstmt.setInt(1, boardNo);
 			pstmt.setInt(2, no);
@@ -141,17 +141,17 @@ public class ReplyDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 
 	public Reply getReply(int no) {
 		Reply reply = new Reply();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = null;
 			pstmt = con.prepareStatement(SqlLang.SELECT_REPLY_BYNO);
 			pstmt.setInt(1, no);
@@ -165,16 +165,16 @@ public class ReplyDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return reply;
 	}
 	
     // 게시글의 댓글 수를 업데이트하는 메서드
     public void updateReplyCount(int boardNo) {
-        OracleDB oracle = new OracleDB();
+        MariaDB maria = new MariaDB();
         try {
-            con = oracle.connect();
+            con = maria.connect();
             pstmt = con.prepareStatement(SqlLang.UPD_REPLYCOUNT);
             pstmt.setInt(1, boardNo);
             rs = pstmt.executeQuery();
@@ -191,7 +191,7 @@ public class ReplyDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            oracle.close(con, pstmt, rs);
+            maria.close(con, pstmt, rs);
         }
     }
 }

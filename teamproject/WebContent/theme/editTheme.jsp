@@ -34,7 +34,7 @@
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">글 수정</h3>
-			<form method="post" encType = "multipart/form-data" action="${path0 }/EditTheme.do">
+			<form method="post" encType = "multipart/form-data" action="${path0 }/EditProTheme.do">
 				<table class="table">
 					<tbody>
 						<tr>
@@ -48,8 +48,8 @@
 							<td><input type="text" name="title" id="title" class="form-control" maxlength="100" value="${theme.title }" required></td>
 						</tr>
 						<tr>
-							<th><label for="title">제목</label></th>
-							<td><input type="text" name="title" id="title" class="form-control" maxlength="100" value="${theme.title }" required></td>
+							<th><label for="subtitle">부제목</label></th>
+							<td><input type="text" name="subtitle" id="subtitle" class="form-control" maxlength="100" value="${theme.subtitle }" required></td>
 						</tr>
 						<tr>
 							<th><label for="content">내용</label></th>

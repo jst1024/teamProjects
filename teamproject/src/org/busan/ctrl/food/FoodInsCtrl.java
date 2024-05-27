@@ -33,6 +33,7 @@ public class FoodInsCtrl extends HttpServlet {
 		
 
 		Food food = new Food();
+		getServletContext().setAttribute("title", "음식");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

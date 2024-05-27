@@ -2,6 +2,7 @@ package org.busan.ctrl.member;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,10 +30,12 @@ public class DelMemberCtrl extends HttpServlet {
 		int cnt = dao.memberOut(id);
 		
 		HttpSession session = request.getSession(); 
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		if(cnt>0) {
 			session.invalidate();
-			response.sendRedirect("/teamproject");
+			response.sendRedirect(home);
 		} else {
 			response.sendRedirect("/EditMember.do?id="+id);
 		}

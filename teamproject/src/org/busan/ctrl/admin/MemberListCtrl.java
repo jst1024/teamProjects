@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,12 @@ public class MemberListCtrl extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		String loginId = (String) session.getAttribute("sid");
 		if(!loginId.equals("admin")){
-			response.sendRedirect("/teamproject");
+			response.sendRedirect(home);
 		}
 		
 		MemberDAO dao = new MemberDAO();

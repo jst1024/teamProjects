@@ -26,6 +26,7 @@ public class GetAttrCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "명소");
 		
 		AttrDAO dao = new AttrDAO();
 		Attr attr = dao.getAttr(no);

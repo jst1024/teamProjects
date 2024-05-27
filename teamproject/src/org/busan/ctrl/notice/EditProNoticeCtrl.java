@@ -2,6 +2,7 @@ package org.busan.ctrl.notice;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,16 +29,21 @@ public class EditProNoticeCtrl extends HttpServlet {
 		noti.setNo(Integer.parseInt(request.getParameter("no")));
 		noti.setTitle(request.getParameter("title"));
 		noti.setContent(request.getParameter("content"));
+		getServletContext().setAttribute("title", "공지사항");
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		NoticeDAO dao = new NoticeDAO();
 		int cnt = dao.editProNotice(noti);
 		
+		System.out.println(noti);
+
 		if(cnt>0) {
 			System.out.println("자료 수정 성공");
-			response.sendRedirect("/teamproject/NotiList.do");
+			response.sendRedirect(home+"/NotiList.do");
 		} else {
 			System.out.println("자료 수정 실패");
-			response.sendRedirect("/teamproject/EditNotice.do?no="+noti.getNo());
+			response.sendRedirect(home+"/EditNotice.do?no="+noti.getNo());
 		}
 	}
 }

@@ -26,6 +26,7 @@ public class GetThemeCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "테마여행 상세보기");
 		
 		ThemeDAO dao = new ThemeDAO();
 		Theme theme = dao.getTheme(no);

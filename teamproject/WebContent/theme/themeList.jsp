@@ -12,7 +12,23 @@
 <title>${title }</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
-.ins_btn { display: flex; justify-content: center; background-color: skyblue; border-radius: 10px; margin-right: 5vw; padding: 10px; width:120px; float:right; }
+.ins_btn {
+    text-align: center; /* 부모 요소의 가운데 정렬을 위한 설정 */
+}
+.ins_btn a {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top:30px;
+    padding: 10px 20px;
+    background-color: #009688;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.ins_btn a:hover {
+    background-color: #00796b;
+}
 </style>
 </head>
 <body>
@@ -28,7 +44,7 @@
 			    <li class="breadcrumb-item active" aria-current="page">${title }</li>
 			  </ol>
 			</nav>
-			<hr>
+			
 		
         <div class="board_gallary_list" style="">
             <h1>${title }</h1>
@@ -45,7 +61,7 @@
             </div>
             <div class="hash" >
                 <a href="">
-                    #가나다라
+                    #산책코스
                 </a>
             </div>
             <div class="hash" >
@@ -55,12 +71,7 @@
             </div>
             <div class="hash" >
                 <a href="">
-                    #교갸교갸샤샤샤
-                </a>
-            </div>
-            <div class="hash" >
-                <a href="">
-                    #쑊쑊쑊쑊쑊쑊쑊쑊쑊쑊
+                    #가족여행
                 </a>
             </div>
         </div>
@@ -99,11 +110,15 @@
         
     </article>
     <br>
-<div class="ins_btn">
- 	<c:if test="${sid.equals('admin') }">
-	<a href="${path0 }/theme/theme_ins.jsp" >글 등록</a>
-	</c:if>
-</div>
+    <div style="width:100%; height:80px;">
+    	<c:if test="${sid.equals('admin') }">
+		<div class="ins_btn">
+			<a href="${path0 }/theme/theme_ins.jsp" >글 등록</a>
+		</div>
+		</c:if>
+	</div>
+	<br>
+	<br>
     <div id="footer">
         <%@ include file="/footer.jsp" %>
     </div>

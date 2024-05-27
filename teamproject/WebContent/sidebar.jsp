@@ -13,7 +13,7 @@
 				<a href="#index_2">부산에 가면</a>
 			</li>
 			<li>
-				<a href="#index_3">저기소개</a>
+				<a href="#index_3">여행준비</a>
 			</li>
 		</ul>
 	</div>

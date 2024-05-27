@@ -40,7 +40,7 @@
                     	<c:forEach var="dto" items="${tourinfo}">
                     	
                         <!-- 복붙할영역 -->
-                        <div class="card_small_board_div"  >
+                        <a href="${dto.url}" target="_blank" class="card_small_board_div">
                             <div style="height:360px;">
                                 <div class="card_small_board_div_img">
                                     <!-- <img src="${path0 }경로기입" alt=""/> -->
@@ -52,9 +52,9 @@
                                     <p>${dto.tel }</p>
                                 </div>
                             </div>
-                        </div> 
+                        </a>
                         <!-- 복붙할영역 끝 -->
-                        
+                         
                         </c:forEach>
                     </div>
                 </div>

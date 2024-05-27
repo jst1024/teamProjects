@@ -13,10 +13,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
         <style>
         	.ins_btn { display: flex; justify-content: center; background-color: skyblue; border-radius: 10px; margin-right: 5vw; padding: 10px; width:120px; float:right; }
+        	.board_gallary_detail {
+        		margin-top:150px;
+        	}
+        	.subtitle-txt {
+        		margin-top:30px;
+        	}
+        	.photo1 { text-align:center; }
+
         </style>
 	</head>
 <body>
-
 	<div id="header">
 		<%@ include file="/header.jsp" %>
 	</div>
@@ -32,40 +39,38 @@
 		
         <div class="board_gallary_detail">
             <div style="text-align: center;">
-                <h1>${theme.title }</h1>
-                <h2>${theme.subtitle }</h2>
+                <h1 class="title-txt">${theme.title }</h1>
+                <h2 class="subtitle-txt">${theme.subtitle }</h2>
             </div>
         </div>
 
         <div style="width: 100vw; height: 1200px; display: flex; justify-content: center;">
-            <div style="min-width: 1200px; max-width: 1400px; width: 100vw; height: max-content;">
-                <!-- 배너(대표사진)영역 -->
-                <div style="width: 100%; height: 400px; overflow: hidden;">
-                    <div style="background-image: url(${theme.photo}); width: 100%; height: 100%; background-position: center center; background-size: cover;"></div>
-                </div>
-                <!-- 평가영역 (좋아요)-->
-                <div class="review_area">
-                    <span> 좋아요 : 1</span>
-                    <span> 조회수 : 300</span>
-                </div>
-                <!-- 탭 영역 -->
-                <div class="board_tab">
-                    <a href="#">탭1</a>
-                    <a href="#">탭</a>
-                    <a href="#">탭</a>
-                    <a href="#">탭</a>
+            <div style="min-width: 1200px; max-width: 1400px; width: 100vw; height: auto;">
+                <!-- 평가영역-->
+                <div class="review_area" style="display:flex; float:right; margin-right:30px;">
+                    <span>조회수 ${theme.visited }</span>
                 </div>
                 <!-- 본문영역 -->
                 <div style="width: 100%; height: 100%; float: left;">
                     <hr>
+                    <div class="photo1"> <img src="${path0}/thUpload/${theme.photo}" alt="본문삽입사진" style="width: 100%;"> </div>
+	                    <br><br>
                     <span style="white-space: pre-wrap;">
-                    <img src="${theme.photo}" alt="" style="width: 100%;">
-                    ${theme.content }
+	                    ${theme.content }
                     </span>
                 </div>
             </div>
         </div>
-
     </article>
+    	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
+   	<div style="width:100%; height:80px; display:block;">
+	<div class="btn-group" style="float: right;">
+	  <c:if test="${sid == 'admin'}">
+		  <a href="${path0 }/EditTheme.do?no=${theme.no }" class="btn btn-secondary">글 수정</a>
+	  	  <a href="${path0 }/DelTheme.do?no=${theme.no }" class="btn btn-secondary">글 삭제</a>
+	  </c:if>
+	  <a href="${path0 }/ThemeList.do" class="btn btn-secondary">숙박 목록</a>
+	</div>
+</div>
 </body>
 </html>

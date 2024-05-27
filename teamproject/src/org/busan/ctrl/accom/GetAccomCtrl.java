@@ -26,6 +26,7 @@ public class GetAccomCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "숙박");
 		
 		AccomDAO dao = new AccomDAO();
 		Accom accom = dao.getAccom(no);

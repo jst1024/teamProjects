@@ -26,6 +26,7 @@ public class NotiInsCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		Notice noti = new Notice();
+		getServletContext().setAttribute("title", "공지사항");
 		
 		//String title = request.getParameter("title");
 		//String content = request.getParameter("content");

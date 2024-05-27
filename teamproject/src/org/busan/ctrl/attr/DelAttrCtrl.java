@@ -2,6 +2,7 @@ package org.busan.ctrl.attr;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,16 @@ public class DelAttrCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		AttrDAO dao = new AttrDAO();
 		int cnt = dao.delAttr(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/AttrList.do");
+			response.sendRedirect(home+"/AttrList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetAttr.do?no="+no);
+			response.sendRedirect(home+"/GetAttr.do?no="+no);
 		}
 	}
 

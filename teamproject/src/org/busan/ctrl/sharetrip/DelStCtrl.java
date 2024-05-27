@@ -2,6 +2,7 @@ package org.busan.ctrl.sharetrip;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,16 @@ public class DelStCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		SharetripDAO dao = new SharetripDAO();
 		int cnt = dao.delSharetrip(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/StList.do");
+			response.sendRedirect(home+"/StList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetSt.do?no="+no);
+			response.sendRedirect(home+"/GetSt.do?no="+no);
 		}
 	}
 

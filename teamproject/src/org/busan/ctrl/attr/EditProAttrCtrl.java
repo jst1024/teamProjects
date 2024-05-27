@@ -33,6 +33,7 @@ public class EditProAttrCtrl extends HttpServlet {
 		Attr attr = new Attr();
 
 		ServletContext application = request.getServletContext(); //teamproject
+		getServletContext().setAttribute("title", "명소");
 		
 		try {
 			String saveDirectory = application.getRealPath("/attrUpload"); //teamproject/WebContent/eventUpload
@@ -64,7 +65,7 @@ public class EditProAttrCtrl extends HttpServlet {
 			attr.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			AttrDAO dao = new AttrDAO();
-			int cnt = dao.insAttr(attr);
+			int cnt = dao.editProAttr(attr);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

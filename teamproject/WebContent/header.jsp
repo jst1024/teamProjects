@@ -46,7 +46,7 @@
                         <a href="" class="dp1">유용한정보</a>
                         <ul class="sub">
                             <li><a href="${hpath }/NotiList.do" class="dp2">공지사항</a></li>
-                            <li><a href="${hpath }/EventList.do" class="dp2">축제/행사</a></li>
+                            <li><a href="${hpath }/EventList.do" class="dp2">축제ㆍ행사</a></li>
                             <li><a href="${hpath }/StList.do" class="dp2">여행공유</a></li>
                         </ul>
                     </li>

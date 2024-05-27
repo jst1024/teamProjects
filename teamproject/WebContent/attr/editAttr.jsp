@@ -33,7 +33,7 @@
 	<section class="page" id="page1">
 		<div style="width:1400px; margin:0 auto;">
 			<h3 class="page_title">글 수정</h3>
-			<form method="post" encType = "multipart/form-data" action="${path0 }/EditAttr.do">
+			<form method="post" encType = "multipart/form-data" action="${path0 }/EditProAttr.do">
 				<table class="table">
 					<tbody>
 						<tr>

@@ -26,6 +26,7 @@ public class GetNoticeCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "공지사항");
 		
 		NoticeDAO dao = new NoticeDAO();
 		Notice noti = dao.getNotice(no);

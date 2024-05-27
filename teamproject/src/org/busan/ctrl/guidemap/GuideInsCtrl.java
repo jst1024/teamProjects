@@ -33,6 +33,7 @@ public class GuideInsCtrl extends HttpServlet {
 		
 
 		Guidemap gm = new Guidemap();
+		getServletContext().setAttribute("title", "가이드북&지도");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

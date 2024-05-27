@@ -70,11 +70,12 @@
                         </c:forEach>
                     </div>
                 </div>
-		    <c:if test="${sid.equals('admin') }">
+		    <c:if test="${!empty sid}">
 			    <div class="ins_btn">
-			        <a href="${path0 }/sharetrip/st_ins.jsp" class="btn btn-primary">글 등록</a>
+			        <a href="${path0}/sharetrip/st_ins.jsp" class="btn btn-primary">글 등록</a>
 			    </div>
-		    </c:if>
+			</c:if>
+
             </div>
         </div>
         <br>

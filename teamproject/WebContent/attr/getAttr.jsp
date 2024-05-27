@@ -19,6 +19,8 @@
 th.item1 { width:8%; }
 th.item2 { width:60%; }
 th.item3 { width:20%; }
+.image-wrapper {width:100%; height:100%;}
+.image-wrapper > img {object-fit:cover; width:100%; height:100%;}
 </style>
 <style>
 .wholeBox {
@@ -37,9 +39,8 @@ th.item3 { width:20%; }
 	}
 	.photo-area {
 		width: 100%; max-width: 100%;
-		height: 600px; margin: 0 auto;
+		margin: 0 auto;
 		overflow: hidden; text-align: center;
-		border: 2px solid black;
 	}
 	
 	.board-contents {
@@ -126,15 +127,6 @@ th.item3 { width:20%; }
 	    </div>
 	</div>
 	
-	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
-	<div class="btn-group" style="float: right;">
-	  <c:if test="${sid == 'admin'}">
-		  <a href="${path0 }/EditAttr.do?no=${attr.no }" class="btn btn-secondary">글 수정</a>
-	  	  <a href="${path0 }/DelAttr.do?no=${attr.no }" class="btn btn-secondary">글 삭제</a>
-	  </c:if>
-	  <a href="${path0 }/AttrList.do" class="btn btn-secondary">명소 목록</a>
-	</div>
-	
 	<!-- 사진 아래 콘텐츠 영역 -->
 	<div class="board-contents">
 		<!-- reltag -->
@@ -170,7 +162,7 @@ th.item3 { width:20%; }
 	<div class="map-area">
 		<div>
 	        <h3>오시는 길</h3>
-	        <span style="font:18px">오는 길 입력(jsp단)</span>
+	        <span style="font:18px">오시는 길 소개</span>
 	        <!-- 교통정보 콘텐츠 -->
 	        <div id="map" style="width:500px; height:400px;"></div>
 	    </div>
@@ -178,13 +170,37 @@ th.item3 { width:20%; }
 	    <script>
 		 const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
 	        let options = { //지도를 생성할 때 필요한 기본 옵션
-	            center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	            center: new kakao.maps.LatLng(35.079519314, 129.04358539), //지도의 중심좌표.
 	            level: 3 //지도의 레벨(확대, 축소 정도)
 	        };
 	
 	        let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+	    	// 마커가 표시될 위치입니다 
+	        var markerPosition  = new kakao.maps.LatLng(35.079519314, 129.04358539); 
+
+	        // 마커를 생성합니다
+	        var marker = new kakao.maps.Marker({
+	            position: markerPosition
+	        });
+
+	        // 마커가 지도 위에 표시되도록 설정합니다
+	        marker.setMap(map);
+
+	        // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+	        // marker.setMap(null);    
 	    </script>
     </div>
+    
+    	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
+    	<div style="width:100%; height:80px;">
+	<div class="btn-group" style="float: right;">
+	  <c:if test="${sid == 'admin'}">
+		  <a href="${path0 }/EditAttr.do?no=${attr.no }" class="btn btn-secondary">글 수정</a>
+	  	  <a href="${path0 }/DelAttr.do?no=${attr.no }" class="btn btn-secondary">글 삭제</a>
+	  </c:if>
+	  <a href="${path0 }/AttrList.do" class="btn btn-secondary">명소 목록</a>
+	</div>
+	</div>
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>

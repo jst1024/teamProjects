@@ -26,6 +26,7 @@ public class GetFoodCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "음식");
 		
 		FoodDAO dao = new FoodDAO();
 		Food food = dao.getFood(no);

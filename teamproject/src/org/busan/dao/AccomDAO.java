@@ -17,9 +17,9 @@ public class AccomDAO {
 	
 	public List<Accom> getAccomList(){
 		List<Accom> accList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_ACCOM);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -41,17 +41,17 @@ public class AccomDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return accList;
 	}
 	
 	public Accom getAccom(int no) {
 		Accom acc = new Accom();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_ACCOM);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -76,17 +76,17 @@ public class AccomDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return acc;
 	}
 	
 	public int insAccom(Accom acc) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_ACCOM);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_ACCOM);
 			pstmt.setString(1, acc.getTitle());
 			pstmt.setString(2, acc.getSubtitle());
 			pstmt.setString(3, acc.getContent());
@@ -100,16 +100,16 @@ public class AccomDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProAccom(Accom acc) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_ACCOM);
 			pstmt.setString(1, acc.getTitle());
 			pstmt.setString(2, acc.getSubtitle());
@@ -125,23 +125,23 @@ public class AccomDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delAccom(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_ACCOM);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

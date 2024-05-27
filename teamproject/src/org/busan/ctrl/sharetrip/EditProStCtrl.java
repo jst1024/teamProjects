@@ -32,6 +32,7 @@ public class EditProStCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		Sharetrip st = new Sharetrip();
+		getServletContext().setAttribute("title", "여행공유");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

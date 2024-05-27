@@ -2,6 +2,7 @@ package org.busan.ctrl.accom;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,15 @@ public class DelAccomCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
-		
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		AccomDAO dao = new AccomDAO();
 		int cnt = dao.delAccom(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/AccomList.do");
+			response.sendRedirect(home+"/AccomList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetAccom.do?no="+no);
+			response.sendRedirect(home+"/GetAccom.do?no="+no);
 		}
 	}
 

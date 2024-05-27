@@ -33,6 +33,7 @@ public class EventInsCtrl extends HttpServlet {
 		
 
 		Event event = new Event();
+		getServletContext().setAttribute("title", "축제ㆍ행사");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

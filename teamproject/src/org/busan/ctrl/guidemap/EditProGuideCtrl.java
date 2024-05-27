@@ -31,8 +31,9 @@ public class EditProGuideCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		Guidemap gm = new Guidemap();
+		getServletContext().setAttribute("title", "가이드북&지도");
 
-ServletContext application = request.getServletContext(); //teamproject
+		ServletContext application = request.getServletContext(); //teamproject
 		
 		try {
 			String saveDirectory = application.getRealPath("/gmUpload"); //teamproject/WebContent/gmUpload
@@ -41,8 +42,8 @@ ServletContext application = request.getServletContext(); //teamproject
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
-			gm.setName(request.getParameter("name"));
-			gm.setLink(request.getParameter("link"));
+			gm.setName(mr.getParameter("name"));
+			gm.setLink(mr.getParameter("link"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			
@@ -55,7 +56,7 @@ ServletContext application = request.getServletContext(); //teamproject
 			gm.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			GuidemapDAO dao = new GuidemapDAO();
-			int cnt = dao.insGuidemap(gm);
+			int cnt = dao.editProGuidemap(gm);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

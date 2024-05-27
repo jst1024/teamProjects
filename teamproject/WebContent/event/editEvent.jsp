@@ -50,6 +50,12 @@
 							</td>
 						</tr>
 						<tr>
+							<th><label for="ondate">운영기간</label></th>
+							<td>
+								<input type="text" name="ondate" id="ondate" class="form-control" maxlength="100" value="${event.ondate }" required>
+							</td>
+						</tr>
+						<tr>
 							<th><label for="content">내용</label></th>
 							<td>
 								<textarea name="content" id="content" rows="8" cols="80" class="form-control" ><c:out value="${attr.content }" /></textarea>

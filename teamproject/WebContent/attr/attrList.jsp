@@ -49,7 +49,7 @@
                                     <div style="margin-bottom:10px;">
                                     	<h3>${dto.title}</h3>
                                     </div>
-                                    <p>${dto.visited }</p>&nbsp;<p>${dto.liked }</p>
+                                    <p>${dto.addr }</p><p>${dto.dayoff }</p>
                                     
                                 </div>
                             </div>

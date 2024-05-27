@@ -2,6 +2,7 @@ package org.busan.ctrl.notice;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,16 @@ public class DelNoticeCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		NoticeDAO dao = new NoticeDAO();
 		int cnt = dao.delNotice(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/NotiList.do");
+			response.sendRedirect(home+"/NotiList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetNotice2.do?no="+no);
+			response.sendRedirect(home+"/GetNotice2.do?no="+no);
 		}
 	}
 

@@ -15,9 +15,9 @@ public class EventDAO {
 	
 	public List<Event> getEventList(){
 		List<Event> eventList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_EVENT);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -34,17 +34,17 @@ public class EventDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return eventList;
 	}
 	
 	public Event getEvent(int no) {
 		Event eve = new Event();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_EVENT_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
@@ -60,17 +60,17 @@ public class EventDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return eve;
 	}
 	
 	public int insEvent(Event eve) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_EVENT);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_EVENT);
 			pstmt.setString(1, eve.getTitle());
 			pstmt.setString(2, eve.getOndate());
 			pstmt.setString(3, eve.getContent());
@@ -81,16 +81,16 @@ public class EventDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProEvent(Event eve) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_EVENT);
 			pstmt.setString(1, eve.getTitle());
 			pstmt.setString(2, eve.getOndate());
@@ -103,23 +103,23 @@ public class EventDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delEvent(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_EVENT);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

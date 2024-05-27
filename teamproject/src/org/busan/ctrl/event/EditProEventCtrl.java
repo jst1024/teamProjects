@@ -32,7 +32,8 @@ public class EditProEventCtrl extends HttpServlet {
 		
 		Event event = new Event();
 
-ServletContext application = request.getServletContext(); //teamproject
+		ServletContext application = request.getServletContext(); //teamproject
+		getServletContext().setAttribute("title", "축제ㆍ행사");
 		
 		try {
 			String saveDirectory = application.getRealPath("/eventUpload"); //teamproject/WebContent/eventUpload
@@ -59,7 +60,7 @@ ServletContext application = request.getServletContext(); //teamproject
 			event.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			EventDAO dao = new EventDAO();
-			int cnt = dao.insEvent(event);
+			int cnt = dao.editProEvent(event);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

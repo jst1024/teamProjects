@@ -16,9 +16,9 @@ public class FoodDAO {
 	
 	public List<Food> getFoodList(){
 		List<Food> foodList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_FOOD);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -41,17 +41,17 @@ public class FoodDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return foodList;
 	}
 	
 	public Food getFood(int no) {
 		Food food = new Food();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_FOOD);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -77,17 +77,17 @@ public class FoodDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return food;
 	}
 	
 	public int insFood(Food food) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_FOOD);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_FOOD);
 			pstmt.setString(1, food.getTitle());
 			pstmt.setString(2, food.getSubtitle());
 			pstmt.setString(3, food.getContent());
@@ -102,16 +102,16 @@ public class FoodDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProFood(Food food) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_FOOD);
 			pstmt.setString(1, food.getTitle());
 			pstmt.setString(2, food.getSubtitle());
@@ -128,23 +128,23 @@ public class FoodDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delFood(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_FOOD);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

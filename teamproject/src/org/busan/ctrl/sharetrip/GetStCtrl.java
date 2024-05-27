@@ -29,6 +29,7 @@ public class GetStCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "여행공유");
 		
 		SharetripDAO sharetripdao = new SharetripDAO();
 		ReplyDAO replyDao = new ReplyDAO();

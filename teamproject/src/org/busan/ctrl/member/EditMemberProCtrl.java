@@ -3,6 +3,7 @@ package org.busan.ctrl.member;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,9 @@ public class EditMemberProCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String key = "%02x";
@@ -50,7 +54,7 @@ public class EditMemberProCtrl extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		int cnt = dao.upMember(mem);
 		if(cnt>0) {
-			response.sendRedirect("/teamproject");
+			response.sendRedirect(home);
 		} else {
 			response.sendRedirect("/EditMember.do?id="+id);
 		}

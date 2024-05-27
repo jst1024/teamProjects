@@ -32,7 +32,6 @@ public class EditNoticeCtrl extends HttpServlet {
 		if(!loginId.equals("admin")) {
 			response.sendRedirect("/NotiList.do");
 		}
-		
 		int no = Integer.parseInt(request.getParameter("no"));
 		
 		NoticeDAO dao = new NoticeDAO();

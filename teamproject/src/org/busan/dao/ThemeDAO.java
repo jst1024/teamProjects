@@ -17,9 +17,9 @@ public class ThemeDAO {
 	
 	public List<Theme> getThemeList(){
 		List<Theme> themeList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_THEME);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -37,17 +37,17 @@ public class ThemeDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return themeList;
 	}
 	
 	public Theme getTheme(int no) {
 		Theme theme = new Theme();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_THEME);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -68,17 +68,17 @@ public class ThemeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return theme;
 	}
 	
 	public int insTheme(Theme theme) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_THEME);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_THEME);
 			pstmt.setString(1, theme.getTitle());
 			pstmt.setString(2, theme.getSubtitle());
 			pstmt.setString(3, theme.getContent());
@@ -88,16 +88,16 @@ public class ThemeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProTheme(Theme theme) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_THEME);
 			pstmt.setString(1, theme.getTitle());
 			pstmt.setString(2, theme.getSubtitle());
@@ -109,23 +109,23 @@ public class ThemeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delTheme(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_THEME);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

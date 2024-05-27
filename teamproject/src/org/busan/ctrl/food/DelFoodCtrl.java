@@ -2,6 +2,7 @@ package org.busan.ctrl.food;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,16 @@ public class DelFoodCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		FoodDAO dao = new FoodDAO();
 		int cnt = dao.delFood(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/FoodList.do");
+			response.sendRedirect(home+"/FoodList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetFood.do?no="+no);
+			response.sendRedirect(home+"/GetFood.do?no="+no);
 		}
 	}
 

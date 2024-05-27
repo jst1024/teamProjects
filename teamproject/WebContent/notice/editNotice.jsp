@@ -39,7 +39,7 @@
 						<tr>
 							<th><label for="no">글 번호</label></th>
 							<td>
-								<input type="text" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" disabled>
+								<input type="number" name="no" id="no" class="form-control" maxlength="100" value="${noti.no }" readonly>
 							</td>
 						</tr>
 						<tr>
@@ -52,12 +52,6 @@
 							<th><label for="content">내용</label></th>
 							<td>
 								<textarea name="content" id="content" rows="8" cols="80" class="form-control">${noti.content }</textarea>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="regdate">작성일시</label></th>
-							<td>
-								<input type="text" name="regdate" id="regdate" class="form-control" value="${noti.regdate }" disabled>
 							</td>
 						</tr>
 					</tbody>

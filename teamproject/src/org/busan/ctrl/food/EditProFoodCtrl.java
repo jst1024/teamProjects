@@ -31,8 +31,9 @@ public class EditProFoodCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		Food food = new Food();
+		getServletContext().setAttribute("title", "음식");
 
-ServletContext application = request.getServletContext(); //teamproject
+		ServletContext application = request.getServletContext(); //teamproject
 		
 		try {
 			String saveDirectory = application.getRealPath("/foodUpload"); //teamproject/WebContent/stUpload
@@ -62,7 +63,7 @@ ServletContext application = request.getServletContext(); //teamproject
 			food.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			FoodDAO dao = new FoodDAO();
-			int cnt = dao.insFood(food);
+			int cnt = dao.editProFood(food);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

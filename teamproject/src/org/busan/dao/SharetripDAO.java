@@ -18,9 +18,9 @@ public class SharetripDAO {
 	
 	public List<Sharetrip> getSharetripList(){
 		List<Sharetrip> stList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_SHARETRIP);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -37,17 +37,17 @@ public class SharetripDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return stList;
 	}
 	
 	public Sharetrip getSharetrip(int no) {
 		Sharetrip st = new Sharetrip();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_SHARETRIP_BYNO);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
@@ -63,17 +63,17 @@ public class SharetripDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return st;
 	}
 	
 	public int insSharetrip(Sharetrip st) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_SHARETRIP);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_SHARETRIP);
 			pstmt.setString(1, st.getId());
 			pstmt.setString(2, st.getTitle());
 			pstmt.setString(3, st.getPhoto());
@@ -82,7 +82,7 @@ public class SharetripDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
@@ -91,9 +91,9 @@ public class SharetripDAO {
 
 	public int editProSharetrip(Sharetrip st) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_SHARETRIP);
 			pstmt.setString(1, st.getTitle());
 			pstmt.setString(2, st.getPhoto());
@@ -102,32 +102,32 @@ public class SharetripDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delSharetrip(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_SHARETRIP);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int getReplyCount(int no) {
 	    int replyCount = 0;
-	    OracleDB oracle = new OracleDB();
+	    MariaDB maria = new MariaDB();
 	    try {
-	        con = oracle.connect();
+	        con = maria.connect();
 	        pstmt = con.prepareStatement(SqlLang.SELECT_REPLYCOUNT);
 	        pstmt.setInt(1, no);
 	        rs = pstmt.executeQuery();
@@ -137,7 +137,7 @@ public class SharetripDAO {
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {
-	        oracle.close(con, pstmt, rs);
+	        maria.close(con, pstmt, rs);
 	    }
 	    return replyCount;
 	}

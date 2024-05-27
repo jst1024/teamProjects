@@ -64,7 +64,7 @@
 							<td><input type="text" name="reltag" id="reltag" class="form-control" maxlength="25" ></td>
 						</tr>
 						<tr>
-							<th><label for="dayoff">휴무일</label></th>
+							<th><label for="dayoff">운영요일 및 시간</label></th>
 							<td><input type="text" name="dayoff" id="dayoff" class="form-control" maxlength="250" required></td>
 						</tr>
 						<tr>

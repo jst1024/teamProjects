@@ -26,6 +26,7 @@ public class GetGuideCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		int no = Integer.parseInt(request.getParameter("no"));
+		getServletContext().setAttribute("title", "가이드북&지도");
 		
 		GuidemapDAO dao = new GuidemapDAO();
 		Guidemap gm = dao.getGuidemap(no);

@@ -1,5 +1,6 @@
-create database busan;
-use busan;
+create database team52;
+
+use team52;
 ---------------------------------- 테이블 생성 -----------------------------------
 -- 회원관리 (암호화 필요)
 CREATE TABLE member (

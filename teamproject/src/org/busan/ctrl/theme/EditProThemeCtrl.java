@@ -30,6 +30,7 @@ public class EditProThemeCtrl extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		getServletContext().setAttribute("title", "테마여행 글 수정");
 		Theme th = new Theme();
 
 		ServletContext application = request.getServletContext(); //teamproject
@@ -57,7 +58,7 @@ public class EditProThemeCtrl extends HttpServlet {
 			th.setNo(Integer.parseInt(mr.getParameter("no")));
 			
 			ThemeDAO dao = new ThemeDAO();
-			int cnt = dao.insTheme(th);
+			int cnt = dao.editProTheme(th);
 			String home = application.getContextPath();
 			
 			if(cnt>0) {

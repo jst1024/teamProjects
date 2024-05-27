@@ -33,6 +33,7 @@ public class AccomInsCtrl extends HttpServlet {
 		Accom accom = new Accom();
 		
 		ServletContext application = request.getServletContext(); //teamproject
+		getServletContext().setAttribute("title", "숙박");
 		
 		try {
 			String saveDirectory = application.getRealPath("/accomUpload"); //teamproject/WebContent/accomUpload
@@ -41,14 +42,14 @@ public class AccomInsCtrl extends HttpServlet {
 			//MultipartRequest(요청객체명, 저장디렉토리, 최대크기, 인코딩방식, 폴리시);
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxSize, encoding, new DefaultFileRenamePolicy());
 			
-			accom.setTitle(request.getParameter("title"));
-			accom.setSubtitle(request.getParameter("subtitle"));
-			accom.setContent(request.getParameter("content"));
-			accom.setAddr(request.getParameter("addr"));
-			accom.setTel(request.getParameter("tel"));
-			accom.setReltag(request.getParameter("reltag"));
-			accom.setBusitype(request.getParameter("busitype"));
-			accom.setHomepage(request.getParameter("homepage"));
+			accom.setTitle(mr.getParameter("title"));
+			accom.setSubtitle(mr.getParameter("subtitle"));
+			accom.setContent(mr.getParameter("content"));
+			accom.setAddr(mr.getParameter("addr"));
+			accom.setTel(mr.getParameter("tel"));
+			accom.setReltag(mr.getParameter("reltag"));
+			accom.setBusitype(mr.getParameter("busitype"));
+			accom.setHomepage(mr.getParameter("homepage"));
 			
 			Enumeration files = mr.getFileNames();
 			String item = (String) files.nextElement(); 			

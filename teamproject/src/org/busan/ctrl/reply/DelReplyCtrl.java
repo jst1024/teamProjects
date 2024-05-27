@@ -2,6 +2,7 @@ package org.busan.ctrl.reply;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,14 +26,16 @@ public class DelReplyCtrl extends HttpServlet {
 		
 		int no = Integer.parseInt(request.getParameter("no"));
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		ReplyDAO dao = new ReplyDAO();
 		int cnt = dao.delReply(boardNo, no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/GetSt.do?no="+boardNo);
+			response.sendRedirect(home+"/GetSt.do?no="+boardNo);
 		} else {
-			response.sendRedirect("/teamproject/ReplyList.do");
+			response.sendRedirect(home+"/ReplyList.do");
 		}
 	}
 

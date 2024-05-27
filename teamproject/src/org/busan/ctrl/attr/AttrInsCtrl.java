@@ -32,6 +32,7 @@ public class AttrInsCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		Attr attr = new Attr();
+		getServletContext().setAttribute("title", "명소");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

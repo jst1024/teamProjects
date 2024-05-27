@@ -34,6 +34,7 @@ public class StInsCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		getServletContext().setAttribute("title", "여행공유");
 		
 		//댓글 등록 시 sid(세션아이디) 쓰기 위해 세션 연결
 		HttpSession session = request.getSession();

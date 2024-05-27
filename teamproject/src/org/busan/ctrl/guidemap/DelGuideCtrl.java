@@ -2,6 +2,7 @@ package org.busan.ctrl.guidemap;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,14 +25,16 @@ public class DelGuideCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int no = Integer.parseInt(request.getParameter("no"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		GuidemapDAO dao = new GuidemapDAO();
 		int cnt = dao.delGuidemap(no);
 		
 		if(cnt>0) {
-			response.sendRedirect("/teamproject/GuideList.do");
+			response.sendRedirect(home+"/GuideList.do");
 		} else {
-			response.sendRedirect("/teamproject/GetGuide.do?no="+no);
+			response.sendRedirect(home+"/GetGuide.do?no="+no);
 		}
 	}
 

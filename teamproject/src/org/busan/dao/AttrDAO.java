@@ -16,9 +16,9 @@ public class AttrDAO {
 	
 	public List<Attr> getAttrList(){
 		List<Attr> attrList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_ATTR);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -42,17 +42,17 @@ public class AttrDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return attrList;
 	}
 	
 	public Attr getAttr(int no) {
 		Attr attr = new Attr();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.VISITED_UPD_ATTR);
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -79,17 +79,17 @@ public class AttrDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return attr;
 	}
 	
 	public int insAttr(Attr attr) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_ATTR);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_ATTR);
 			pstmt.setString(1, attr.getTitle());
 			pstmt.setString(2, attr.getSubtitle());
 			pstmt.setString(3, attr.getContent());
@@ -105,16 +105,16 @@ public class AttrDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProAttr(Attr attr) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_ATTR);
 			pstmt.setString(1, attr.getTitle());
 			pstmt.setString(2, attr.getSubtitle());
@@ -132,23 +132,23 @@ public class AttrDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delAttr(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_ATTR);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

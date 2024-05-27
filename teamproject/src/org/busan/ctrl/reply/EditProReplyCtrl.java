@@ -2,6 +2,7 @@ package org.busan.ctrl.reply;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,8 @@ public class EditProReplyCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		ServletContext application = request.getServletContext(); 
+		String home = application.getContextPath();
 		
 		Reply reply = new Reply();
 		reply.setNo(Integer.parseInt(request.getParameter("no")));
@@ -37,10 +40,10 @@ public class EditProReplyCtrl extends HttpServlet {
 		
 		if(cnt>0) {
 			System.out.println("댓글 수정 성공");
-			response.sendRedirect("/teamproject/GetSt.do?no=" + boardNo);
+			response.sendRedirect(home+"/GetSt.do?no=" + boardNo);
 		} else {
 			System.out.println("댓글 수정 실패");
-			response.sendRedirect("/teamproject/ReplyList.do");
+			response.sendRedirect(home+"/ReplyList.do");
 		}
 	}
 }

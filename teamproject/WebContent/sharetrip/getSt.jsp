@@ -247,7 +247,6 @@ function editTrans(replyNo) {    //여기서 설정까지 =${reply.no}
         </div>
         <div class="" style="float: right;">
           <c:if test="${!empty sid && sid == st.id}">
-              <a href="${path0 }/sharetrip/st_ins.jsp" class="btn btn-secondary">여행 등록</a>
               <a href="${path0 }/EditSt.do?no=${st.no }" class="btn btn-secondary">글 수정</a>
           </c:if>
           <c:if test="${sid == st.id || sid == 'admin'}">

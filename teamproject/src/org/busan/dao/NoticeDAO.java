@@ -15,10 +15,10 @@ public class NoticeDAO {
 	
 	public List<Notice> getLatestNoticeList(){
 		List<Notice> notiList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.LATEST_NOTICE);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.LATEST_NOTICE);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Notice noti = new Notice(
@@ -31,16 +31,16 @@ public class NoticeDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return notiList;
 	}
 	
 	public List<Notice> getNoticeList(){
 		List<Notice> notiList = new ArrayList<>();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.SELECT_ALL_NOTICE);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -54,17 +54,17 @@ public class NoticeDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return notiList;
 	}
 	
 	public Notice getNotice(int no) {
 		Notice noti = new Notice();
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = null;
 			pstmt = con.prepareStatement(SqlLang.SELECT_NOTICE_BYNO);
 			pstmt.setInt(1, no);
@@ -78,33 +78,33 @@ public class NoticeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt, rs);
+			maria.close(con, pstmt, rs);
 		}
 		return noti;
 	}
 	
 	public int insNotice(Notice noti) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
-			pstmt = con.prepareStatement(OracleDB.INS_NOTICE);
+			con = maria.connect();
+			pstmt = con.prepareStatement(MariaDB.INS_NOTICE);
 			pstmt.setString(1, noti.getTitle());
 			pstmt.setString(2, noti.getContent());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int editProNotice(Notice noti) {
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.UPD_NOTICE);
 			pstmt.setString(1, noti.getTitle());
 			pstmt.setString(2, noti.getContent());
@@ -113,23 +113,23 @@ public class NoticeDAO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}
 	
 	public int delNotice(int no){
 		int cnt = 0;
-		OracleDB oracle = new OracleDB();
+		MariaDB maria = new MariaDB();
 		try {
-			con = oracle.connect();
+			con = maria.connect();
 			pstmt = con.prepareStatement(SqlLang.DEL_NOTICE);
 			pstmt.setInt(1, no);
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
-			oracle.close(con, pstmt);
+			maria.close(con, pstmt);
 		}
 		return cnt;
 	}

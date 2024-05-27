@@ -36,7 +36,7 @@ public class ThemeInsCtrl extends HttpServlet {
 		
 
 		Theme th = new Theme();
-		
+		getServletContext().setAttribute("title", "테마여행 글 등록");
 		
 		ServletContext application = request.getServletContext(); //teamproject
 		

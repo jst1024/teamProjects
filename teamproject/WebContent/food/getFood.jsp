@@ -19,6 +19,8 @@
 th.item1 { width:8%; }
 th.item2 { width:60%; }
 th.item3 { width:20%; }
+.image-wrapper {width:100%; height:100%;}
+.image-wrapper > img {object-fit:cover; width:100%; height:100%;}
 </style>
 <style>
 .wholeBox {
@@ -37,9 +39,8 @@ th.item3 { width:20%; }
 	}
 	.photo-area {
 		width: 100%; max-width: 100%;
-		height: 600px; margin: 0 auto;
+		margin: 0 auto;
 		overflow: hidden; text-align: center;
-		border: 2px solid black;
 	}
 	
 	.board-contents {
@@ -126,14 +127,7 @@ th.item3 { width:20%; }
 	    </div>
 	</div>
 	
-	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
-	<div class="btn-group" style="float: right;">
-	  <c:if test="${sid == 'admin'}">
-		  <a href="${path0 }/EditFood.do?no=${food.no }" class="btn btn-secondary">글 수정</a>
-	  	  <a href="${path0 }/DelFood.do?no=${food.no }" class="btn btn-secondary">글 삭제</a>
-	  </c:if>
-	  <a href="${path0 }/FoodList.do" class="btn btn-secondary">음식 목록</a>
-	</div>
+
 	
 	<!-- 사진 아래 콘텐츠 영역 -->
 	<div class="board-contents">
@@ -179,6 +173,17 @@ th.item3 { width:20%; }
 	        let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 	    </script>
     </div>
+    
+    	<!-- 관리자용 글 등록/수정/삭제 버튼 & 목록 버튼 -->
+	<div style="width:100%; height:80px;">
+	<div class="btn-group" style="float: right;">
+	  <c:if test="${sid == 'admin'}">
+		  <a href="${path0 }/EditFood.do?no=${food.no }" class="btn btn-secondary">글 수정</a>
+	  	  <a href="${path0 }/DelFood.do?no=${food.no }" class="btn btn-secondary">글 삭제</a>
+	  </c:if>
+	  <a href="${path0 }/FoodList.do" class="btn btn-secondary">음식 목록</a>
+	</div>
+	</div>
 </div>
 <div id="footer">
 	<%@ include file="/footer.jsp" %>
